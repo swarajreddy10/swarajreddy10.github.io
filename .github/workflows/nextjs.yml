@@ -72,19 +72,29 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Export build
+        uses: actions/upload-artifact@v3
         with:
+          name: nextjs-build
           path: ./out
 
   # Deployment job
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Download build
+        uses: actions/download-artifact@v3
+        with:
+          name: nextjs-build
+          path: ./out
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ./out
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          clean: true
+          force: true
