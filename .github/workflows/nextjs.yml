@@ -90,6 +90,11 @@ jobs:
         with:
           name: nextjs-build
           path: ./out
+      - name: Initialize git repository
+        run: |
+          git init
+          git config --global user.name "swarajreddy10"
+          git config --global user.email "swarajchandra22@gmail.com"
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
