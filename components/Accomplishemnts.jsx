@@ -1,6 +1,6 @@
 'use client';
 
-import { assets, serviceData } from '@/assets/assets';
+import { serviceData } from '@/assets/assets';
 import { motion } from "framer-motion"; // corrected from motion/react
 import Image from 'next/image';
 
@@ -31,7 +31,7 @@ const Accomplishemnts = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
                 className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
-                I am a Computer Science Graduate from GITAM University with hands-on experience in cloud computing, full-stack web development, and AI-powered applications. I have successfully built scalable, secure, and intelligent solutions using technologies like AWS, React.js, Node.js.
+                I am a Computer Science Graduate from GITAM University with hands-on experience in cloud computing, full-stack web development, and AI-powered applications. I have successfully built scalable, secure, and intelligent solutions using technologies like AWS, React.js, Generative AI.
             </motion.p>
 
             <motion.div
@@ -39,7 +39,7 @@ const Accomplishemnts = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
                 className='grid grid-cols-auto gap-6 my-10'>
-                {serviceData.map(({ icon, title, description, link }, index) => (
+                {serviceData.map(({ icon, title, description }, index) => (
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         key={index}
@@ -49,9 +49,7 @@ const Accomplishemnts = () => {
                         <p className='text-sm text-gray-600 leading-5 dark:text-white/80'>
                             {description}
                         </p>
-                        <a href={link} className='flex items-center gap-2 text-sm mt-5'>
-                            Read more <Image alt='' src={assets.right_arrow} className='w-4' />
-                        </a>
+
                     </motion.div>
                 ))}
             </motion.div>

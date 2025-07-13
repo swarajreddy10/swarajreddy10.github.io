@@ -13,7 +13,9 @@ import git from './git.png';
 import graphics_icon from './graphics-icon.png';
 import hand_icon from './hand-icon.png';
 import header_bg_color from './header-bg-color.png';
+import logo_light from './logo light.png';
 import logo from './logo.png';
+import logo2 from './logo2.png';
 import logo_dark from './logo_dark.png';
 import mail_icon from './mail_icon.png';
 import mail_icon_dark from './mail_icon_dark.png';
@@ -43,30 +45,30 @@ export const assets = {
     download_icon, hand_icon, header_bg_color, moon_icon, sun_icon, arrow_icon,
     arrow_icon_dark, menu_black, menu_white, close_black, close_white,
     web_icon, mobile_icon, ui_icon, graphics_icon, right_arrow, send_icon,
-    right_arrow_bold, right_arrow_bold_dark
+    right_arrow_bold, right_arrow_bold_dark,logo2,logo_light
 };
 
 export const workData = [
     {
-        title: 'Crop Disease Detection',
+        title: 'Crop Disease Detection🔗',
         description: 'Deep Learning / AI',
         bgImage: '/work-1.png',
         link: 'https://github.com/swarajreddy10/CROP_DISEASE_DETECTION_Final'
     },
     {
-        title: 'Portfolio Website',
-        description: 'Web Development',
+        title: 'Portfolio Website🔗',
+        description: 'Web Dev',
         bgImage: '/work-2.png',
-        link: 'https://github.com/swarajreddy10/food-delivery-site'
+        link: 'https://github.com/swarajreddy10/swarajreddy10.github.io'
     },
     {
-        title: 'Stock Price Prediction',
+        title: 'Stock Price Prediction🔗',
         description: 'AI / ML',
         bgImage: '/work-3.png',
         link: 'https://github.com/swarajreddy10/Stock_Prediction_Final'
     },
     {
-        title: 'RAG Web App with LangChain',
+        title: 'RAG Web App🔗',
         description: 'Generative AI',
         bgImage: '/work-4.png',
         link: 'https://github.com/swarajreddy10/Retrieval-Augmented-Generation--Webpage'
@@ -74,9 +76,9 @@ export const workData = [
 ];
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Full Stack Development', description: 'Modern, responsive web applications using React and Node.js stack (You\'re already here😉).', link: '' },
-    { icon: assets.mobile_icon, title: 'Cloud & DevOps', description: 'Expertise in AWS, Google Cloud, Docker, CI/CD pipelines, serverless architectures.', link: '' },
-    { icon: assets.ui_icon, title: 'AI/ML', description: 'Deploying ML models with TensorFlow and Flask for real-time inference and scalable solutions.', link: '' },
+    { icon: assets.web_icon, title: 'Full Stack Development', description: 'Designed and developed a dynamic personal portfolio with React and Node.js, blending clean UI with responsive design to professionally showcase my skills, projects, and passion.', link: '' },
+    { icon: assets.mobile_icon, title: 'Cloud & DevOps', description: 'Expertise in AWS, Google Cloud, Docker, GitHub Actions, with knowledge in Kubernetes, CI/CD pipelines, and monitoring cloud-native deployments for scalable, automated infrastructure.', link: '' },
+    { icon: assets.ui_icon, title: 'AI/ML', description: 'Developed crop disease detection using TensorFlow CNNs and a scalable RAG-based GenAI web app for real-time classification and intelligent document-driven responses.', link: '' },
     { icon: assets.graphics_icon, title: 'Database Engineering', description: 'Design and management of SQL & NoSQL databases including MySQL and MongoDB.', link: '' },
 ];
 
