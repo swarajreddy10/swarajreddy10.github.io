@@ -23,20 +23,21 @@ const Header = () => {
   }
 
   return (
-    <div className='w-11/12 max-w-3xl text-center mx-auto pt-38 pb-15 md:py-28 flex flex-col items-center justify-center gap-4'>
+    <div className='w-11/12 max-w-3xl text-center mx-auto pt-24 pb-15 md:py-28 flex flex-col items-center justify-center gap-4'>
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
+        className='mb-4'
       >
-        <Image src={assets.profile_img} alt='' className='rounded-full w-32'/>
+        <Image src={assets.profile_img} alt='' className='rounded-full w-32 mx-auto'/>
       </motion.div>
 
       <motion.h3
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className='flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo'
+        className='flex items-end gap-2 text-xl md:text-3xl mb-3 font-Ovo pt-6'
       >
         Welcome! I'm Swaraj Reddy <Image src={assets.hand_icon} alt='' className='w-6'/>
       </motion.h3>
@@ -45,7 +46,7 @@ const Header = () => {
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className='text-2xl sm:text-5xl lg:text-[30px] font-Ovo'
+        className='text-3xl sm:text-6xl lg:text-5xl font-Ovo mb-4'
       >
         Computer Science Graduate based in Hyderabad, India.
       </motion.h1>
@@ -54,7 +55,7 @@ const Header = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className='max-w-2xl mx-auto font-Ovo'
+        className='max-w-2xl mx-auto font-Ovo text-lg leading-relaxed mb-6'
       >
         Aspiring Software Engineer and have hands-on experience in Full-Stack Development, Cloud Technologies, and Deep Learning Applications.
       </motion.p>
@@ -65,7 +66,7 @@ const Header = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 1 }}
           href="#contact"
-          className='px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2 dark:bg-transparent'
+          className='px-12 py-4 border border-white rounded-full bg-black text-white flex items-center gap-2 dark:bg-transparent text-lg font-medium hover:scale-105 transition-transform duration-200'
         >
           Contact Me <Image src={assets.right_arrow_white} alt='' className='w-4'/>
         </motion.a>

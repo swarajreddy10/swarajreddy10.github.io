@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const About = ({ isDarkMode }) => {
     return (
-        <motion.div id='about' className='w-full px-[12%] py-10 scroll-mt-20'
+        <motion.div id='about' className='w-full px-[12%] py-10 scroll-mt-20 mt-32'
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1 }}
@@ -40,7 +40,7 @@ const About = ({ isDarkMode }) => {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
                     className='flex-1'>
-                    <p className='mb-10 max-w-2xl font-Ovo'
+                    <p className='mb-10 max-w-2xl font-Ovo text-lg leading-relaxed'
                     >Computer Science Graduate from GITAM University, 2025 with an 8.2 CGPA, based in Hyderabad, India. Aspiring Software Developer with hands-on experience in AWS Cloud, Python, Java, and MySQL. Passionate about Artificial Intelligence & Cloud.</p>
 
                     <motion.ul

@@ -4,9 +4,21 @@
 @layer base {
   html {
     font-family: var(--font-outfit), system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-ovo), serif;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  /* Improve touch targets for better accessibility */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
