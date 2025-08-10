@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  html {
+    font-family: var(--font-outfit), system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-ovo), serif;
+    line-height: 1.2;
+    word-spacing: 0.05em;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    line-height: 1.6;
+    word-spacing: 0.03em;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Better text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Improve touch targets for better accessibility */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    body {
+      font-size: 14px;
+    }
+    
+    /* Prevent horizontal scroll */
+    * {
+      max-width: 100%;
+    }
+    
+    /* Improve mobile navbar */
+    nav {
+      min-height: 60px;
+    }
+  }
+  
+  /* Small mobile optimizations */
+  @media (max-width: 375px) {
+    body {
+      font-size: 13px;
+    }
+  }
+  
+  /* Tighter spacing utilities */
+  .section-spacing {
+    @apply py-8 sm:py-10 md:py-12;
+  }
+  
+  .content-spacing {
+    @apply mb-6 sm:mb-8;
+  }
+  
+  .title-spacing {
+    @apply mb-4 sm:mb-6;
+  }
+}
