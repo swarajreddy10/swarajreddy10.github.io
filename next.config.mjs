@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  // Empty strings for root GitHub Pages URL
-  basePath: '',
-  assetPrefix: '',
   // Disable image optimization for static export
   images: {
     unoptimized: true,
@@ -12,6 +9,11 @@ const nextConfig = {
   trailingSlash: true,
   // Output directory
   distDir: 'out',
+  // Disable React StrictMode for static export
+  reactStrictMode: false,
+  // Ensure base paths are empty for root domain
+  basePath: '',
+  assetPrefix: '',
 }
 
 export default nextConfig;
