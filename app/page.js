@@ -18,7 +18,7 @@ export default function Home() {
   // This effect runs only on the client side
   useEffect(() => {
     setMounted(true);
-    
+
     // Check for dark mode preference after component mounts
     const isDark = localStorage.theme === 'dark' ||
                   (!('theme' in localStorage) &&
