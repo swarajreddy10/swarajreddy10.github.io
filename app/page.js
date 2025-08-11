@@ -1,22 +1,24 @@
 'use client'
+import dynamic from 'next/dynamic';
 import { useEffect, useState } from "react";
-import About from "../components/About";
-import Accomplishemnts from "../components/Accomplishemnts";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
-import Work from "../components/Work";
+
+// Import components with no SSR
+const About = dynamic(() => import('../components/About'), { ssr: false });
+const Accomplishemnts = dynamic(() => import('../components/Accomplishemnts'), { ssr: false });
+const Contact = dynamic(() => import('../components/Contact'), { ssr: false });
+const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
+const Header = dynamic(() => import('../components/Header'), { ssr: false });
+const Navbar = dynamic(() => import('../components/Navbar'), { ssr: false });
+const Work = dynamic(() => import('../components/Work'), { ssr: false });
 
 export default function Home() {
-  // Initialize state without directly accessing localStorage during SSR
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Set mounted to true after component mounts (client-side only)
+  // This effect runs only on the client side
   useEffect(() => {
     setMounted(true);
-
+    
     // Check for dark mode preference after component mounts
     const isDark = localStorage.theme === 'dark' ||
                   (!('theme' in localStorage) &&
@@ -45,21 +47,20 @@ export default function Home() {
     }
   }, [isDarkMode, mounted]);
 
-  // Prevent rendering until after mount to avoid hydration mismatch
+  // Don't render anything on the server
   if (!mounted) {
-    // You can return a loading state or null here
     return null;
   }
 
   return (
-    <>
+    <main className="min-h-screen">
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Header isDarkMode={isDarkMode} />
       <About isDarkMode={isDarkMode} />
-      <Accomplishemnts isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
+      <Accomplishemnts isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
-    </>
+    </main>
   );
 }
