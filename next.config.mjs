@@ -1,11 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: "",output: "export",
-    images: {
-        unoptimized: true,
-    },
-    // Optional: Add base path if your site is not served from the root
-    // basePath: process.env.NODE_ENV === 'production' ? '/your-repo-name' : '',
+  output: 'export',
+  // Empty strings for root GitHub Pages URL
+  basePath: '',
+  assetPrefix: '',
+  // Disable image optimization for static export
+  images: {
+    unoptimized: true,
+  },
+  // Add trailing slash for GitHub Pages compatibility
+  trailingSlash: true,
+  // Output directory
+  distDir: 'out',
 }
 
 export default nextConfig;
