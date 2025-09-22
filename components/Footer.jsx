@@ -119,11 +119,11 @@ const Footer = ({ isDarkMode }) => {
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className={`border-t pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 ${
+          className={`border-t pt-8 flex flex-col items-center justify-center gap-4 ${
             isDarkMode ? 'border-white/10' : 'border-gray-200'
           }`}
         >
-          <p className={`text-sm font-medium text-center sm:text-left ${
+          <p className={`text-sm font-medium text-center ${
             isDarkMode ? 'text-gray-400' : 'text-gray-600'
           }`}>
             © 2024 Swaraj Reddy. All rights reserved.

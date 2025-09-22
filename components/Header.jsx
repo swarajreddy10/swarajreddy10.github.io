@@ -23,7 +23,8 @@ const Header = () => {
   }
 
   return (
-    <div id="top" className='w-11/12 max-w-4xl text-center mx-auto pt-16 sm:pt-18 md:pt-20 lg:pt-24 pb-8 sm:pb-12 md:pb-16 flex flex-col items-center justify-center gap-6 relative'>
+    <div className='w-full bg-white dark:bg-darkTheme'>
+      <div id="top" className='w-11/12 max-w-4xl text-center mx-auto pt-16 sm:pt-18 md:pt-20 lg:pt-24 pb-8 sm:pb-12 md:pb-16 flex flex-col items-center justify-center gap-6 relative'>
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -72,11 +73,14 @@ const Header = () => {
         transition={{ duration: 0.7, delay: 0.7 }}
         className='max-w-3xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed mb-8 px-4 text-gray-600 dark:text-gray-400 tracking-normal'
       >
-        <span className='font-semibold text-gray-800 dark:text-gray-200'>Aspiring Software Engineer</span>{' '}
-        with hands-on experience in{' '}
-        <span className='font-medium text-blue-600 dark:text-blue-400'>Full-Stack Development</span>,{' '}
-        <span className='font-medium text-purple-600 dark:text-purple-400'>Cloud Technologies</span>, and{' '}
-        <span className='font-medium text-pink-600 dark:text-pink-400'>Deep Learning Applications</span>.
+        <span className='font-bold text-gray-800 dark:text-gray-200'>Passionate Software Engineer</span>{' '}
+        with expertise in{' '}
+        <span className='font-semibold text-blue-600 dark:text-blue-400'>Java</span>,{' '}
+        <span className='font-semibold text-green-600 dark:text-green-400'>Python</span>,{' '}
+        <span className='font-semibold text-cyan-600 dark:text-cyan-400'>React</span>, and{' '}
+        <span className='font-semibold text-purple-600 dark:text-purple-400'>Cloud Technologies</span>.{' '}
+        Building scalable applications that drive{' '}
+        <span className='font-bold text-orange-600 dark:text-orange-400'>business success</span>.
       </motion.p>
 
       <motion.div
@@ -108,10 +112,11 @@ const Header = () => {
           href="#work"
           className='px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full font-semibold text-base hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex items-center gap-3'
         >
-          View My Work
+          View Projects
           <span className='text-lg'>→</span>
         </motion.a>
       </motion.div>
+      </div>
     </div>
   )
 }

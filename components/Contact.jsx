@@ -36,11 +36,8 @@ const Contact = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       id='contact'
-      className='w-full px-4 sm:px-6 md:px-8 lg:px-[8%] xl:px-[12%] py-16 sm:py-20 md:py-24 scroll-mt-20 bg-gradient-to-br from-indigo-50 via-purple-50/30 to-pink-50 dark:from-gray-900 dark:via-indigo-900/10 dark:to-purple-900/10 relative overflow-hidden'
+      className='w-full px-4 sm:px-6 md:px-8 lg:px-[8%] xl:px-[12%] py-16 sm:py-20 md:py-24 scroll-mt-20 bg-white dark:bg-darkTheme'
     >
-      {/* Decorative background elements */}
-      <div className='absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full blur-3xl opacity-20'></div>
-      <div className='absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-br from-pink-400 to-red-400 rounded-full blur-3xl opacity-20'></div>
       
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -48,7 +45,7 @@ const Contact = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         className='text-center mb-8 relative z-10'
       >
-        <span className='inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-full text-sm font-semibold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700 mb-4'>
+        <span className='inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-sm font-semibold text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700 mb-4'>
           💬 Let's Talk
         </span>
       </motion.div>
@@ -58,7 +55,7 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.4 }}
         className='text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 relative z-10'>
-        <span className='bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'>
+        <span className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
           Get In Touch
         </span>
       </motion.h2>
@@ -68,11 +65,15 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.6 }}
         className='text-center max-w-3xl mx-auto mt-5 mb-12 sm:mb-16 text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-300 relative z-10 tracking-normal'>
-        I'd love to hear from you! Whether you have a{' '}
-        <span className='font-semibold text-indigo-600 dark:text-indigo-400'>project idea</span>,{' '}
-        <span className='font-semibold text-purple-600 dark:text-purple-400'>collaboration opportunity</span>, or just want to{' '}
-        <span className='font-semibold text-pink-600 dark:text-pink-400'>say hello</span>,{' '}
-        feel free to reach out using the form below.
+        As a{' '}
+        <span className='font-semibold text-blue-600 dark:text-blue-400'>fresh Computer Science graduate</span>{' '}
+        with strong technical foundations, I'm eager to contribute to{' '}
+        <span className='font-semibold text-purple-600 dark:text-purple-400'>innovative teams</span>{' '}
+        and grow alongside{' '}
+        <span className='font-semibold text-green-600 dark:text-green-400'>industry professionals</span>.{' '}
+        Let's connect to explore{' '}
+        <span className='font-semibold text-orange-600 dark:text-orange-400'>entry-level opportunities</span>{' '}
+        where I can apply my skills and learn from experienced mentors.
       </motion.p>
 
       <motion.div
@@ -98,7 +99,7 @@ const Contact = () => {
                   type="text"
                   placeholder='John Doe'
                   required
-                  className='w-full p-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm outline-none focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400'
+                  className='w-full p-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400'
                   name='name'
                 />
               </motion.div>
@@ -117,7 +118,7 @@ const Contact = () => {
                   type="email"
                   placeholder='john@example.com'
                   required
-                  className='w-full p-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm outline-none focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400'
+                  className='w-full p-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400'
                   name='email'
                 />
               </motion.div>
@@ -135,9 +136,9 @@ const Contact = () => {
               <motion.textarea
                 whileFocus={{ scale: 1.01 }}
                 rows='6'
-                placeholder='Tell me about your project or just say hello...'
+                placeholder='Describe your project requirements, team needs, or collaboration opportunity...'
                 required
-                className='w-full p-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm outline-none focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none'
+                className='w-full p-4 border-2 border-gray-200 dark:border-gray-600 rounded-2xl bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-all duration-300 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none'
                 name='message'
               ></motion.textarea>
             </motion.div>
@@ -152,9 +153,9 @@ const Contact = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 type='submit'
-                className='group relative px-10 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 overflow-hidden min-w-[200px] justify-center'
+                className='group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 overflow-hidden min-w-[200px] justify-center'
               >
-                <span className='absolute inset-0 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></span>
+                <span className='absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></span>
                 <span className='relative z-10'>Send Message</span>
                 <motion.div
                   animate={{ x: [0, 4, 0] }}

@@ -35,12 +35,13 @@ import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
 import sun_icon from './sun_icon.png';
 import ui_icon from './ui-icon.png';
+import react from './react.svg';
 import vscode from './vscode.png';
 import web_icon from './web-icon.png';
 
 export const assets = {
     my_image, code_icon, code_icon_dark, edu_icon, edu_icon_dark, project_icon, project_icon_dark,
-    vscode, firebase, figma, git, mongodb,
+    vscode, firebase, figma, git, mongodb, react,
     right_arrow_white, logo, logo_dark, mail_icon, mail_icon_dark, profile_img,
     download_icon, hand_icon, header_bg_color, moon_icon, sun_icon, arrow_icon,
     arrow_icon_dark, menu_black, menu_white, close_black, close_white,
@@ -89,5 +90,5 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.figma, assets.mongodb, assets.firebase, assets.git
+    assets.vscode, assets.figma, assets.mongodb, assets.firebase, assets.git, assets.react
 ];
