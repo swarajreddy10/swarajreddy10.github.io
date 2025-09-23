@@ -126,7 +126,7 @@ const Footer = ({ isDarkMode }) => {
           <p className={`text-sm font-medium text-center ${
             isDarkMode ? 'text-gray-400' : 'text-gray-600'
           }`}>
-            © 2024 Swaraj Reddy. All rights reserved.
+            © 2025 Swaraj Reddy. All rights reserved.
           </p>
         </motion.div>
       </div>

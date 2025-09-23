@@ -66,21 +66,21 @@ const Work = ({ isDarkMode }) => {
                     >
                         {/* Project Image Container */}
                         <div className='relative h-64 sm:h-72 overflow-hidden'>
-                            <div 
+                            <div
                                 className='absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110'
                                 style={{ backgroundImage: `url(${project.bgImage})` }}
                             ></div>
-                            
+
                             {/* Overlay gradient */}
                             <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500'></div>
-                            
+
                             {/* Category Badge */}
                             <div className='absolute top-4 left-4'>
                                 <span className='inline-flex items-center px-3 py-1.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-800 dark:text-gray-200 border border-white/20 dark:border-gray-700/30'>
                                     {project.description}
                                 </span>
                             </div>
-                            
+
                             {/* External Link Indicator */}
                             <div className='absolute top-4 right-4'>
                                 <motion.div
@@ -93,7 +93,7 @@ const Work = ({ isDarkMode }) => {
                                 </motion.div>
                             </div>
                         </div>
-                        
+
                         {/* Project Content */}
                         <div className='p-6 sm:p-8'>
                             <div className='flex items-start justify-between gap-4 mb-4'>
@@ -101,14 +101,14 @@ const Work = ({ isDarkMode }) => {
                                     <h3 className='text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight'>
                                         {project.title}
                                     </h3>
-                                    
+
                                     {/* Impact badge */}
                                     {project.impact && (
                                         <div className='inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs font-semibold rounded-full mb-3'>
                                             ✨ {project.impact}
                                         </div>
                                     )}
-                                    
+
                                     {/* Tech Stack Tags */}
                                     <div className='flex flex-wrap gap-2 mb-4'>
                                         {project.tech && project.tech.map((tech, techIndex) => (
@@ -119,7 +119,7 @@ const Work = ({ isDarkMode }) => {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             {/* Project Description */}
                             <p className='text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6'>
                                 {project.title.includes('Crop Disease') && 'Production-ready computer vision system using deep learning for agricultural disease detection. Achieved 95% accuracy with real-time image processing and scalable deployment architecture.'}
@@ -127,7 +127,7 @@ const Work = ({ isDarkMode }) => {
                                 {project.title.includes('Stock') && 'Intelligent financial prediction system using LSTM neural networks and technical analysis. Features real-time market data processing and predictive analytics dashboard.'}
                                 {project.title.includes('RAG') && 'Enterprise RAG application leveraging large language models and vector databases for intelligent document processing. Scalable architecture with real-time query processing.'}
                             </p>
-                            
+
                             {/* Action Buttons */}
                             <div className='flex items-center gap-3'>
                                 <motion.a
@@ -143,7 +143,7 @@ const Work = ({ isDarkMode }) => {
                                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14' />
                                     </svg>
                                 </motion.a>
-                                
+
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
@@ -155,7 +155,7 @@ const Work = ({ isDarkMode }) => {
                                 </motion.button>
                             </div>
                         </div>
-                        
+
                         {/* Hover Border Effect */}
                         <div className='absolute inset-0 border-2 border-transparent group-hover:border-blue-400/30 rounded-3xl transition-all duration-500 pointer-events-none'></div>
                     </motion.div>
@@ -199,7 +199,7 @@ const Work = ({ isDarkMode }) => {
                     { number: '4+', label: 'Projects Completed', icon: '🚀' },
                     { number: '3', label: 'Tech Domains', icon: '💻' },
                     { number: '100%', label: 'GitHub Public', icon: '📖' },
-                    { number: '2024', label: 'Latest Update', icon: '⚡' }
+                    { number: '2025', label: 'Latest Update', icon: '⚡' }
                 ].map((stat, index) => (
                     <motion.div
                         key={index}
