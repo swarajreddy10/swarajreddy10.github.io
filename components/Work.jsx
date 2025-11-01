@@ -122,10 +122,10 @@ const Work = ({ isDarkMode }) => {
 
                             {/* Project Description */}
                             <p className='text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6'>
+                                {project.title.includes('Employee Management') && 'Production Employee Management System with Next.js 14, Fastify, and TypeScript. Achieving <50ms API responses via optimized HTTP parser and Prisma connection pooling, supporting 50+ concurrent users with 99.9% uptime.'}
+                                {project.title.includes('Echo AI') && 'Production-ready RAG architecture with FastAPI and React TypeScript, powered by dual-LLM integration (Groq + Gemini fallback). Achieving sub-350ms response times with stateless in-memory processing for 100+ concurrent users.'}
                                 {project.title.includes('Crop Disease') && 'Production-ready computer vision system using deep learning for agricultural disease detection. Achieved 95% accuracy with real-time image processing and scalable deployment architecture.'}
                                 {project.title.includes('Portfolio') && 'Enterprise-grade portfolio website with modern architecture, 100% Lighthouse performance score, responsive design, and advanced animations. Built with industry best practices.'}
-                                {project.title.includes('Stock') && 'Intelligent financial prediction system using LSTM neural networks and technical analysis. Features real-time market data processing and predictive analytics dashboard.'}
-                                {project.title.includes('RAG') && 'Enterprise RAG application leveraging large language models and vector databases for intelligent document processing. Scalable architecture with real-time query processing.'}
                             </p>
 
                             {/* Action Buttons */}

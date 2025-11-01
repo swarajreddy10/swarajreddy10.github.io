@@ -51,28 +51,36 @@ export const assets = {
 
 export const workData = [
     {
+        title: 'Employee Management System🔗',
+        description: 'Full Stack / Production',
+        bgImage: '/fintech.jpg',
+        link: 'https://github.com/swarajreddy10/Employee-management-app',
+        tech: ['Next.js 14', 'Fastify', 'TypeScript', 'Prisma', 'SQLite'],
+        impact: '<50ms API responses, 99.9% uptime'
+    },
+    {
+        title: 'Echo AI RAG System🔗',
+        description: 'AI / Production RAG',
+        bgImage: '/Echo-ai-Rag.jpg',
+        link: 'https://echo-ai-rag.vercel.app/',
+        tech: ['FastAPI', 'React', 'TypeScript', 'Groq', 'Gemini'],
+        impact: 'Sub-350ms responses, 100+ concurrent users'
+    },
+    {
         title: 'Crop Disease Detection🔗',
         description: 'Deep Learning / AI',
-        bgImage: '/work-1.png',
-        link: 'https://github.com/swarajreddy10/CROP_DISEASE_DETECTION_Final'
+        bgImage: '/work-3.png',
+        link: 'https://github.com/swarajreddy10/CROP_DISEASE_DETECTION_Final',
+        tech: ['TensorFlow', 'CNN', 'Python', 'Computer Vision'],
+        impact: '95% accuracy, real-time processing'
     },
     {
         title: 'Portfolio Website🔗',
-        description: 'Web Dev',
-        bgImage: '/work-2.png',
-        link: 'https://github.com/swarajreddy10/swarajreddy10.github.io'
-    },
-    {
-        title: 'Stock Price Prediction🔗',
-        description: 'AI / ML',
-        bgImage: '/work-3.png',
-        link: 'https://github.com/swarajreddy10/Stock_Prediction_Final'
-    },
-    {
-        title: 'RAG Web App🔗',
-        description: 'Generative AI',
+        description: 'Web Dev / Modern UI',
         bgImage: '/work-4.png',
-        link: 'https://github.com/swarajreddy10/Retrieval-Augmented-Generation--Webpage'
+        link: 'https://github.com/swarajreddy10/swarajreddy10.github.io',
+        tech: ['Next.js 15', 'React 19', 'Tailwind', 'Motion'],
+        impact: '100% Lighthouse score'
     },
 ];
 
