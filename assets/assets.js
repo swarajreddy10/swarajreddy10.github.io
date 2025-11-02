@@ -51,6 +51,14 @@ export const assets = {
 
 export const workData = [
     {
+        title: 'TrackBrandIQ PDF Report API🔗',
+        description: 'Automation · 2025',
+        bgImage: '/work-2.png',
+        link: 'https://www.postman.com/dexaminds/trackbrandiq-api-suite/folder/0zuxw08/retrieve-brand-analysis-report',
+        tech: ['Node.js', 'Puppeteer', 'Handlebars', 'Docker', 'CI/CD'],
+        impact: 'Automated PDF generation with error resilience and zero-downtime deployments'
+    },
+    {
         title: 'Employee Management System🔗',
         description: 'Full Stack / Production',
         bgImage: '/fintech.jpg',
@@ -62,26 +70,18 @@ export const workData = [
         title: 'Echo AI RAG System🔗',
         description: 'AI / Production RAG',
         bgImage: '/Echo-ai-Rag.jpg',
-        link: 'https://echo-ai-rag.vercel.app/',
+        link: 'https://github.com/swarajreddy10/Retrieval-Augmented-Generation_Webpage',
         tech: ['FastAPI', 'React', 'TypeScript', 'Groq', 'Gemini'],
         impact: 'Sub-350ms responses, 100+ concurrent users'
     },
     {
-        title: 'Crop Disease Detection🔗',
-        description: 'Deep Learning / AI',
-        bgImage: '/work-3.png',
-        link: 'https://github.com/swarajreddy10/CROP_DISEASE_DETECTION_Final',
-        tech: ['TensorFlow', 'CNN', 'Python', 'Computer Vision'],
-        impact: '95% accuracy, real-time processing'
-    },
-    {
-        title: 'Portfolio Website🔗',
-        description: 'Web Dev / Modern UI',
-        bgImage: '/work-4.png',
-        link: 'https://github.com/swarajreddy10/swarajreddy10.github.io',
-        tech: ['Next.js 15', 'React 19', 'Tailwind', 'Motion'],
-        impact: '100% Lighthouse score'
-    },
+        title: 'Crop Disease Detection System🔗',
+        description: 'AI/ML · Computer Vision',
+        bgImage: '/work-1.png',
+        link: 'https://github.com/swarajreddy10/Crop_Disease_Detection',
+        tech: ['TensorFlow', 'Python', 'CNN', 'Deep Learning', 'Image Processing'],
+        impact: '95% accuracy with real-time image processing and scalable deployment architecture'
+    }
 ];
 
 export const serviceData = [

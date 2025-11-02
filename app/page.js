@@ -2,27 +2,20 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from "react";
 
-// Import components with no SSR
-const About = dynamic(() => import('../components/About'), { ssr: false });
-const Accomplishemnts = dynamic(() => import('../components/Accomplishemnts'), { ssr: false });
-const Contact = dynamic(() => import('../components/Contact'), { ssr: false });
-const Footer = dynamic(() => import('../components/Footer'), { ssr: false });
-const Header = dynamic(() => import('../components/Header'), { ssr: false });
-const Navbar = dynamic(() => import('../components/Navbar'), { ssr: false });
-const Work = dynamic(() => import('../components/Work'), { ssr: false });
+// Import optimized slider system
+const Portfolio = dynamic(() => import('../components/OptimizedSlider'), { ssr: false });
+const RenderBackground = dynamic(() => import('../components/RenderBackground'), { ssr: false });
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [mounted, setMounted] = useState(false);
 
   // This effect runs only on the client side
   useEffect(() => {
     setMounted(true);
 
-    // Check for dark mode preference after component mounts
-    const isDark = localStorage.theme === 'dark' ||
-                  (!('theme' in localStorage) &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches);
+    // Force dark mode initially, but allow user preference if set
+    const isDark = localStorage.theme === 'light' ? false : true;
 
     setIsDarkMode(isDark);
 
@@ -52,15 +45,14 @@ export default function Home() {
     return null;
   }
 
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
   return (
-    <main className="min-h-screen">
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Header isDarkMode={isDarkMode} />
-      <About isDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
-      <Accomplishemnts isDarkMode={isDarkMode} />
-      <Contact isDarkMode={isDarkMode} />
-      <Footer isDarkMode={isDarkMode} />
+    <main className="min-h-screen relative overflow-hidden text-white">
+      <RenderBackground />
+      <div className="relative z-10">
+        <Portfolio />
+      </div>
     </main>
   );
 }

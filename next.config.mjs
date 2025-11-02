@@ -1,19 +1,28 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  // Disable image optimization for static export
   images: {
     unoptimized: true,
+    formats: ['image/webp', 'image/avif'],
   },
-  // Add trailing slash for GitHub Pages compatibility
   trailingSlash: true,
-  // Output directory
   distDir: 'out',
-  // Disable React StrictMode for static export
-  reactStrictMode: false,
-  // Ensure base paths are empty for root domain
+  reactStrictMode: true,
   basePath: '',
   assetPrefix: '',
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
+  // Experimental features for better performance
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
 }
 
 export default nextConfig;

@@ -1,15 +1,167 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide scrollbars */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Safe area support for mobile devices */
+.top-safe {
+  top: max(env(safe-area-inset-top), 1rem);
+}
+
+.right-safe {
+  right: max(env(safe-area-inset-right), 1rem);
+}
+
+.bottom-safe {
+  bottom: max(env(safe-area-inset-bottom), 1rem);
+}
+
+.left-safe {
+  left: max(env(safe-area-inset-left), 1rem);
+}
+
+/* Responsive container padding */
+@media (max-width: 640px) {
+  .container {
+    padding-left: max(env(safe-area-inset-left), 1rem);
+    padding-right: max(env(safe-area-inset-right), 1rem);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Prevent layout shift on mobile */
+@supports (padding: max(0px)) {
+  .mobile-safe {
+    padding-top: max(env(safe-area-inset-top), 0px);
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+    padding-left: max(env(safe-area-inset-left), 0px);
+    padding-right: max(env(safe-area-inset-right), 0px);
+  }
+}
+
+/* Futuristic Animations */
+@keyframes matrix-rain {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes scan-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes hologram {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.matrix-rain {
+  animation: matrix-rain 3s linear infinite;
+}
+
+.scan-line {
+  animation: scan-line 2s linear infinite;
+}
+
+.hologram {
+  animation: hologram 2s ease-in-out infinite;
+}
+
+.glitch {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2563eb, #7c3aed);
+}
+
 @layer base {
   html {
     font-family: var(--font-outfit), system-ui, sans-serif;
     scroll-behavior: smooth;
+    font-display: swap;
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  /* Performance optimizations */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Optimize font loading */
+  @font-face {
+    font-display: swap;
   }
 
   * {
     word-spacing: normal;
     letter-spacing: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -30,6 +182,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    background-color: #000000;
+    color: #ffffff;
   }
 
   /* Improve touch targets for better accessibility */
@@ -73,5 +227,34 @@
   
   .title-spacing {
     @apply mb-4 sm:mb-6;
+  }
+
+  /* Ensure hover effects work in dark mode */
+  * {
+    transition: all 0.3s ease;
+  }
+
+  /* Force dark theme styles */
+  .dark, html.dark, body.dark {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  /* Ensure solid black background everywhere */
+  body, html, #__next, main {
+    background-color: #000000 !important;
+  }
+
+  /* Maintain hover effects */
+  button:hover, a:hover, .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+
+  .hover\:bg-opacity-80:hover {
+    background-opacity: 0.8;
+  }
+
+  .hover\:shadow-lg:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 }
