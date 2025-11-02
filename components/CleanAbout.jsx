@@ -70,7 +70,7 @@ const journeyTimeline = [
     {
         year: 'Oct 2025',
         name: 'JPMorgan Chase · Virtual Job Simulation (Forage)',
-        impact: 'Completed virtual internship simulation focusing on project setup, Kafka and H2 integrations, and REST API controller implementation. Recognised by Tom Brunskill for technical and interpersonal skills.'
+        impact: 'Completed virtual internship simulation focusing on project setup, Kafka, H2 integrations, and implementing REST API controllers with Spring Boot.'
     },
     {
         year: 'Apr to Jun 2024',

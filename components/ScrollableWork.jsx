@@ -2,6 +2,7 @@
 
 import { workData } from '@/assets/assets';
 import { motion } from 'motion/react';
+import { Rocket } from 'lucide-react';
 
 const deliveryHighlights = [
     { label: 'Documentation uptime', value: '99.5%', detail: 'DexaMinds knowledge platform on React, TypeScript, Node.js.' },
@@ -97,12 +98,9 @@ const ScrollableWork = () => {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-blue-100 transition-colors duration-300 hover:bg-blue-500/20"
                                 >
-                                    View case study
-                                    <span className="text-base leading-none">↗</span>
+                                    <Rocket size={14} />
+                                    Explore the build
                                 </a>
-                                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                                    Built by Swaraj
-                                </span>
                             </div>
                         </div>
                         <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
