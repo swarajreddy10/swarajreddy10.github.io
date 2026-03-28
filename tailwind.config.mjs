@@ -7,29 +7,19 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        lightHover: '#fcf4ff',
-        darkHover: '#2a004a',
-        darkTheme: '#11001F',
-      },
       fontFamily: {
+        sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
         Outfit: ["Outfit", "sans-serif"],
-        Ovo: ["Ovo", "serif"]
-      },
-      boxShadow: {
-        'black' : '4px 4px 0 #000',
-        'white' : '4px 4px 0 #fff',
-      },
-      gridTemplateColumns: {
-        'auto': 'repeat(auto-fit, minmax(200px, 1fr))'
+        Ovo: ["Ovo", "serif"],
       },
       screens: {
-        'xs': '475px',
+        xs: '475px',
       },
       spacing: {
-        'navbar': '70px',
+        navbar: '70px',
         'navbar-mobile': '60px',
-      }
+      },
     },
   },
   darkMode: 'selector',
