@@ -1,146 +1,349 @@
-import { assets, infoList, toolsData } from '@/assets/assets'
-import { motion } from "motion/react"
-import Image from 'next/image'
+'use client';
 
-const About = ({ isDarkMode }) => {
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react';
+
+const ACCENT  = '#C8622A';
+const FG      = '#F2EDE8';
+const MUTED   = '#6B6560';
+const BORDER  = '#252220';
+const SURF    = '#111010';
+const MARQUEE = 'ENGINEER · BUILDER · FULL-STACK · AI SYSTEMS · HYDERABAD · OPEN TO ROLES · ';
+
+const STATS = [
+    { label: 'CGPA',    value: '8.2 / 10'       },
+    { label: 'Grad',    value: 'GITAM 2025'      },
+    { label: 'Base',    value: 'Hyderabad'       },
+    { label: 'Open to', value: 'Hybrid / Remote' },
+];
+
+const TIMELINE = [
+    {
+        period: 'Sep 2025 – Present',
+        role: 'Full-Stack Software Developer',
+        company: 'Dexaminds',
+        badge: 'Full-time',
+        highlights: [
+            'Python/FastAPI document-intelligence pipeline — 90%+ accuracy, FHIR R4 output, multi-LLM routing across Gemini, Azure OpenAI, and Bedrock',
+            'Node.js/Express/TypeScript microservices at 99.5% uptime with 85% test coverage and GitHub Actions CI/CD',
+            'OAuth2 + JWT auth microservice with Cognito user pools and auto-generated Mermaid UML docs',
+        ],
+    },
+    {
+        period: 'Jun – Sep 2025',
+        role: 'Software Engineering Intern',
+        company: 'Dexaminds',
+        badge: 'Internship',
+        highlights: [
+            'React + TypeScript components across the full UI-to-API layer shipped directly to live production',
+            'Resolved 15+ production bugs using Chrome DevTools and server logs, every one traced to root cause',
+        ],
+    },
+    {
+        period: 'Aug 2021 – Jun 2025',
+        role: 'B.Tech Computer Science',
+        company: 'GITAM University — Hyderabad',
+        badge: 'Education',
+        isEducation: true,
+        highlights: [
+            'CGPA 8.2 / 10',
+            'Final-year project: distributed microservices with Spring Boot and event-driven architecture',
+            'Core CS: DSA, OS, DBMS, Networks, System Design',
+        ],
+    },
+];
+
+/* ── Marquee strip ── */
+function Marquee() {
     return (
-        <motion.div id='about' className='w-full px-4 sm:px-6 md:px-8 lg:px-[8%] xl:px-[12%] py-8 sm:py-12 md:py-16 pb-4 sm:pb-6 md:pb-8 scroll-mt-20 bg-white dark:bg-darkTheme'
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-        >
+        <div className="overflow-hidden border-y py-3.5" style={{ borderColor: BORDER, background: '#0D0C0E' }}>
             <motion.div
-                initial={{ opacity: 0, y: -30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className='text-center mb-8'
+                animate={{ x: ['0%', '-33.33%'] }}
+                transition={{ duration: 28, ease: 'linear', repeat: Infinity }}
+                className="flex whitespace-nowrap will-change-transform"
             >
-                <span className='inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-sm font-semibold text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-700 mb-4'>
-                    📖 Get to know me
-                </span>
+                {[...Array(3)].map((_, k) => (
+                    <span key={k} className="font-mono text-xs font-semibold uppercase tracking-[0.4em]" style={{ color: '#2E2B28' }}>
+                        {MARQUEE}
+                    </span>
+                ))}
             </motion.div>
-
-            <motion.h2
-                initial={{ opacity: 0, y: -30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className='text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6'>
-                <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'>
-                    About Me
-                </span>
-            </motion.h2>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                className='flex w-full flex-col lg:flex-row items-center gap-12 lg:gap-20 xl:gap-24 my-12 sm:my-16'>
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
-                    className='w-72 sm:w-80 md:w-96 rounded-3xl max-w-none relative group'>
-                    <div className='absolute inset-0 rounded-3xl bg-blue-500 blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500'></div>
-                    <Image src={assets.my_image} alt='Swaraj Reddy' className='w-full rounded-3xl relative z-10 shadow-2xl border-4 border-white dark:border-gray-700 hover:scale-105 transition-transform duration-300' />
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className='flex-1'>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.3 }}
-                        className='mb-8 sm:mb-10 max-w-2xl text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-300 tracking-normal'>
-                        <span className='font-bold text-gray-800 dark:text-white'>Results-driven Software Engineer</span>{' '}
-                        graduating from{' '}
-                        <span className='font-semibold text-blue-600 dark:text-blue-400'>GITAM University (2025)</span>{' '}
-                        with{' '}
-                        <span className='font-semibold text-purple-600 dark:text-purple-400'>8.2 CGPA</span>{' '}
-                        and proven expertise in building{' '}
-                        <span className='font-bold text-green-600 dark:text-green-400'>production-ready applications</span>.{' '}
-                        <br className='hidden sm:block'/>
-                        Specialized in{' '}
-                        <span className='font-semibold text-orange-600 dark:text-orange-400'>Java</span>,{' '}
-                        <span className='font-semibold text-green-600 dark:text-green-400'>Python</span>,{' '}
-                        <span className='font-semibold text-cyan-600 dark:text-cyan-400'>React</span>, and{' '}
-                        <span className='font-semibold text-purple-600 dark:text-purple-400'>Cloud Technologies</span>{' '}
-                        with hands-on experience in{' '}
-                        <span className='font-medium text-indigo-600 dark:text-indigo-400'>AWS</span>,{' '}
-                        <span className='font-medium text-blue-600 dark:text-blue-400'>full-stack development</span>, and{' '}
-                        <span className='font-medium text-red-600 dark:text-red-400'>database management</span>.{' '}
-                        Passionate about creating{' '}
-                        <span className='font-bold text-pink-600 dark:text-pink-400'>scalable, efficient systems</span>{' '}
-                        that solve real-world problems.
-                    </motion.p>
-
-                    <motion.ul
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 1 }}
-                        className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl'>
-                        {infoList.map(({ icon, iconDark, title, description }, index) => (
-                            <motion.li
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
-                                whileHover={{ scale: 1.05, y: -8 }}
-                                className='group relative bg-white dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl p-6 cursor-pointer hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20 transition-all duration-500 overflow-hidden'
-                                key={index}>
-                                <div className='absolute inset-0 bg-blue-50 dark:bg-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500'></div>
-                                <div className='relative z-10'>
-                                    <div className='w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300'>
-                                        <Image src={isDarkMode ? iconDark : icon} alt={title} className='w-6 h-6' />
-                                    </div>
-                                    <h3 className='text-lg font-bold text-gray-800 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300'>{title}</h3>
-                                    <p className='text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-2'>{description}</p>
-                                    {infoList[index].highlight && (
-                                        <div className='inline-flex items-center px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-semibold rounded-full'>
-                                            {infoList[index].highlight}
-                                        </div>
-                                    )}
-                                </div>
-                            </motion.li>
-                        ))}
-                    </motion.ul>
-
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 1.5, duration: 0.6 }}
-                        className='mt-12 mb-8'>
-                        <h4 className='text-xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-2'>
-                            <span className='w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center'>
-                                🛠️
-                            </span>
-                            Tech Stack & Tools
-                        </h4>
-                    </motion.div>
-
-                    <motion.ul
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 1.7, duration: 0.8 }}
-                        className='flex flex-wrap items-center gap-4 sm:gap-6'>
-                        {toolsData.map((tool, index) => (
-                            <motion.li
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.5, delay: 1.8 + index * 0.1 }}
-                                whileHover={{ scale: 1.2, rotate: 5, y: -8 }}
-                                whileTap={{ scale: 0.95 }}
-                                className='group relative flex items-center justify-center w-14 sm:w-16 aspect-square bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl cursor-pointer hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 shadow-md hover:shadow-xl'
-                                key={index}>
-                                <div className='absolute inset-0 bg-blue-50 dark:bg-blue-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
-                                <Image src={tool} alt='Tool' className='w-6 sm:w-8 relative z-10 group-hover:drop-shadow-lg transition-all duration-300' />
-                            </motion.li>
-                        ))}
-                    </motion.ul>
-                </motion.div>
-            </motion.div>
-        </motion.div>
-    )
+        </div>
+    );
 }
 
-export default About
+/* ── Mobile timeline ── */
+function MobileTimeline() {
+    return (
+        <div className="mx-auto max-w-lg px-4 pb-20 pt-4">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="mb-8"
+            >
+                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.35em]" style={{ color: MUTED }}>
+                    Experience &amp; Education
+                </span>
+            </motion.div>
+
+            <div className="relative space-y-4 pl-4">
+                <div className="absolute left-0 top-0 bottom-0 w-px"
+                    style={{ background: `linear-gradient(to bottom, ${ACCENT}40, ${ACCENT}12, transparent)` }} />
+
+                {TIMELINE.map((item, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: 16 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: '-30px' }}
+                        transition={{ duration: 0.45, delay: i * 0.1 }}
+                        className="relative"
+                    >
+                        <span className="absolute -left-[1.35rem] top-5 h-2.5 w-2.5 rounded-full border"
+                            style={{ borderColor: `${ACCENT}50`, background: SURF, boxShadow: `0 0 8px ${ACCENT}20` }} />
+
+                        <div className="rounded-2xl border p-5" style={{ borderColor: BORDER, background: SURF }}>
+                            <div className="flex flex-wrap items-start justify-between gap-2">
+                                <div className="min-w-0">
+                                    {item.isEducation && (
+                                        <p className="mb-0.5 font-mono text-[9px] font-semibold uppercase tracking-[0.3em]" style={{ color: MUTED }}>
+                                            Education
+                                        </p>
+                                    )}
+                                    <p className="text-base font-bold" style={{ color: FG }}>{item.role}</p>
+                                    <p className="mt-0.5 font-mono text-xs" style={{ color: ACCENT }}>{item.company}</p>
+                                </div>
+                                <div className="flex flex-col items-end gap-1 shrink-0">
+                                    <span className="font-mono text-[10px]" style={{ color: MUTED }}>{item.period}</span>
+                                    <span className="rounded-full border px-2 py-0.5 font-mono text-[9px] font-semibold"
+                                        style={{ borderColor: `${ACCENT}20`, background: `${ACCENT}0D`, color: `${ACCENT}B0` }}>
+                                        {item.badge}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="my-3.5 h-px" style={{ background: 'rgba(255,255,255,0.04)' }} />
+                            <ul className="space-y-2">
+                                {item.highlights.map((h, hi) => (
+                                    <li key={hi} className="flex gap-2 text-xs leading-relaxed" style={{ color: '#706A64' }}>
+                                        <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full" style={{ background: `${ACCENT}60` }} />
+                                        {h}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+/* ── Desktop scroll-driven card ── */
+function DesktopTimelineCard({ item, index, total, scrollYProgress }) {
+    const step    = 1 / total;
+    const overlap = 0.08;
+
+    const enterStart = index === 0 ? 0 : Math.max(0, index * step - overlap);
+    const enterEnd   = index === 0 ? 0 : index * step;
+    const exitStart  = (index + 1) * step - overlap;
+    const exitEnd    = Math.min(1, (index + 1) * step);
+
+    let inputRange, opacityOut, yOut;
+    if (index === 0) {
+        inputRange = [0,          exitStart, exitEnd];
+        opacityOut = [1,          1,         0      ];
+        yOut       = [0,          0,         -32    ];
+    } else if (index === total - 1) {
+        inputRange = [enterStart, enterEnd,  1  ];
+        opacityOut = [0,          1,         1  ];
+        yOut       = [32,         0,         0  ];
+    } else {
+        inputRange = [enterStart, enterEnd, exitStart, exitEnd];
+        opacityOut = [0,          1,        1,         0      ];
+        yOut       = [32,         0,        0,         -32    ];
+    }
+
+    const opacity = useTransform(scrollYProgress, inputRange, opacityOut);
+    const y       = useTransform(scrollYProgress, inputRange, yOut);
+
+    return (
+        <motion.div style={{ opacity, y }} className="absolute inset-0 flex items-center">
+            <div className="w-full rounded-2xl border p-8"
+                style={{
+                    borderColor: BORDER, background: SURF,
+                    boxShadow: '0 4px 40px rgba(0,0,0,0.5)',
+                }}>
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                        {item.isEducation && (
+                            <p className="mb-1 font-mono text-[10px] font-semibold uppercase tracking-[0.3em]" style={{ color: MUTED }}>
+                                Education
+                            </p>
+                        )}
+                        <p className="text-2xl font-bold tracking-tight" style={{ color: FG }}>{item.role}</p>
+                        <p className="mt-0.5 font-mono text-sm" style={{ color: ACCENT }}>{item.company}</p>
+                    </div>
+                    <div className="flex flex-col items-end gap-2">
+                        <span className="font-mono text-[11px]" style={{ color: MUTED }}>{item.period}</span>
+                        <span className="rounded-full border px-3 py-1 font-mono text-[10px] font-semibold"
+                            style={{ borderColor: `${ACCENT}20`, background: `${ACCENT}0D`, color: `${ACCENT}B0` }}>
+                            {item.badge}
+                        </span>
+                    </div>
+                </div>
+                <div className="my-5 h-px" style={{ background: 'rgba(255,255,255,0.05)' }} />
+                <ul className="space-y-3">
+                    {item.highlights.map((h, hi) => (
+                        <li key={hi} className="flex gap-3 text-[15px] leading-relaxed" style={{ color: '#706A64' }}>
+                            <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: `${ACCENT}55` }} />
+                            {h}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </motion.div>
+    );
+}
+
+function DesktopTimeline() {
+    const timelineRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const { scrollYProgress } = useScroll({
+        target: timelineRef,
+        offset: ['start start', 'end start'],
+    });
+
+    useMotionValueEvent(scrollYProgress, 'change', (v) => {
+        const idx = Math.min(Math.floor(v * TIMELINE.length), TIMELINE.length - 1);
+        setActiveIndex(idx);
+    });
+
+    return (
+        <div ref={timelineRef} style={{ height: `${TIMELINE.length * 100}vh` }} className="relative">
+            <div className="sticky top-0 h-screen overflow-hidden">
+                <div className="mx-auto flex h-full max-w-3xl flex-col justify-center px-6 py-14">
+
+                    <div className="mb-7 flex items-center justify-between">
+                        <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: MUTED }}>
+                            Experience &amp; Education
+                        </span>
+                        <span className="font-mono text-sm font-bold">
+                            <motion.span
+                                key={activeIndex}
+                                initial={{ opacity: 0, y: -8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2 }}
+                                style={{ color: ACCENT }}
+                            >
+                                {String(activeIndex + 1).padStart(2, '0')}
+                            </motion.span>
+                            <span style={{ color: MUTED }}>{' / '}{String(TIMELINE.length).padStart(2, '0')}</span>
+                        </span>
+                    </div>
+
+                    <div className="relative flex-1" style={{ maxHeight: 'min(58vh, 480px)' }}>
+                        {TIMELINE.map((item, i) => (
+                            <DesktopTimelineCard
+                                key={i} item={item} index={i}
+                                total={TIMELINE.length} scrollYProgress={scrollYProgress}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Progress pills */}
+                    <div className="mt-7 flex items-center justify-center gap-2">
+                        {TIMELINE.map((_, i) => (
+                            <motion.div
+                                key={i}
+                                className="rounded-full"
+                                style={{ background: ACCENT, height: 4 }}
+                                animate={{ width: i === activeIndex ? 28 : 5, opacity: i === activeIndex ? 1 : 0.18 }}
+                                transition={{ duration: 0.3 }}
+                            />
+                        ))}
+                    </div>
+
+                    <motion.p
+                        animate={{ opacity: activeIndex === 0 ? 0.5 : 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.4em]"
+                        style={{ color: MUTED }}
+                    >
+                        scroll to navigate
+                    </motion.p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function About() {
+    return (
+        <section id="about" style={{ background: '#09080A' }}>
+            <Marquee />
+
+            {/* Bio */}
+            <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-28">
+                <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 36 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-50px' }}
+                        transition={{ duration: 0.65 }}
+                    >
+                        <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.35em] sm:text-[11px]"
+                            style={{ color: `${ACCENT}90` }}>
+                            About
+                        </span>
+                        <h2 className="mt-3 text-3xl font-bold leading-[1.1] sm:text-4xl lg:text-5xl" style={{ color: FG }}>
+                            Engineering software{' '}
+                            <span style={{ color: ACCENT }}>that earns trust</span>
+                        </h2>
+                        <p className="mt-5 text-[15px] leading-relaxed sm:text-[17px]" style={{ color: '#706A64' }}>
+                            Full-stack developer at Dexaminds, B.Tech CSE from GITAM (2025). I build
+                            end-to-end systems — AI pipelines, microservices, SaaS products — keeping
+                            CI/CD automated, releases stable, and metrics observable.
+                        </p>
+                        <p className="mt-3 text-sm leading-relaxed" style={{ color: MUTED }}>
+                            Medical document intelligence in production. Microservices at 99.5% uptime.
+                            SaaS with 95%+ test coverage. Every number is real.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 36 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-50px' }}
+                        transition={{ duration: 0.65, delay: 0.1 }}
+                        className="grid grid-cols-2 content-start gap-3"
+                    >
+                        {STATS.map((s, i) => (
+                            <motion.div
+                                key={s.label}
+                                initial={{ opacity: 0, scale: 0.94 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: 0.15 + i * 0.06 }}
+                                className="rounded-xl border px-4 py-3.5"
+                                style={{ borderColor: BORDER, background: SURF }}
+                            >
+                                <p className="font-mono text-[10px] uppercase tracking-[0.25em]"
+                                    style={{ color: `${ACCENT}70` }}>
+                                    {s.label}
+                                </p>
+                                <p className="mt-1.5 text-sm font-semibold" style={{ color: FG }}>{s.value}</p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+
+            <div className="md:hidden"><MobileTimeline /></div>
+            <div className="hidden md:block"><DesktopTimeline /></div>
+        </section>
+    );
+}

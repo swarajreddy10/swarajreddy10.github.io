@@ -46,57 +46,41 @@ export const assets = {
     download_icon, hand_icon, header_bg_color, moon_icon, sun_icon, arrow_icon,
     arrow_icon_dark, menu_black, menu_white, close_black, close_white,
     web_icon, mobile_icon, ui_icon, graphics_icon, right_arrow, send_icon,
-    right_arrow_bold, right_arrow_bold_dark,logo2,logo_light
+    right_arrow_bold, right_arrow_bold_dark, logo2, logo_light
 };
 
 export const workData = [
     {
-        title: 'TrackBrandIQ PDF Report API🔗',
-        description: 'Automation · 2025',
+        title: 'ResumeCanvas',
+        tagline: 'AI-Powered Resume Builder',
+        description: 'AI / Full Stack · Dec 2025',
         bgImage: '/work-2.png',
-        link: 'https://www.postman.com/dexaminds/trackbrandiq-api-suite/folder/0zuxw08/retrieve-brand-analysis-report',
-        tech: ['Node.js', 'Puppeteer', 'Handlebars', 'Docker', 'CI/CD'],
-        impact: 'Automated PDF generation with error resilience and zero-downtime deployments'
+        link: 'https://www.resumecanvas.live/',
+        github: 'https://github.com/swarajreddy10/Resume_Canvas',
+        tech: ['Next.js 16', 'React 19', 'MongoDB', 'Groq AI', 'Puppeteer', 'NextAuth.js', 'TypeScript', 'Bun'],
+        impact: '95.2% test coverage (129 tests) · <100ms responses · 60% query load reduction via 7 indexes',
+        metrics: ['95.2% Tests', '<100ms', '8 AI Features'],
     },
     {
-        title: 'Employee Management System🔗',
-        description: 'Full Stack / Production',
+        title: 'StageWay',
+        tagline: 'Enterprise Event Management',
+        description: 'Full Stack / Enterprise · Jan 2026',
         bgImage: '/fintech.jpg',
-        link: 'https://github.com/swarajreddy10/Employee-management-app',
-        tech: ['Next.js 14', 'Fastify', 'TypeScript', 'Prisma', 'SQLite'],
-        impact: '<50ms API responses, 99.9% uptime'
+        link: 'https://stage-way.vercel.app/',
+        github: 'https://github.com/swarajreddy10/StageWay',
+        tech: ['Spring Boot 3.2', 'PostgreSQL', 'Next.js 16', 'Docker', 'JWT', 'OAuth2', 'ZXing', 'Flyway'],
+        impact: '100% API test coverage · 3 permission roles · QR code check-ins · 12 Flyway migrations',
+        metrics: ['100% API Coverage', '3 Roles', 'QR Check-ins'],
     },
     {
-        title: 'Echo AI RAG System🔗',
-        description: 'AI / Production RAG',
+        title: 'Medsyntegrate Pipeline',
+        tagline: 'Medical Document Intelligence',
+        description: 'AI Production · Dexaminds · 2025',
         bgImage: '/Echo-ai-Rag.jpg',
-        link: 'https://github.com/swarajreddy10/Retrieval-Augmented-Generation_Webpage',
-        tech: ['FastAPI', 'React', 'TypeScript', 'Groq', 'Gemini'],
-        impact: 'Sub-350ms responses, 100+ concurrent users'
+        link: 'https://github.com/swarajreddy10',
+        github: 'https://github.com/swarajreddy10',
+        tech: ['Python', 'FastAPI', 'Vertex AI Gemini', 'Azure OpenAI', 'AWS Bedrock', 'FHIR R4', 'PIL'],
+        impact: '90%+ classification accuracy · Multi-LLM routing by doc complexity · FHIR R4 output',
+        metrics: ['90%+ Accuracy', '3 LLM Providers', 'FHIR R4'],
     },
-    {
-        title: 'Crop Disease Detection System🔗',
-        description: 'AI/ML · Computer Vision',
-        bgImage: '/work-1.png',
-        link: 'https://github.com/swarajreddy10/Crop_Disease_Detection',
-        tech: ['TensorFlow', 'Python', 'CNN', 'Deep Learning', 'Image Processing'],
-        impact: '95% accuracy with real-time image processing and scalable deployment architecture'
-    }
-];
-
-export const serviceData = [
-    { icon: assets.web_icon, title: 'Full Stack Development', description: 'Designed and developed a dynamic personal portfolio with React and Node.js, blending clean UI with responsive design to professionally showcase my skills, projects, and passion.', link: '' },
-    { icon: assets.mobile_icon, title: 'Cloud & DevOps', description: 'Expertise in AWS, Google Cloud, Docker, GitHub Actions, with knowledge in Kubernetes, CI/CD pipelines, and monitoring cloud-native deployments for scalable, automated infrastructure.', link: '' },
-    { icon: assets.ui_icon, title: 'AI/ML', description: 'Developed crop disease detection using TensorFlow CNNs and a scalable RAG-based GenAI web app for real-time classification and intelligent document-driven responses.', link: '' },
-    { icon: assets.graphics_icon, title: 'Database Engineering', description: 'Design and management of SQL & NoSQL databases including MySQL and MongoDB.', link: '' },
-];
-
-export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Tech Stack', description: 'Java, Python, React, AWS, Docker' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Computer Science - GITAM University, 2025' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Developed 4+ major projects including cloud, AI/ML, and web applications' }
-];
-
-export const toolsData = [
-    assets.vscode, assets.figma, assets.mongodb, assets.firebase, assets.git, assets.react
 ];

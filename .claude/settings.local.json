@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun run:*)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" bun run build)",
+      "Bash(Get-Content \"C:/Users/swara/AppData/Local/Temp/claude/C--Users-swara-OneDrive-Documents-My-git-swarajreddy10-github-io/27084569-a24a-40a2-89e8-163ad9c185cd/tasks/b98ou2wfo.output\" -Tail 30 2>&1)",
+      "Bash(findstr /v \"^$\")",
+      "Bash(powershell -Command \"Get-Content 'C:\\\\Users\\\\swara\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-swara-OneDrive-Documents-My-git-swarajreddy10-github-io\\\\27084569-a24a-40a2-89e8-163ad9c185cd\\\\tasks\\\\bmtlgi4j7.output' | Select-Object -Last 30\")",
+      "Bash(set NODE_OPTIONS=--max-old-space-size=4096)",
+      "Bash(npx skills:*)",
+      "Bash(bun add:*)",
+      "Bash(cd:*)",
+      "WebFetch(domain:artprize-shadows.com)",
+      "Bash(sed -n '55,75p' \"c:\\\\Users\\\\swara\\\\OneDrive\\\\Documents\\\\My-git\\\\swarajreddy10.github.io\\\\components\\\\Skills.jsx\")",
+      "Bash(sed -n '95,145p' \"c:\\\\Users\\\\swara\\\\OneDrive\\\\Documents\\\\My-git\\\\swarajreddy10.github.io\\\\components\\\\Skills.jsx\")",
+      "Bash(node -e \":*)"
+    ]
+  }
+}
