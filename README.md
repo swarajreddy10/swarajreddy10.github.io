@@ -34,11 +34,14 @@ Live at [swarajreddy10.github.io](https://swarajreddy10.github.io/)
 
 ## Features
 
-- Scroll-driven stacking cards for Projects and Skills sections
+- Scroll-driven stacking cards for Projects, Skills, and About timeline
 - Split-panel preloader with 11-language sequence (EN, HI, TE, BN, MR, TA, FR, ES, DE, IT, PT)
-- SVG pathLength draw timeline in About section
-- CSS custom property design system — 8 tokens, zero runtime JS for theming
+- SVG pathLength draw timeline in About section with alternating flip cards
+- Color-coded experience badges (Full-time = green, Internship = gold, Education = muted)
+- Creative social link cards in Contact with icon badge, hint text, and hover animations
+- CSS custom property design system — golden olive palette, 8 tokens, zero runtime JS for theming
 - Dynamic imports for all below-fold sections — reduces initial JS payload
+- Accent-colored custom cursor with dual spring trailing ring
 - WCAG AA contrast ratios throughout
 - Fully responsive — mobile, tablet, desktop
 - Static export — no server required, deploys to GitHub Pages

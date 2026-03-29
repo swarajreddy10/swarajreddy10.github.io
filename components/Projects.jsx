@@ -28,133 +28,129 @@ function StackCard({ project, index }) {
 
     return (
         <div ref={ref} style={{ position: 'sticky', top: stickyTop, zIndex: 10 + index, marginBottom: 12 }}>
-            <motion.div style={{ scale }} className="overflow-hidden rounded-2xl">
-
-                {/* Watermark */}
+            <motion.div style={{ scale }}>
                 <div style={{
-                    position: 'absolute', right: -10, top: '50%',
-                    transform: 'translateY(-50%)',
-                    fontFamily: 'var(--font-display)', fontStyle: 'italic',
-                    fontSize: 'clamp(80px, 12vw, 180px)',
-                    fontWeight: 400, color: 'rgba(85,0,3,0.07)',
-                    lineHeight: 1, pointerEvents: 'none', userSelect: 'none', zIndex: 0,
-                }}>
-                    {num}
-                </div>
-
-                <div style={{
-                    position: 'relative', zIndex: 1,
+                    position: 'relative',
                     border: '1px solid var(--border)',
+                    borderRadius: 16,
                     background: 'var(--surf)',
-                    boxShadow: '0 4px 28px var(--shadow-lg)',
-                    borderRadius: 16, overflow: 'hidden',
+                    boxShadow: '0 0 24px 6px var(--shadow-lg)',
+                    padding: 'clamp(28px, 4vw, 48px)',
+                    display: 'flex', flexDirection: 'column',
+                    justifyContent: 'space-between',
                 }}>
+                    {/* Watermark */}
                     <div style={{
-                        display: 'flex', flexDirection: 'column',
-                        justifyContent: 'space-between',
-                        padding: 'clamp(24px, 3vw, 42px)',
+                        position: 'absolute', right: -10, top: '50%',
+                        transform: 'translateY(-50%)',
+                        fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                        fontSize: 'clamp(80px, 12vw, 180px)',
+                        fontWeight: 400, color: 'rgba(85,0,3,0.07)',
+                        lineHeight: 1, pointerEvents: 'none', userSelect: 'none', zIndex: 0,
                     }}>
-                        <div>
-                            {/* Index + category */}
-                            <div style={{
-                                display: 'flex', alignItems: 'center',
-                                justifyContent: 'space-between', gap: 12, marginBottom: 18,
+                        {num}
+                    </div>
+
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                        {/* Index + category */}
+                        <div style={{
+                            display: 'flex', alignItems: 'center',
+                            justifyContent: 'space-between', gap: 12, marginBottom: 18,
+                        }}>
+                            <span style={{
+                                fontFamily: 'var(--font-mono)', fontSize: 9,
+                                color: 'rgba(85,0,3,0.18)', letterSpacing: '0.3em',
                             }}>
-                                <span style={{
+                                {num}
+                            </span>
+                            <span style={{
+                                fontFamily: 'var(--font-mono)', fontSize: 9,
+                                letterSpacing: '0.24em', textTransform: 'uppercase',
+                                padding: '4px 10px', borderRadius: 100,
+                                border: '1px solid var(--accent-border)',
+                                background: 'var(--accent-dim)',
+                                color: 'var(--accent)', fontWeight: 600,
+                            }}>
+                                {project.description}
+                            </span>
+                        </div>
+
+                        {/* Title */}
+                        <h3 style={{
+                            fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                            fontSize: 'clamp(22px, 2.8vw, 40px)',
+                            fontWeight: 500, color: 'var(--fg)',
+                            letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 5,
+                        }}>
+                            {project.title}
+                        </h3>
+                        <p style={{
+                            fontFamily: 'var(--font-mono)', fontSize: 11,
+                            color: 'var(--accent)', marginBottom: 14,
+                        }}>
+                            {project.tagline}
+                        </p>
+
+                        {/* Impact + bullets */}
+                        <p style={{
+                            fontFamily: 'var(--font-body)', fontSize: 13,
+                            lineHeight: 1.65, color: 'var(--muted)',
+                            marginBottom: project.bullets?.length ? 10 : 18,
+                        }}>
+                            {project.impact}
+                        </p>
+
+                        {project.bullets?.length > 0 && (
+                            <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 18 }}>
+                                {project.bullets.map((b, bi) => (
+                                    <li key={bi} style={{
+                                        display: 'flex', gap: 8, alignItems: 'flex-start',
+                                        fontFamily: 'var(--font-body)',
+                                        fontSize: 13, lineHeight: 1.6, color: 'var(--muted)',
+                                    }}>
+                                        <span style={{ color: 'var(--accent)', marginTop: 3, flexShrink: 0, opacity: 0.6 }}>→</span>
+                                        {b}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
+                        {/* Metrics */}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, marginBottom: 18 }}>
+                            {project.metrics.map((m) => (
+                                <span key={m} style={{
                                     fontFamily: 'var(--font-mono)', fontSize: 9,
-                                    color: 'rgba(85,0,3,0.18)', letterSpacing: '0.3em',
-                                }}>
-                                    {num}
-                                </span>
-                                <span style={{
-                                    fontFamily: 'var(--font-mono)', fontSize: 9,
-                                    letterSpacing: '0.24em', textTransform: 'uppercase',
-                                    padding: '4px 10px', borderRadius: 100,
+                                    fontWeight: 700, color: 'var(--accent)',
+                                    padding: '5px 11px', borderRadius: 100,
                                     border: '1px solid var(--accent-border)',
                                     background: 'var(--accent-dim)',
-                                    color: 'var(--accent)', fontWeight: 600,
                                 }}>
-                                    {project.description}
+                                    {m}
                                 </span>
-                            </div>
+                            ))}
+                        </div>
 
-                            {/* Title */}
-                            <h3 style={{
-                                fontFamily: 'var(--font-display)', fontStyle: 'italic',
-                                fontSize: 'clamp(22px, 2.8vw, 40px)',
-                                fontWeight: 500, color: 'var(--fg)',
-                                letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 5,
-                            }}>
-                                {project.title}
-                            </h3>
-                            <p style={{
-                                fontFamily: 'var(--font-mono)', fontSize: 11,
-                                color: 'var(--accent)', marginBottom: 14,
-                            }}>
-                                {project.tagline}
-                            </p>
-
-                            {/* Impact + bullets */}
-                            <p style={{
-                                fontFamily: 'var(--font-body)', fontSize: 13,
-                                lineHeight: 1.65, color: 'var(--muted)',
-                                marginBottom: project.bullets?.length ? 10 : 18,
-                            }}>
-                                {project.impact}
-                            </p>
-
-                            {project.bullets?.length > 0 && (
-                                <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 18 }}>
-                                    {project.bullets.map((b, bi) => (
-                                        <li key={bi} style={{
-                                            display: 'flex', gap: 8, alignItems: 'flex-start',
-                                            fontFamily: 'var(--font-body)',
-                                            fontSize: 13, lineHeight: 1.6, color: 'var(--muted)',
-                                        }}>
-                                            <span style={{ color: 'var(--accent)', marginTop: 3, flexShrink: 0, opacity: 0.6 }}>→</span>
-                                            {b}
-                                        </li>
-                                    ))}
-                                </ul>
+                        {/* Tech */}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+                            {project.tech.slice(0, 6).map((t) => (
+                                <span key={t} style={{
+                                    fontFamily: 'var(--font-mono)', fontSize: 9,
+                                    borderRadius: 6, border: '1px solid var(--border)',
+                                    background: 'var(--base)', color: 'var(--muted)',
+                                    padding: '4px 9px',
+                                }}>
+                                    {t}
+                                </span>
+                            ))}
+                            {project.tech.length > 6 && (
+                                <span style={{
+                                    fontFamily: 'var(--font-mono)', fontSize: 9,
+                                    borderRadius: 6, border: '1px solid var(--border)',
+                                    color: 'rgba(85,0,3,0.30)', padding: '4px 9px',
+                                }}>
+                                    +{project.tech.length - 6}
+                                </span>
                             )}
-
-                            {/* Metrics */}
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, marginBottom: 18 }}>
-                                {project.metrics.map((m) => (
-                                    <span key={m} style={{
-                                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                                        fontWeight: 700, color: 'var(--accent)',
-                                        padding: '5px 11px', borderRadius: 100,
-                                        border: '1px solid var(--accent-border)',
-                                        background: 'var(--accent-dim)',
-                                    }}>
-                                        {m}
-                                    </span>
-                                ))}
-                            </div>
-
-                            {/* Tech */}
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-                                {project.tech.slice(0, 6).map((t) => (
-                                    <span key={t} style={{
-                                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                                        borderRadius: 6, border: '1px solid var(--border)',
-                                        background: 'var(--base)', color: 'var(--muted)',
-                                        padding: '4px 9px',
-                                    }}>
-                                        {t}
-                                    </span>
-                                ))}
-                                {project.tech.length > 6 && (
-                                    <span style={{
-                                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                                        borderRadius: 6, border: '1px solid var(--border)',
-                                        color: 'rgba(85,0,3,0.30)', padding: '4px 9px',
-                                    }}>
-                                        +{project.tech.length - 6}
-                                    </span>
-                                )}
-                            </div>
                         </div>
 
                         {/* CTAs */}
@@ -238,42 +234,29 @@ export default function Projects() {
                 {workData.map((p, i) => (
                     <StackCard key={p.title} project={p} index={i} />
                 ))}
+            </div>
 
-                {/* GitHub CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45 }}
+            <div style={{ maxWidth: 1100, margin: '0 auto', padding: '48px max(28px, 4vw) 0' }}>
+                <a
+                    href="https://github.com/swarajreddy10"
+                    target="_blank" rel="noopener noreferrer"
                     style={{
-                        position: 'relative',
-                        zIndex: 10 + workData.length + 1,
-                        display: 'flex', justifyContent: 'flex-start',
-                        paddingTop: 32, paddingBottom: 16,
+                        display: 'inline-flex', alignItems: 'center', gap: 10,
+                        borderRadius: 100, padding: '13px 28px',
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        fontWeight: 600, letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        color: 'var(--fg)',
+                        border: '1px solid var(--border)',
                         background: 'var(--base)',
+                        textDecoration: 'none',
+                        transition: 'border-color 0.2s, color 0.2s',
                     }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--fg)'; }}
                 >
-                    <a
-                        href="https://github.com/swarajreddy10"
-                        target="_blank" rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 10,
-                            borderRadius: 100, padding: '13px 28px',
-                            fontFamily: 'var(--font-mono)', fontSize: 10,
-                            fontWeight: 600, letterSpacing: '0.18em',
-                            textTransform: 'uppercase',
-                            color: 'var(--fg)',
-                            border: '1px solid var(--border)',
-                            background: 'var(--surf)',
-                            textDecoration: 'none',
-                            transition: 'border-color 0.2s, color 0.2s',
-                        }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
-                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--fg)'; }}
-                    >
-                        <GithubIcon size={13} /> More on GitHub <ArrowUpRight size={12} />
-                    </a>
-                </motion.div>
+                    <GithubIcon size={13} /> More on GitHub <ArrowUpRight size={12} />
+                </a>
             </div>
         </section>
     );

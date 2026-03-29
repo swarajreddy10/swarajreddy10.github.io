@@ -46,6 +46,142 @@ function useMonthsSince(year, month) {
     return months;
 }
 
+function CardContent({ item }) {
+    return (
+        <>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: 8, marginBottom: 12 }}>
+                <div>
+                    <p style={{
+                        fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                        fontSize: 'clamp(15px, 1.6vw, 19px)',
+                        fontWeight: 400, color: 'var(--fg)',
+                        letterSpacing: '-0.01em', marginBottom: 3,
+                    }}>
+                        {item.role}
+                    </p>
+                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--accent)' }}>
+                        {item.company}
+                    </p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 5 }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)' }}>
+                        {item.period}
+                    </span>
+                    <span style={{
+                        borderRadius: 100,
+                        border: '1px solid',
+                        borderColor: item.badge === 'Full-time'
+                            ? 'rgba(22,163,74,0.3)'
+                            : item.badge === 'Internship'
+                            ? 'rgba(138,126,26,0.35)'
+                            : 'rgba(85,0,3,0.2)',
+                        background: item.badge === 'Full-time'
+                            ? 'rgba(22,163,74,0.1)'
+                            : item.badge === 'Internship'
+                            ? 'rgba(184,171,56,0.15)'
+                            : 'rgba(85,0,3,0.07)',
+                        color: item.badge === 'Full-time'
+                            ? '#16A34A'
+                            : item.badge === 'Internship'
+                            ? 'var(--accent)'
+                            : 'var(--muted)',
+                        padding: '2px 9px',
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: 9, letterSpacing: '0.2em',
+                        textTransform: 'uppercase', fontWeight: 600,
+                    }}>
+                        {item.badge}
+                    </span>
+                </div>
+            </div>
+            <div style={{ height: 1, background: 'var(--border)', marginBottom: 12 }} />
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                {item.highlights.map((h, hi) => (
+                    <li key={hi} style={{
+                        display: 'flex', gap: 8, alignItems: 'flex-start',
+                        fontFamily: 'var(--font-body)',
+                        fontSize: 13, lineHeight: 1.6, color: 'var(--muted)',
+                    }}>
+                        <span style={{ color: 'var(--accent)', marginTop: 3, flexShrink: 0, opacity: 0.6 }}>→</span>
+                        {h}
+                    </li>
+                ))}
+            </ul>
+        </>
+    );
+}
+
+function FlipCard({ item, isLeft, index }) {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.15'] });
+    const rotateY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [isLeft ? -60 : 60, 0, 0, isLeft ? 60 : -60]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    const scale   = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.88, 1, 1, 0.88]);
+
+    return (
+        <motion.div
+            ref={ref}
+            style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 40px 1fr',
+                alignItems: 'start',
+                gap: 0,
+                opacity,
+            }}
+        >
+            {/* Left slot */}
+            <div style={{ paddingRight: 28 }}>
+                {isLeft && (
+                    <motion.div
+                        style={{
+                            rotateY, scale,
+                            transformPerspective: 1000,
+                            border: '1px solid var(--border)',
+                            borderRadius: 16,
+                            background: 'var(--surf)',
+                            padding: 'clamp(28px, 4vw, 48px)',
+                            boxShadow: '0 0 24px 6px var(--shadow-lg)',
+                        }}
+                    >
+                        <CardContent item={item} />
+                    </motion.div>
+                )}
+            </div>
+
+            {/* Center dot */}
+            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 20, position: 'relative', zIndex: 1 }}>
+                <motion.div
+                    style={{
+                        width: 12, height: 12, borderRadius: '50%',
+                        border: '2px solid var(--accent)',
+                        background: 'var(--base)',
+                        scale,
+                    }}
+                />
+            </div>
+
+            {/* Right slot */}
+            <div style={{ paddingLeft: 28 }}>
+                {!isLeft && (
+                    <motion.div
+                        style={{
+                            rotateY, scale,
+                            transformPerspective: 1000,
+                            border: '1px solid var(--border)',
+                            borderRadius: 16,
+                            background: 'var(--surf)',
+                            padding: 'clamp(28px, 4vw, 48px)',
+                            boxShadow: '0 0 24px 6px var(--shadow-lg)',
+                        }}
+                    >
+                        <CardContent item={item} />
+                    </motion.div>
+                )}
+            </div>
+        </motion.div>
+    );
+}
+
 export default function About() {
     const months = useMonthsSince(2025, 6);
     const timelineRef = useRef(null);
@@ -54,7 +190,7 @@ export default function About() {
 
     return (
         <section id="about" style={{ background: 'var(--base)', padding: '100px 0' }}>
-            <div style={{ maxWidth: 760, margin: '0 auto', padding: '0 max(28px, 4vw)' }}>
+            <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 max(28px, 4vw)' }}>
 
                 {/* Bio */}
                 <motion.div
@@ -99,104 +235,29 @@ export default function About() {
                         style={{
                             fontFamily: 'var(--font-mono)', fontSize: 10,
                             letterSpacing: '0.36em', textTransform: 'uppercase',
-                            color: 'var(--accent)', display: 'block', marginBottom: 32,
+                            color: 'var(--accent)', display: 'block', marginBottom: 48,
                             fontWeight: 600,
                         }}
                     >
                         Production experience ({months} month{months !== 1 ? 's' : ''})
                     </motion.span>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '20px 1fr', gap: '0 24px' }}>
-                        {/* SVG line */}
-                        <div style={{ position: 'relative' }}>
-                            <svg style={{ position: 'absolute', top: 8, left: 9, width: 2, height: 'calc(100% - 8px)' }}
-                                viewBox="0 0 2 100" preserveAspectRatio="none">
-                                <line x1="1" y1="0" x2="1" y2="100" stroke="var(--border)" strokeWidth="2" />
-                                <motion.line x1="1" y1="0" x2="1" y2="100"
-                                    stroke="var(--accent)" strokeWidth="2"
-                                    style={{ pathLength }} strokeLinecap="round"
-                                />
-                            </svg>
-                        </div>
+                    {/* Center line */}
+                    <div style={{ position: 'relative' }}>
+                        <svg
+                            style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 2, height: '100%', zIndex: 0 }}
+                            viewBox="0 0 2 100" preserveAspectRatio="none"
+                        >
+                            <line x1="1" y1="0" x2="1" y2="100" stroke="var(--border)" strokeWidth="2" />
+                            <motion.line x1="1" y1="0" x2="1" y2="100"
+                                stroke="var(--accent)" strokeWidth="2"
+                                style={{ pathLength }} strokeLinecap="round"
+                            />
+                        </svg>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                             {TIMELINE.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: 12 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: '-40px' }}
-                                    transition={{ duration: 0.4, delay: i * 0.06 }}
-                                    style={{ position: 'relative' }}
-                                >
-                                    {/* Node dot */}
-                                    <div style={{
-                                        position: 'absolute', left: -32, top: 20,
-                                        width: 10, height: 10, borderRadius: '50%',
-                                        border: '2px solid var(--accent)',
-                                        background: 'var(--base)',
-                                    }} />
-
-                                    <div style={{
-                                        border: '1px solid var(--border)',
-                                        borderRadius: 12,
-                                        background: 'var(--surf)',
-                                        padding: 'clamp(18px, 2.5vw, 26px)',
-                                        boxShadow: '0 2px 16px var(--shadow)',
-                                    }}>
-                                        <div style={{
-                                            display: 'flex', flexWrap: 'wrap',
-                                            justifyContent: 'space-between', gap: 8, marginBottom: 12,
-                                        }}>
-                                            <div>
-                                                <p style={{
-                                                    fontFamily: 'var(--font-display)', fontStyle: 'italic',
-                                                    fontSize: 'clamp(16px, 1.8vw, 20px)',
-                                                    fontWeight: 400, color: 'var(--fg)',
-                                                    letterSpacing: '-0.01em', marginBottom: 3,
-                                                }}>
-                                                    {item.role}
-                                                </p>
-                                                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--accent)' }}>
-                                                    {item.company}
-                                                </p>
-                                            </div>
-                                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 5 }}>
-                                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)' }}>
-                                                    {item.period}
-                                                </span>
-                                                <span style={{
-                                                    borderRadius: 100,
-                                                    border: '1px solid var(--accent-border)',
-                                                    background: 'var(--accent-dim)',
-                                                    color: 'var(--accent)',
-                                                    padding: '3px 10px',
-                                                    fontFamily: 'var(--font-mono)',
-                                                    fontSize: 9, letterSpacing: '0.2em',
-                                                    textTransform: 'uppercase',
-                                                    fontWeight: 600,
-                                                }}>
-                                                    {item.badge}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div style={{ height: 1, background: 'var(--border)', marginBottom: 12 }} />
-
-                                        <ul style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                                            {item.highlights.map((h, hi) => (
-                                                <li key={hi} style={{
-                                                    display: 'flex', gap: 8, alignItems: 'flex-start',
-                                                    fontFamily: 'var(--font-body)',
-                                                    fontSize: 13, lineHeight: 1.6, color: 'var(--muted)',
-                                                }}>
-                                                    <span style={{ color: 'var(--accent)', marginTop: 3, flexShrink: 0, opacity: 0.6 }}>→</span>
-                                                    {h}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </motion.div>
+                                <FlipCard key={i} item={item} isLeft={i % 2 === 0} index={i} />
                             ))}
                         </div>
                     </div>
