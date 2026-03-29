@@ -110,7 +110,7 @@ Projects:
 | 03 | Frontend | React/Next.js, Tailwind CSS, Motion |
 | 04 | DevOps & Cloud | Git/GitHub, Docker, GitHub Actions, CI/CD, AWS (EC2, S3, IAM, CloudWatch, Cognito, Bedrock) |
 | 05 | Testing | Unit Testing, Integration Testing, JUnit, Pytest, Puppeteer |
-| 06 | AI Integration & Tooling | Vertex AI Gemini, AWS Bedrock, Azure OpenAI, Groq AI, Claude Code, GitHub Codex, NotebookLM, Prompt Engineering, LLM Evaluation |
+| 06 | AI Integration & Tooling | Vertex AI Gemini, AWS Bedrock, Azure OpenAI, Groq AI, Claude Code, OpenAI Codex, NotebookLM, Prompt Engineering, LLM Evaluation |
 
 ### 7. CONTACT
 - Full-width headline: "Got a role, project, or idea? Let's talk."

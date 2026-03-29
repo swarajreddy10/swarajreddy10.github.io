@@ -38,7 +38,7 @@ const DOMAINS = [
         index: '06',
         name: 'AI Integration & Tooling',
         tagline: 'From LLM APIs in production to tools that sharpen the craft.',
-        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Groq AI', 'Claude Code', 'GitHub Codex', 'NotebookLM', 'Prompt Engineering', 'LLM Evaluation'],
+        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Groq AI', 'Claude Code', 'OpenAI Codex', 'NotebookLM', 'Prompt Engineering', 'LLM Evaluation'],
     },
 ];
 
