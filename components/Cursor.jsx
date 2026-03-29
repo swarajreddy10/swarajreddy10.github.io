@@ -62,18 +62,18 @@ export default function Cursor() {
                 style={{
                     position: 'fixed', zIndex: 9998,
                     borderRadius: '50%',
-                    border: '1px solid rgba(6,71,52,0.45)',
+                    border: '1.5px solid var(--accent)',
                     pointerEvents: 'none',
                     x: ringX, y: ringY,
                     translateX: '-50%', translateY: '-50%',
                 }}
                 animate={{
-                    width:   hovered ? 44 : 0,
-                    height:  hovered ? 44 : 0,
-                    opacity: hovered ? 1  : 0,
-                    scale:   clicking ? 0.85 : 1,
+                    width:   hovered ? 28 : 20,
+                    height:  hovered ? 28 : 20,
+                    opacity: hovered ? 0.7 : 0.25,
+                    scale:   clicking ? 0.7 : 1,
                 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
             />
 
             {/* Inner dot */}
@@ -81,17 +81,16 @@ export default function Cursor() {
                 style={{
                     position: 'fixed', zIndex: 9999,
                     borderRadius: '50%',
-                    background: 'var(--fg)',
+                    background: 'var(--accent)',
                     pointerEvents: 'none',
                     x, y,
                     translateX: '-50%', translateY: '-50%',
-                    mixBlendMode: 'difference',
                 }}
                 animate={{
-                    width:   clicking ? 10 : hovered ? 5 : 8,
-                    height:  clicking ? 10 : hovered ? 5 : 8,
-                    opacity: hovered ? 0.7 : 0.9,
-                    scale:   clicking ? 0.8 : 1,
+                    width:   clicking ? 6 : hovered ? 4 : 5,
+                    height:  clicking ? 6 : hovered ? 4 : 5,
+                    opacity: hovered ? 0.5 : 1,
+                    scale:   clicking ? 0.7 : 1,
                 }}
                 transition={{ duration: 0.15, ease: 'easeOut' }}
             />

@@ -55,7 +55,7 @@ function SkillCard({ domain, index }) {
                     border: '1px solid var(--border)',
                     borderRadius: 16,
                     background: 'var(--surf)',
-                    boxShadow: '0 4px 24px var(--shadow-lg)',
+                    boxShadow: '0 0 24px 6px var(--shadow-lg)',
                     padding: 'clamp(28px, 4vw, 48px)',
                     display: 'grid',
                     gridTemplateColumns: '1fr 1fr',

@@ -53,11 +53,11 @@ export default function Nav() {
                     position: 'fixed',
                     top: 0, left: 0, right: 0,
                     zIndex: 50,
-                    borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-                    background: scrolled ? 'rgba(250,248,245,0.92)' : 'transparent',
-                    backdropFilter: scrolled ? 'blur(16px)' : 'none',
-                    WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-                    transition: 'background 0.3s ease, border-color 0.3s ease',
+                    borderBottom: '1px solid transparent',
+                    background: 'transparent',
+                    backdropFilter: 'none',
+                    WebkitBackdropFilter: 'none',
+                    transition: 'none',
                 }}
             >
                 <div style={{
@@ -147,8 +147,8 @@ export default function Nav() {
                         style={{
                             position: 'fixed', top: 60, left: 0, right: 0,
                             zIndex: 49,
-                            background: 'rgba(250,248,245,0.97)',
-                            backdropFilter: 'blur(16px)',
+                            background: 'var(--base)',
+                            backdropFilter: 'none',
                             borderBottom: '1px solid var(--border)',
                             padding: '16px max(24px, 4vw) 24px',
                             display: 'flex', flexDirection: 'column', gap: 0,

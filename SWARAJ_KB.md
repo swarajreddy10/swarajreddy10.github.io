@@ -65,7 +65,7 @@
 - **GitHub:** https://github.com/swarajreddy10/swarajreddy10.github.io
 - **Stack:** Next.js 16, React 19, Motion v12, Tailwind CSS v4, Lenis, @formspree/react
 - **Lighthouse:** 96 Accessibility, 100 Best Practices, 100 SEO — 1.0s FCP, 1.7s LCP, 20ms TBT, 0 CLS
-- **Features:** Scroll-driven stacking cards, SVG pathLength timeline, 11-language preloader, CSS custom property design system, dynamic imports for below-fold sections, WCAG AA contrast
+- **Features:** Scroll-driven stacking cards (Projects, Skills, About timeline), SVG pathLength timeline, 11-language preloader, CSS custom property design system (golden olive palette), dynamic imports for below-fold sections, WCAG AA contrast, creative social link cards in Contact, accent-colored custom cursor
 
 ---
 

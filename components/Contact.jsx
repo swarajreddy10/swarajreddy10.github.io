@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Send, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { Send, Copy, Check, ArrowUpRight, Mail } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 import { useState } from 'react';
 
@@ -30,25 +30,30 @@ const LINKS = [
         value: 'swarajchandra22@gmail.com',
         href: 'mailto:swarajchandra22@gmail.com',
         copyable: true,
+        hint: 'Drop a line',
+        Icon: Mail,
     },
     {
         label: 'LinkedIn',
-        value: 'linkedin.com/in/swarajreddy',
+        value: '/in/swarajreddy',
         href: 'https://linkedin.com/in/swarajreddy',
         Icon: LinkedinIcon,
         ext: true,
+        hint: 'Let\'s connect',
     },
     {
         label: 'GitHub',
-        value: 'github.com/swarajreddy10',
+        value: '@swarajreddy10',
         href: 'https://github.com/swarajreddy10',
         Icon: GithubIcon,
         ext: true,
+        hint: 'See the code',
     },
 ];
 
 function LinkRow({ item }) {
     const [copied, setCopied] = useState(false);
+    const [hovered, setHovered] = useState(false);
 
     const handleCopy = async (e) => {
         e.preventDefault();
@@ -58,66 +63,73 @@ function LinkRow({ item }) {
     };
 
     return (
-        <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '20px 0',
-            borderBottom: '1px solid var(--border)',
-        }}>
-            <div>
-                <p style={{
-                    fontFamily: 'var(--font-mono)', fontSize: 9,
-                    letterSpacing: '0.32em', textTransform: 'uppercase',
-                    color: 'var(--muted)', marginBottom: 5,
+        <a
+            href={item.href}
+            target={item.ext ? '_blank' : undefined}
+            rel={item.ext ? 'noopener noreferrer' : undefined}
+            onClick={item.copyable ? handleCopy : undefined}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                padding: '18px 20px',
+                borderRadius: 14,
+                border: '1px solid var(--border)',
+                background: hovered ? 'var(--surf)' : 'transparent',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'background 0.2s, border-color 0.2s, box-shadow 0.2s',
+                borderColor: hovered ? 'var(--accent)' : 'var(--border)',
+                boxShadow: hovered ? '0 0 20px 4px var(--shadow-lg)' : 'none',
+                marginBottom: 10,
+            }}
+        >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                {/* Icon badge */}
+                <div style={{
+                    width: 36, height: 36, borderRadius: 8,
+                    border: '1px solid var(--border)',
+                    background: hovered ? 'var(--accent-dim)' : 'var(--base)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: hovered ? 'var(--accent)' : 'var(--muted)',
+                    transition: 'background 0.2s, color 0.2s',
+                    flexShrink: 0,
                 }}>
-                    {item.label}
-                </p>
-                <p style={{
-                    fontFamily: 'var(--font-body)', fontSize: 15,
-                    color: 'var(--fg)', fontWeight: 400,
-                }}>
-                    {item.value}
-                </p>
+                    {item.copyable
+                        ? (copied ? <Check size={15} /> : <item.Icon size={15} />)
+                        : <item.Icon size={15} />}
+                </div>
+                <div>
+                    <p style={{
+                        fontFamily: 'var(--font-mono)', fontSize: 9,
+                        letterSpacing: '0.32em', textTransform: 'uppercase',
+                        color: hovered ? 'var(--accent)' : 'var(--muted)',
+                        marginBottom: 3, transition: 'color 0.2s',
+                    }}>
+                        {copied ? 'Copied!' : item.hint}
+                    </p>
+                    <p style={{
+                        fontFamily: 'var(--font-body)', fontSize: 14,
+                        color: 'var(--fg)', fontWeight: 400,
+                    }}>
+                        {item.value}
+                    </p>
+                </div>
             </div>
 
-            <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                {item.copyable && (
-                    <button
-                        onClick={handleCopy}
-                        title="Copy"
-                        style={{
-                            width: 34, height: 34, borderRadius: '50%',
-                            border: '1px solid var(--border)',
-                            background: 'transparent',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            cursor: 'pointer', transition: 'border-color 0.2s, color 0.2s',
-                            color: 'var(--muted)',
-                        }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
-                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
-                    >
-                        {copied ? <Check size={13} style={{ color: 'var(--signal)' }} /> : <Copy size={13} />}
-                    </button>
-                )}
-                <a
-                    href={item.href}
-                    target={item.ext ? '_blank' : undefined}
-                    rel={item.ext ? 'noopener noreferrer' : undefined}
-                    aria-label={`Open ${item.label}`}
-                    style={{
-                        width: 34, height: 34, borderRadius: '50%',
-                        border: '1px solid var(--border)',
-                        background: 'transparent',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        textDecoration: 'none', color: 'var(--muted)',
-                        transition: 'border-color 0.2s, color 0.2s, background 0.2s',
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#fff'; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--muted)'; }}
-                >
-                    <ArrowUpRight size={13} />
-                </a>
+            <div style={{
+                width: 30, height: 30, borderRadius: '50%',
+                border: '1px solid var(--border)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: hovered ? 'var(--accent)' : 'var(--muted)',
+                background: hovered ? 'var(--accent-dim)' : 'transparent',
+                transition: 'all 0.2s',
+                transform: hovered ? 'rotate(45deg)' : 'rotate(0deg)',
+                flexShrink: 0,
+            }}>
+                <ArrowUpRight size={13} />
             </div>
-        </div>
+        </a>
     );
 }
 
@@ -213,7 +225,7 @@ export default function Contact() {
                             Typically respond within 24 hours.
                         </p>
 
-                        <div style={{ borderTop: '1px solid var(--border)' }}>
+                        <div style={{ borderTop: '1px solid var(--border)', paddingTop: 24 }}>
                             {LINKS.map((item) => (
                                 <LinkRow key={item.label} item={item} />
                             ))}

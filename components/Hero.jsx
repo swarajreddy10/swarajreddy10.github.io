@@ -43,7 +43,7 @@ export default function Hero() {
             <div style={{ maxWidth: 680, width: '100%', textAlign: 'center' }}>
 
                 {/* Name */}
-                <div style={{ overflow: 'hidden', marginBottom: 16 }}>
+                <div style={{ overflow: 'hidden', marginBottom: 16, paddingBottom: '0.8em' }}>
                     <motion.h1
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}

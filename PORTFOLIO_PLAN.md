@@ -29,17 +29,18 @@
 
 | Token | Value | Use |
 |---|---|---|
-| Base | `#FAF8F5` | Page background |
-| Surface | `#F2EDE8` | Cards, panels, footer |
-| Accent | `#C8622A` | Brand color (terracotta) |
+| Base | `#FAF8EE` | Page background |
+| Surface | `#F0EDD4` | Cards, panels, footer |
+| Accent | `#8A7E1A` | Brand color (golden olive) |
 | Signal | `#16A34A` | Status dot only |
-| FG | `#1C1917` | Primary text (warm ink) |
-| Muted | `#78716C` | Secondary text |
-| Border | `#E7E2DC` | Hairlines |
-| Shadow | `rgba(28,25,23,0.07)` | Card shadows |
+| FG | `#550003` | Primary text (deep red) |
+| Muted | `#7A4A2A` | Secondary text |
+| Border | `#D4CC7A` | Hairlines |
+| Shadow | `rgba(85,0,3,0.08)` | Card shadows |
+| Shadow-lg | `rgba(85,0,3,0.14)` | Card shadows (elevated) |
 | Display | `Playfair Display` | Serif — editorial, italic |
 | Body | `Inter` | Clean, modern, readable |
-| Mono | `JetBrains Mono` | Labels, tags, code |
+| Mono | `Inter` | Labels, tags, code |
 
 ### Motion Principles
 | Interaction | Technique | Timing |
@@ -49,7 +50,7 @@
 | Card reveals | `y: 20→0` + opacity | 0.5s `easeOut` |
 | Stacking cards | `position: sticky` + `useScroll` scale `0.95→1` | Scroll-driven |
 | Timeline SVG draw | `pathLength` on `motion.line` via `useTransform` | Scroll-driven |
-| Cursor | Dual spring, `mixBlendMode: difference` | 100ms / 140ms spring |
+| Cursor | Dual spring, accent-colored dot + ring, no mixBlendMode | 100ms / 140ms spring |
 | Preloader language switch | `y: 20→0` slide in, `y: -16` slide out | 0.2s per word |
 
 `prefers-reduced-motion`: Preloader skips language cycle, exits instantly.
@@ -92,10 +93,12 @@
 - `padding-top: 60px` to clear the fixed nav
 
 ### 4. ABOUT
-- Single column, `max-width: 760px`, centered
+- Single column, `max-width: 1000px`, centered
 - Bio: section label + italic heading + 2-sentence paragraph
-- Timeline: SVG draw via `useScroll` + `useTransform` pathLength, 3 entries
-- Each timeline card: role, company, period, badge pill, 1-2 bullet highlights
+- Timeline: SVG draw via `useScroll` + `useTransform` pathLength, 3 entries, alternating left/right flip cards
+- Each timeline card: role, company, period, badge pill (color-coded), bullet highlights
+- Badge colors: Full-time = green, Internship = gold, Education = muted red-brown
+- Card style: `borderRadius: 16`, `padding: clamp(28px,4vw,48px)`, `boxShadow: 0 0 24px 6px var(--shadow-lg)` — matches Skills/Projects cards
 - Responsive: stacks naturally (already single column)
 
 Timeline entries:
@@ -107,9 +110,11 @@ Jun–Sep 2025     | Software Engineering Intern   | Dexaminds       | Internshi
 
 ### 5. PROJECTS
 - `StackCard` — `position: sticky`, `top: 72 + index * 18px`, scale `0.94→1` on scroll
-- Watermark index number behind card (6% opacity)
+- Watermark index number behind card (7% opacity)
 - Each card: category badge, title, tagline, impact sentence, metric pills, tech tags, CTAs
 - Live button (filled accent) + Code button (ghost) — Live hidden when URL equals GitHub
+- "More on GitHub" button rendered outside sticky card container to avoid overlap
+- Card style: `borderRadius: 16`, `padding: clamp(28px,4vw,48px)`, `boxShadow: 0 0 24px 6px var(--shadow-lg)`
 
 Projects:
 | # | Title | Tagline |
@@ -134,11 +139,13 @@ Projects:
 
 ### 7. CONTACT
 - Full-width headline: "Got a role, project, or idea? Let's talk."
-- Two-column grid (stacks at 680px): left = 3 plain link rows, right = form
-- Link rows: label + value + copy button (email) + arrow link button
-- No contact cards, no status pill, no "Available" text
+- Two-column grid (stacks at 680px): left = 3 social link cards, right = form
+- Social link cards: icon badge + hint text + value + rotating arrow — hover reveals accent border + shadow
+- Email card: Mail icon, copies to clipboard on click, shows "Copied!" hint
+- LinkedIn card: LinkedIn icon, opens in new tab
+- GitHub card: GitHub icon, opens in new tab
 - Form: Name + Email grid, Message textarea, Send button
-- Submits to Formspree `xpwzdrgo`
+- Submits to Formspree `mwpowvqe`
 
 ### 8. FOOTER
 - Three-column grid: brand+tagline+socials | navigation links | contact links
@@ -163,7 +170,7 @@ Projects:
 | `components/Skills.jsx` | Done | Stacking cards, 6 domains, no repetition |
 | `components/Contact.jsx` | Done | Link rows + form, two-column |
 | `components/Footer.jsx` | Done | 3-column grid, copyright bar |
-| `components/Cursor.jsx` | Done | Dual spring, mixBlendMode difference |
+| `components/Cursor.jsx` | Done | Dual spring, accent-colored dot + ring, no mixBlendMode |
 | `components/SmoothScroll.jsx` | Done | Lenis wrapper |
 | `assets/assets.js` | Done | 3 projects: ResumeCanvas, StageWay, Portfolio |
 | `components/HeroCanvas.jsx` | Deleted | Three.js removed — not used |
