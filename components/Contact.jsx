@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Send, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { useForm, ValidationError } from '@formspree/react';
+import { useState } from 'react';
 
 function LinkedinIcon({ size = 16 }) {
     return (
@@ -120,25 +121,7 @@ function LinkRow({ item }) {
 }
 
 export default function Contact() {
-    const [form,   setForm]   = useState({ name: '', email: '', message: '' });
-    const [status, setStatus] = useState('idle');
-
-    const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus('sending');
-        try {
-            const res = await fetch('https://formspree.io/f/xpwzdrgo', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify(form),
-            });
-            setStatus(res.ok ? 'sent' : 'error');
-        } catch {
-            setStatus('error');
-        }
-    };
+    const [state, handleSubmit] = useForm('mwpowvqe');
 
     const inputStyle = {
         width: '100%', borderRadius: 8,
@@ -222,74 +205,97 @@ export default function Contact() {
                     </motion.div>
 
                     {/* Right — form */}
-                    <motion.form
-                        onSubmit={handleSubmit}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
-                    >
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                            {[
-                                { name: 'name',  type: 'text',  placeholder: 'Your name',       label: 'Name'  },
-                                { name: 'email', type: 'email', placeholder: 'you@company.com', label: 'Email' },
-                            ].map(({ name, type, placeholder, label }) => (
-                                <div key={name}>
-                                    <label style={labelStyle}>{label}</label>
+                    {state.succeeded ? (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            style={{
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                padding: '48px 0',
+                            }}
+                        >
+                            <p style={{
+                                fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                                fontSize: 'clamp(20px, 2.5vw, 28px)',
+                                color: 'var(--fg)', letterSpacing: '-0.01em',
+                            }}>
+                                Message sent. I will get back to you soon.
+                            </p>
+                        </motion.div>
+                    ) : (
+                        <motion.form
+                            onSubmit={handleSubmit}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+                        >
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                                <div>
+                                    <label style={labelStyle}>Name</label>
                                     <input
-                                        name={name} type={type} value={form[name]}
-                                        onChange={handleChange} required
-                                        placeholder={placeholder}
+                                        name="name" type="text" required
+                                        placeholder="Your name"
                                         style={inputStyle}
                                         onFocus={e => (e.target.style.borderColor = 'rgba(200,98,42,0.5)')}
                                         onBlur={e => (e.target.style.borderColor = 'var(--border)')}
                                     />
+                                    <ValidationError prefix="Name" field="name" errors={state.errors}
+                                        style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: '#dc2626', marginTop: 4 }}
+                                    />
                                 </div>
-                            ))}
-                        </div>
+                                <div>
+                                    <label style={labelStyle}>Email</label>
+                                    <input
+                                        id="email" name="email" type="email" required
+                                        placeholder="you@company.com"
+                                        style={inputStyle}
+                                        onFocus={e => (e.target.style.borderColor = 'rgba(200,98,42,0.5)')}
+                                        onBlur={e => (e.target.style.borderColor = 'var(--border)')}
+                                    />
+                                    <ValidationError prefix="Email" field="email" errors={state.errors}
+                                        style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: '#dc2626', marginTop: 4 }}
+                                    />
+                                </div>
+                            </div>
 
-                        <div>
-                            <label style={labelStyle}>Message</label>
-                            <textarea
-                                name="message" value={form.message}
-                                onChange={handleChange} required rows={6}
-                                placeholder="Tell me about the role, project, or idea"
-                                style={{ ...inputStyle, resize: 'none' }}
-                                onFocus={e => (e.target.style.borderColor = 'rgba(200,98,42,0.5)')}
-                                onBlur={e => (e.target.style.borderColor = 'var(--border)')}
-                            />
-                        </div>
+                            <div>
+                                <label style={labelStyle}>Message</label>
+                                <textarea
+                                    id="message" name="message" required rows={6}
+                                    placeholder="Tell me about the role, project, or idea"
+                                    style={{ ...inputStyle, resize: 'none' }}
+                                    onFocus={e => (e.target.style.borderColor = 'rgba(200,98,42,0.5)')}
+                                    onBlur={e => (e.target.style.borderColor = 'var(--border)')}
+                                />
+                                <ValidationError prefix="Message" field="message" errors={state.errors}
+                                    style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: '#dc2626', marginTop: 4 }}
+                                />
+                            </div>
 
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                            <button
-                                type="submit"
-                                disabled={status === 'sending' || status === 'sent'}
-                                style={{
-                                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                                    borderRadius: 8, padding: '12px 24px',
-                                    fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600,
-                                    letterSpacing: '0.18em', textTransform: 'uppercase',
-                                    color: '#fff', background: 'var(--accent)',
-                                    border: 'none', cursor: status === 'sent' ? 'default' : 'pointer',
-                                    opacity: (status === 'sending' || status === 'sent') ? 0.65 : 1,
-                                    transition: 'background 0.2s, opacity 0.2s',
-                                }}
-                                onMouseEnter={e => { if (status === 'idle') e.currentTarget.style.background = '#B5561F'; }}
-                                onMouseLeave={e => (e.currentTarget.style.background = 'var(--accent)')}
-                            >
-                                {status === 'sending' ? 'Sending' : status === 'sent' ? 'Sent' : (
-                                    <>Send <Send size={11} /></>
-                                )}
-                            </button>
-
-                            {status === 'error' && (
-                                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: '#dc2626' }}>
-                                    Failed. Try emailing directly.
-                                </p>
-                            )}
-                        </div>
-                    </motion.form>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                                <button
+                                    type="submit"
+                                    disabled={state.submitting}
+                                    style={{
+                                        display: 'inline-flex', alignItems: 'center', gap: 8,
+                                        borderRadius: 8, padding: '12px 24px',
+                                        fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600,
+                                        letterSpacing: '0.18em', textTransform: 'uppercase',
+                                        color: '#fff', background: 'var(--accent)',
+                                        border: 'none', cursor: state.submitting ? 'default' : 'pointer',
+                                        opacity: state.submitting ? 0.65 : 1,
+                                        transition: 'background 0.2s, opacity 0.2s',
+                                    }}
+                                    onMouseEnter={e => { if (!state.submitting) e.currentTarget.style.background = '#B5561F'; }}
+                                    onMouseLeave={e => (e.currentTarget.style.background = 'var(--accent)')}
+                                >
+                                    {state.submitting ? 'Sending' : <>Send <Send size={11} /></>}
+                                </button>
+                            </div>
+                        </motion.form>
+                    )}
                 </div>
             </div>
 
