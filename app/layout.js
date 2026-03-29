@@ -29,7 +29,7 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#FAF8F5',
+  themeColor: '#F5F2DC',
 };
 
 export default function RootLayout({ children }) {
@@ -38,14 +38,14 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Playfair Display (headings) + Inter (body + labels) */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="antialiased overflow-x-hidden bg-[#FAF8F5] text-[#1C1917]">
+      <body className="antialiased overflow-x-hidden bg-[#F5F2DC] text-[#550003]">
         {children}
       </body>
     </html>

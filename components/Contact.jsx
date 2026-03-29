@@ -92,7 +92,7 @@ function LinkRow({ item }) {
                             cursor: 'pointer', transition: 'border-color 0.2s, color 0.2s',
                             color: 'var(--muted)',
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(200,98,42,0.4)'; e.currentTarget.style.color = 'var(--accent)'; }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
                         onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
                     >
                         {copied ? <Check size={13} style={{ color: 'var(--signal)' }} /> : <Copy size={13} />}
@@ -102,6 +102,7 @@ function LinkRow({ item }) {
                     href={item.href}
                     target={item.ext ? '_blank' : undefined}
                     rel={item.ext ? 'noopener noreferrer' : undefined}
+                    aria-label={`Open ${item.label}`}
                     style={{
                         width: 34, height: 34, borderRadius: '50%',
                         border: '1px solid var(--border)',
@@ -125,7 +126,7 @@ export default function Contact() {
 
     const inputStyle = {
         width: '100%', borderRadius: 8,
-        border: '1px solid var(--border)',
+        border: '1.5px solid var(--border)',
         background: 'var(--surf)', color: 'var(--fg)',
         padding: '11px 14px',
         fontFamily: 'var(--font-body)', fontSize: 14,
@@ -151,17 +152,32 @@ export default function Contact() {
                     transition={{ duration: 0.55 }}
                     style={{ marginBottom: 64 }}
                 >
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
+                        <span style={{
+                            width: 7, height: 7, borderRadius: '50%',
+                            background: 'var(--signal)', display: 'block',
+                            animation: 'pulse-signal 2s ease-in-out infinite',
+                        }} />
+                        <span style={{
+                            fontFamily: 'var(--font-mono)', fontSize: 9,
+                            letterSpacing: '0.28em', textTransform: 'uppercase',
+                            color: 'var(--signal)',
+                        }}>
+                            Open to new opportunities
+                        </span>
+                    </div>
                     <span style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                        letterSpacing: '0.4em', textTransform: 'uppercase',
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        letterSpacing: '0.36em', textTransform: 'uppercase',
                         color: 'var(--accent)', display: 'block', marginBottom: 16,
+                        fontWeight: 600,
                     }}>
                         Contact
                     </span>
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(32px, 5vw, 68px)',
-                        fontWeight: 400, color: 'var(--fg)',
+                        fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.03em', lineHeight: 1.1, margin: 0,
                     }}>
                         Got a role, project, or idea?
@@ -238,7 +254,7 @@ export default function Contact() {
                                         name="name" type="text" required
                                         placeholder="Your name"
                                         style={inputStyle}
-                                        onFocus={e => (e.target.style.borderColor = 'rgba(200,98,42,0.5)')}
+                                        onFocus={e => (e.target.style.borderColor = 'var(--accent)')}
                                         onBlur={e => (e.target.style.borderColor = 'var(--border)')}
                                     />
                                     <ValidationError prefix="Name" field="name" errors={state.errors}
@@ -251,7 +267,7 @@ export default function Contact() {
                                         id="email" name="email" type="email" required
                                         placeholder="you@company.com"
                                         style={inputStyle}
-                                        onFocus={e => (e.target.style.borderColor = 'rgba(200,98,42,0.5)')}
+                                        onFocus={e => (e.target.style.borderColor = 'var(--accent)')}
                                         onBlur={e => (e.target.style.borderColor = 'var(--border)')}
                                     />
                                     <ValidationError prefix="Email" field="email" errors={state.errors}
@@ -266,7 +282,7 @@ export default function Contact() {
                                     id="message" name="message" required rows={6}
                                     placeholder="Tell me about the role, project, or idea"
                                     style={{ ...inputStyle, resize: 'none' }}
-                                    onFocus={e => (e.target.style.borderColor = 'rgba(200,98,42,0.5)')}
+                                    onFocus={e => (e.target.style.borderColor = 'var(--accent)')}
                                     onBlur={e => (e.target.style.borderColor = 'var(--border)')}
                                 />
                                 <ValidationError prefix="Message" field="message" errors={state.errors}
@@ -281,15 +297,16 @@ export default function Contact() {
                                     style={{
                                         display: 'inline-flex', alignItems: 'center', gap: 8,
                                         borderRadius: 8, padding: '12px 24px',
-                                        fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600,
+                                        fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 700,
                                         letterSpacing: '0.18em', textTransform: 'uppercase',
                                         color: '#fff', background: 'var(--accent)',
                                         border: 'none', cursor: state.submitting ? 'default' : 'pointer',
                                         opacity: state.submitting ? 0.65 : 1,
-                                        transition: 'background 0.2s, opacity 0.2s',
+                                        boxShadow: '0 2px 12px rgba(184,171,56,0.35)',
+                                        transition: 'background 0.2s, opacity 0.2s, box-shadow 0.2s',
                                     }}
-                                    onMouseEnter={e => { if (!state.submitting) e.currentTarget.style.background = '#B5561F'; }}
-                                    onMouseLeave={e => (e.currentTarget.style.background = 'var(--accent)')}
+                                    onMouseEnter={e => { if (!state.submitting) { e.currentTarget.style.background = '#6B6010'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(184,171,56,0.55)'; } }}
+                                    onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(184,171,56,0.35)'; }}
                                 >
                                     {state.submitting ? 'Sending' : <>Send <Send size={11} /></>}
                                 </button>

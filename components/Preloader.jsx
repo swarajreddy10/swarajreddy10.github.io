@@ -5,16 +5,16 @@ import { useEffect, useRef, useState } from 'react';
 
 const LANGUAGES = [
     { word: 'Hello',    lang: 'EN' },
+    { word: 'नमस्ते',    lang: 'HI' },
+    { word: 'నమస్కారం', lang: 'TE' },
+    { word: 'নমস্কার',   lang: 'BN' },
+    { word: 'नमस्कार',  lang: 'MR' },
+    { word: 'வணக்கம்',  lang: 'TA' },
     { word: 'Bonjour',  lang: 'FR' },
     { word: 'Hola',     lang: 'ES' },
     { word: 'Hallo',    lang: 'DE' },
     { word: 'Ciao',     lang: 'IT' },
     { word: 'Olá',      lang: 'PT' },
-    { word: 'नमस्ते',    lang: 'HI' },
-    { word: 'নমস্কার',   lang: 'BN' },
-    { word: 'నమస్కారం', lang: 'TE' },
-    { word: 'नमस्कार',  lang: 'MR' },
-    { word: 'வணக்கம்',  lang: 'TA' },
 ];
 
 const WORD_DURATION = 300;

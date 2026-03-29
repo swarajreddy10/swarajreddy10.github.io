@@ -14,7 +14,7 @@ const DOMAINS = [
         index: '02',
         name: 'Backend',
         tagline: 'APIs and services built to stay up.',
-        skills: ['FastAPI', 'Node.js / Express', 'Spring Boot', 'PostgreSQL', 'MongoDB', 'OAuth2 / JWT'],
+        skills: ['FastAPI', 'Node.js / Express', 'Spring Boot', 'REST APIs', 'PostgreSQL', 'MongoDB', 'OAuth2 / JWT'],
     },
     {
         index: '03',
@@ -55,7 +55,7 @@ function SkillCard({ domain, index }) {
                     border: '1px solid var(--border)',
                     borderRadius: 16,
                     background: 'var(--surf)',
-                    boxShadow: '0 2px 20px var(--shadow)',
+                    boxShadow: '0 4px 24px var(--shadow-lg)',
                     padding: 'clamp(28px, 4vw, 48px)',
                     display: 'grid',
                     gridTemplateColumns: '1fr 1fr',
@@ -76,7 +76,7 @@ function SkillCard({ domain, index }) {
                         <h3 style={{
                             fontFamily: 'var(--font-display)', fontStyle: 'italic',
                             fontSize: 'clamp(28px, 3.5vw, 48px)',
-                            fontWeight: 400, color: 'var(--fg)',
+                            fontWeight: 500, color: 'var(--fg)',
                             letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 10,
                         }}>
                             {domain.name}
@@ -94,12 +94,13 @@ function SkillCard({ domain, index }) {
                         {domain.skills.map((s) => (
                             <span key={s} style={{
                                 fontFamily: 'var(--font-mono)', fontSize: 11,
-                                color: 'var(--fg)',
+                                color: 'var(--fg)', fontWeight: 500,
                                 border: '1px solid var(--border)',
                                 borderRadius: 8,
                                 background: 'var(--base)',
                                 padding: '7px 13px',
                                 lineHeight: 1,
+                                transition: 'border-color 0.2s, color 0.2s',
                             }}>
                                 {s}
                             </span>
@@ -130,16 +131,17 @@ export default function Skills() {
                     style={{ marginBottom: 52 }}
                 >
                     <span style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                        letterSpacing: '0.4em', textTransform: 'uppercase',
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        letterSpacing: '0.36em', textTransform: 'uppercase',
                         color: 'var(--accent)', display: 'block', marginBottom: 16,
+                        fontWeight: 600,
                     }}>
                         Skills
                     </span>
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(28px, 4vw, 52px)',
-                        fontWeight: 400, color: 'var(--fg)',
+                        fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.025em', lineHeight: 1.15,
                     }}>
                         What I bring to the table.

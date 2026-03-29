@@ -51,7 +51,7 @@ export default function Hero() {
                         style={{
                             fontFamily: 'var(--font-display)', fontStyle: 'italic',
                             fontSize: 'clamp(52px, 9vw, 120px)',
-                            fontWeight: 400, color: 'var(--fg)',
+                            fontWeight: 500, color: 'var(--fg)',
                             letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
                         }}
                     >
@@ -67,11 +67,11 @@ export default function Hero() {
                         transition={{ duration: 0.6, delay: 0.42, ease: [0.33, 1, 0.68, 1] }}
                         style={{
                             fontFamily: 'var(--font-mono)', fontSize: 11,
-                            letterSpacing: '0.28em', textTransform: 'uppercase',
-                            color: 'var(--accent)', margin: 0,
+                            letterSpacing: '0.26em', textTransform: 'uppercase',
+                            color: 'var(--accent)', margin: 0, fontWeight: 600,
                         }}
                     >
-                        Full-Stack Engineer
+                        Full-Stack Engineer. I build, I ship.
                     </motion.p>
                 </div>
 
@@ -82,12 +82,14 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     style={{
                         fontFamily: 'var(--font-body)', fontSize: 16,
-                        lineHeight: 1.65, color: 'var(--muted)',
-                        maxWidth: 480, margin: '0 auto 40px',
+                        lineHeight: 1.75, color: 'var(--muted)',
+                        maxWidth: 520, margin: '0 auto 40px',
                     }}
                 >
-                    I break down hard problems, write code that lasts, and
-                    communicate clearly across the table. Open to remote, hybrid, or on-site.
+                    I own features end-to-end, from understanding the requirement to shipping the fix.
+                    I work closely with stakeholders, keep pace with the field by reading, building, and engaging
+                    with dev communities daily, and treat every problem as something worth solving properly.
+                    Genuinely curious about how things are built and always trying something new.
                 </motion.p>
 
                 {/* CTAs */}
@@ -100,15 +102,16 @@ export default function Hero() {
                     <button
                         onClick={() => scrollTo('projects')}
                         style={{
-                            borderRadius: 100, padding: '12px 28px',
-                            fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600,
-                            letterSpacing: '0.18em', textTransform: 'uppercase',
+                            borderRadius: 100, padding: '13px 30px',
+                            fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 700,
+                            letterSpacing: '0.16em', textTransform: 'uppercase',
                             color: '#fff', background: 'var(--accent)',
                             border: 'none', cursor: 'pointer',
-                            transition: 'background 0.2s, transform 0.1s',
+                            boxShadow: '0 2px 14px rgba(184,171,56,0.35)',
+                            transition: 'background 0.2s, transform 0.1s, box-shadow 0.2s',
                         }}
-                        onMouseEnter={e => (e.currentTarget.style.background = '#B5561F')}
-                        onMouseLeave={e => (e.currentTarget.style.background = 'var(--accent)')}
+                        onMouseEnter={e => { e.currentTarget.style.background = '#6B6010'; e.currentTarget.style.boxShadow = '0 4px 22px rgba(184,171,56,0.55)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.boxShadow = '0 2px 14px rgba(184,171,56,0.35)'; }}
                         onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.97)')}
                         onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
                     >
@@ -117,15 +120,15 @@ export default function Hero() {
                     <button
                         onClick={() => scrollTo('contact')}
                         style={{
-                            borderRadius: 100, padding: '12px 28px',
-                            fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 500,
-                            letterSpacing: '0.18em', textTransform: 'uppercase',
-                            color: 'var(--muted)', background: 'transparent',
-                            border: '1px solid var(--border)', cursor: 'pointer',
+                            borderRadius: 100, padding: '13px 30px',
+                            fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600,
+                            letterSpacing: '0.16em', textTransform: 'uppercase',
+                            color: 'var(--fg)', background: 'transparent',
+                            border: '1.5px solid var(--border)', cursor: 'pointer',
                             transition: 'border-color 0.2s, color 0.2s, transform 0.1s',
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(200,98,42,0.4)'; e.currentTarget.style.color = 'var(--fg)'; }}
-                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--fg)'; }}
                         onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.97)')}
                         onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
                     >
@@ -149,13 +152,13 @@ export default function Hero() {
                             style={{
                                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                                 width: 38, height: 38, borderRadius: '50%',
-                                border: '1px solid var(--border)',
+                                border: '1.5px solid var(--border)',
                                 color: 'var(--muted)', background: 'var(--surf)',
                                 textDecoration: 'none',
-                                transition: 'border-color 0.2s, color 0.2s',
+                                transition: 'border-color 0.2s, color 0.2s, background 0.2s',
                             }}
-                            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(200,98,42,0.4)'; e.currentTarget.style.color = 'var(--accent)'; }}
-                            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
+                            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.background = 'var(--accent-dim)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; e.currentTarget.style.background = 'var(--surf)'; }}
                         >
                             <Icon size={14} />
                         </a>

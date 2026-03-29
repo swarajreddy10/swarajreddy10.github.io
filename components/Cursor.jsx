@@ -62,7 +62,7 @@ export default function Cursor() {
                 style={{
                     position: 'fixed', zIndex: 9998,
                     borderRadius: '50%',
-                    border: '1px solid rgba(200,98,42,0.45)',
+                    border: '1px solid rgba(6,71,52,0.45)',
                     pointerEvents: 'none',
                     x: ringX, y: ringY,
                     translateX: '-50%', translateY: '-50%',

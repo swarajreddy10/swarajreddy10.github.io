@@ -92,28 +92,20 @@ export default function Nav() {
                                         onClick={() => scrollTo(id)}
                                         style={{
                                             fontFamily: 'var(--font-body)',
-                                            fontSize: 14, fontWeight: isActive ? 500 : 400,
-                                            color: isActive ? 'var(--fg)' : 'var(--muted)',
+                                            fontSize: 14, fontWeight: isActive ? 600 : 400,
+                                            color: isActive ? 'var(--accent)' : 'var(--muted)',
                                             background: 'none', border: 'none',
                                             cursor: 'pointer', padding: 0,
                                             transition: 'color 0.2s',
                                         }}
-                                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
-                                        onMouseLeave={e => (e.currentTarget.style.color = isActive ? 'var(--fg)' : 'var(--muted)')}
+                                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                                        onMouseLeave={e => (e.currentTarget.style.color = isActive ? 'var(--accent)' : 'var(--muted)')}
                                     >
                                         {label}
                                     </button>
                                 );
                             })}
                         </nav>
-
-                        {/* Status dot only */}
-                        <span style={{
-                            width: 7, height: 7, borderRadius: '50%',
-                            background: 'var(--signal)', display: 'block',
-                            animation: 'pulse-signal 2s ease-in-out infinite',
-                            flexShrink: 0,
-                        }} />
                     </div>
 
                     {/* Mobile hamburger */}
