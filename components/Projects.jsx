@@ -36,7 +36,7 @@ function StackCard({ project, index }) {
                     transform: 'translateY(-50%)',
                     fontFamily: 'var(--font-display)', fontStyle: 'italic',
                     fontSize: 'clamp(80px, 12vw, 180px)',
-                    fontWeight: 400, color: 'rgba(28,25,23,0.06)',
+                    fontWeight: 400, color: 'rgba(85,0,3,0.07)',
                     lineHeight: 1, pointerEvents: 'none', userSelect: 'none', zIndex: 0,
                 }}>
                     {num}
@@ -46,7 +46,7 @@ function StackCard({ project, index }) {
                     position: 'relative', zIndex: 1,
                     border: '1px solid var(--border)',
                     background: 'var(--surf)',
-                    boxShadow: '0 2px 24px var(--shadow)',
+                    boxShadow: '0 4px 28px var(--shadow-lg)',
                     borderRadius: 16, overflow: 'hidden',
                 }}>
                     <div style={{
@@ -62,7 +62,7 @@ function StackCard({ project, index }) {
                             }}>
                                 <span style={{
                                     fontFamily: 'var(--font-mono)', fontSize: 9,
-                                    color: 'rgba(28,25,23,0.2)', letterSpacing: '0.3em',
+                                    color: 'rgba(85,0,3,0.18)', letterSpacing: '0.3em',
                                 }}>
                                     {num}
                                 </span>
@@ -70,9 +70,9 @@ function StackCard({ project, index }) {
                                     fontFamily: 'var(--font-mono)', fontSize: 9,
                                     letterSpacing: '0.24em', textTransform: 'uppercase',
                                     padding: '4px 10px', borderRadius: 100,
-                                    border: '1px solid rgba(200,98,42,0.25)',
-                                    background: 'rgba(200,98,42,0.07)',
-                                    color: 'var(--accent)',
+                                    border: '1px solid var(--accent-border)',
+                                    background: 'var(--accent-dim)',
+                                    color: 'var(--accent)', fontWeight: 600,
                                 }}>
                                     {project.description}
                                 </span>
@@ -82,7 +82,7 @@ function StackCard({ project, index }) {
                             <h3 style={{
                                 fontFamily: 'var(--font-display)', fontStyle: 'italic',
                                 fontSize: 'clamp(22px, 2.8vw, 40px)',
-                                fontWeight: 400, color: 'var(--fg)',
+                                fontWeight: 500, color: 'var(--fg)',
                                 letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 5,
                             }}>
                                 {project.title}
@@ -94,24 +94,39 @@ function StackCard({ project, index }) {
                                 {project.tagline}
                             </p>
 
-                            {/* Impact */}
+                            {/* Impact + bullets */}
                             <p style={{
-                                fontFamily: 'var(--font-body)', fontSize: 14,
+                                fontFamily: 'var(--font-body)', fontSize: 13,
                                 lineHeight: 1.65, color: 'var(--muted)',
-                                maxWidth: 420, marginBottom: 18,
+                                marginBottom: project.bullets?.length ? 10 : 18,
                             }}>
                                 {project.impact}
                             </p>
+
+                            {project.bullets?.length > 0 && (
+                                <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 18 }}>
+                                    {project.bullets.map((b, bi) => (
+                                        <li key={bi} style={{
+                                            display: 'flex', gap: 8, alignItems: 'flex-start',
+                                            fontFamily: 'var(--font-body)',
+                                            fontSize: 13, lineHeight: 1.6, color: 'var(--muted)',
+                                        }}>
+                                            <span style={{ color: 'var(--accent)', marginTop: 3, flexShrink: 0, opacity: 0.6 }}>→</span>
+                                            {b}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
 
                             {/* Metrics */}
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, marginBottom: 18 }}>
                                 {project.metrics.map((m) => (
                                     <span key={m} style={{
                                         fontFamily: 'var(--font-mono)', fontSize: 9,
-                                        fontWeight: 600, color: 'var(--accent)',
+                                        fontWeight: 700, color: 'var(--accent)',
                                         padding: '5px 11px', borderRadius: 100,
-                                        border: '1px solid rgba(200,98,42,0.22)',
-                                        background: 'rgba(200,98,42,0.06)',
+                                        border: '1px solid var(--accent-border)',
+                                        background: 'var(--accent-dim)',
                                     }}>
                                         {m}
                                     </span>
@@ -134,7 +149,7 @@ function StackCard({ project, index }) {
                                     <span style={{
                                         fontFamily: 'var(--font-mono)', fontSize: 9,
                                         borderRadius: 6, border: '1px solid var(--border)',
-                                        color: 'rgba(28,25,23,0.3)', padding: '4px 9px',
+                                        color: 'rgba(85,0,3,0.30)', padding: '4px 9px',
                                     }}>
                                         +{project.tech.length - 6}
                                     </span>
@@ -153,10 +168,12 @@ function StackCard({ project, index }) {
                                         fontWeight: 700, letterSpacing: '0.18em',
                                         textTransform: 'uppercase',
                                         color: '#fff', background: 'var(--accent)',
-                                        textDecoration: 'none', transition: 'background 0.2s',
+                                        textDecoration: 'none',
+                                        boxShadow: '0 2px 10px rgba(184,171,56,0.35)',
+                                        transition: 'background 0.2s, box-shadow 0.2s',
                                     }}
-                                    onMouseEnter={e => (e.currentTarget.style.background = '#B5561F')}
-                                    onMouseLeave={e => (e.currentTarget.style.background = 'var(--accent)')}
+                                    onMouseEnter={e => { e.currentTarget.style.background = '#6B6010'; e.currentTarget.style.boxShadow = '0 4px 18px rgba(184,171,56,0.55)'; }}
+                                    onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.boxShadow = '0 2px 10px rgba(184,171,56,0.35)'; }}
                                 >
                                     Live <ArrowUpRight size={10} />
                                 </a>
@@ -173,7 +190,7 @@ function StackCard({ project, index }) {
                                     textDecoration: 'none',
                                     transition: 'border-color 0.2s, color 0.2s',
                                 }}
-                                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(200,98,42,0.35)'; e.currentTarget.style.color = 'var(--accent)'; }}
+                                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
                                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
                             >
                                 <GithubIcon size={10} /> Code
@@ -200,16 +217,17 @@ export default function Projects() {
                     style={{ marginBottom: 52 }}
                 >
                     <span style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                        letterSpacing: '0.4em', textTransform: 'uppercase',
-                        color: 'var(--muted)', display: 'block', marginBottom: 12,
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        letterSpacing: '0.36em', textTransform: 'uppercase',
+                        color: 'var(--accent)', display: 'block', marginBottom: 12,
+                        fontWeight: 600,
                     }}>
                         Selected Work
                     </span>
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(32px, 4.5vw, 64px)',
-                        fontWeight: 400, color: 'var(--fg)',
+                        fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.025em', lineHeight: 1.1,
                     }}>
                         Things I&apos;ve{' '}
@@ -221,27 +239,39 @@ export default function Projects() {
                     <StackCard key={p.title} project={p} index={i} />
                 ))}
 
-                {/* GitHub link */}
+                {/* GitHub CTA */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    style={{ marginTop: 36 }}
+                    transition={{ duration: 0.45 }}
+                    style={{
+                        position: 'relative',
+                        zIndex: 10 + workData.length + 1,
+                        display: 'flex', justifyContent: 'flex-start',
+                        paddingTop: 32, paddingBottom: 16,
+                        background: 'var(--base)',
+                    }}
                 >
                     <a
                         href="https://github.com/swarajreddy10"
                         target="_blank" rel="noopener noreferrer"
                         style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 7,
+                            display: 'inline-flex', alignItems: 'center', gap: 10,
+                            borderRadius: 100, padding: '13px 28px',
                             fontFamily: 'var(--font-mono)', fontSize: 10,
-                            color: 'var(--muted)', textDecoration: 'none',
-                            transition: 'color 0.2s',
+                            fontWeight: 600, letterSpacing: '0.18em',
+                            textTransform: 'uppercase',
+                            color: 'var(--fg)',
+                            border: '1px solid var(--border)',
+                            background: 'var(--surf)',
+                            textDecoration: 'none',
+                            transition: 'border-color 0.2s, color 0.2s',
                         }}
-                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
-                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--fg)'; }}
                     >
-                        <GithubIcon size={12} /> More on GitHub <ArrowUpRight size={10} />
+                        <GithubIcon size={13} /> More on GitHub <ArrowUpRight size={12} />
                     </a>
                 </motion.div>
             </div>

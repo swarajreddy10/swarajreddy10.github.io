@@ -1,72 +1,71 @@
-# Hey there! Welcome to my Personal Portfolio
+# Swaraj Reddy — Personal Portfolio
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://swarajreddy10.github.io/) 
-[![Next.js](https://img.shields.io/badge/Next.js-15.4.6-black)](https://nextjs.org/) 
-[![React](https://img.shields.io/badge/React-19.0.0-blue)](https://reactjs.org/) 
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.17-38B2AC)](https://tailwindcss.com/)
-[![bun](https://img.shields.io/badge/bun-1.2.19-FBF0DF)](https://bun.sh/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://swarajreddy10.github.io/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-38B2AC)](https://tailwindcss.com/)
+[![Motion](https://img.shields.io/badge/Motion-12-purple)](https://motion.dev/)
+[![Bun](https://img.shields.io/badge/Bun-1.3-FBF0DF)](https://bun.sh/)
 
-This repository contains the source code for my personal portfolio website, which you can visit at [swarajreddy10.github.io](https://swarajreddy10.github.io/).
+Live at [swarajreddy10.github.io](https://swarajreddy10.github.io/)
 
-I built this portfolio from the ground up to be a living showcase of my skills, projects, and journey as a software developer. My goal was to create something that not only looks great but is also built on a modern, high-performance tech stack. This project is a reflection of my passion for clean design, smooth user experiences, and well-structured code.
+## Lighthouse Scores
 
-## ✨ What I'm Proud Of
+| Metric | Score |
+|---|---|
+| Performance | 92 |
+| Accessibility | 96 |
+| Best Practices | 100 |
+| SEO | 100 |
+| FCP | 1.0s |
+| LCP | 1.7s |
+| TBT | 20ms |
+| CLS | 0 |
 
-Here are some of the features I was excited to build and that you'll find in the project:
+## Tech Stack
 
--   **Sleek, Modern Design**: I'm a big fan of modern UI/UX, so I designed the site with beautiful gradients and a clean, intuitive layout using Tailwind CSS.
--   **Fluid Animations**: I used **Framer Motion** to add subtle, scroll-triggered animations that make the site feel alive and engaging without being distracting.
--   **Dark & Light Mode**: Because who doesn't love a good dark mode? Your preference is automatically detected from your system settings and saved for future visits.
--   **Built with Next.js 15**: I leveraged the power of the latest Next.js App Router for a fast, statically-exported site that's optimized for performance and SEO.
--   **Fully Responsive**: I took a mobile-first approach to ensure the site looks and works perfectly on all devices, from phones to desktops.
+- **Framework**: Next.js 16 (static export)
+- **UI**: React 19, Tailwind CSS v4
+- **Animations**: Motion v12 (useScroll, useTransform, AnimatePresence)
+- **Smooth scroll**: Lenis
+- **Forms**: @formspree/react
+- **Package manager**: Bun
+- **Deployment**: GitHub Pages via gh-pages
 
-## 🛠️ The Tech Stack
+## Features
 
-I chose a modern, efficient, and scalable tech stack to bring this portfolio to life:
+- Scroll-driven stacking cards for Projects and Skills sections
+- Split-panel preloader with 11-language sequence (EN, HI, TE, BN, MR, TA, FR, ES, DE, IT, PT)
+- SVG pathLength draw timeline in About section
+- CSS custom property design system — 8 tokens, zero runtime JS for theming
+- Dynamic imports for all below-fold sections — reduces initial JS payload
+- WCAG AA contrast ratios throughout
+- Fully responsive — mobile, tablet, desktop
+- Static export — no server required, deploys to GitHub Pages
 
--   **Core**: Next.js, React
--   **Styling**: Tailwind CSS
--   **Animations**: Framer Motion
--   **Deployment**: GitHub Pages
--   **Package Manager**: Bun
+## Run Locally
 
-## 🚀 Want to Run It Locally?
+Requires [Bun](https://bun.sh/) and [Git](https://git-scm.com/).
 
-If you want to explore the code or run the project on your own machine, it's super simple. Just make sure you have **Bun** and **Git** installed.
+```bash
+git clone https://github.com/swarajreddy10/swarajreddy10.github.io.git
+cd swarajreddy10.github.io
+bun install
+bun run dev
+```
 
-1.  **Clone the repo:**
-    ```bash
-    git clone https://github.com/swarajreddy10/swarajreddy10.github.io.git
-    cd swarajreddy10.github.io
-    ```
+Open [http://localhost:3000](http://localhost:3000).
 
-2.  **Install dependencies:**
-    ```bash
-    bun install
-    ```
-
-3.  **Start the dev server:**
-    ```bash
-    bun run dev
-    ```
-
-And that's it! The site should be running at `http://localhost:3000`.
-
-## 🚀 Deployment
-
-Deploying is handled by a single command, thanks to `gh-pages`.
+## Deploy
 
 ```bash
 bun run deploy
 ```
 
-This script automatically builds the site and pushes the static files from the `out` directory to the `gh-pages` branch.
+Builds the static export and pushes the `out` directory to the `gh-pages` branch.
 
-## 📬 Let's Connect!
+## Contact
 
-I'm always open to connecting with other developers and creatives. Feel free to reach out!
-
--   **GitHub**: [@swarajreddy10](https://github.com/swarajreddy10)
--   **Email**: [swarajchandra22@gmail.com](mailto:swarajchandra22@gmail.com)
-
----
+- **Email**: [swarajchandra22@gmail.com](mailto:swarajchandra22@gmail.com)
+- **LinkedIn**: [linkedin.com/in/swarajreddy](https://linkedin.com/in/swarajreddy)
+- **GitHub**: [@swarajreddy10](https://github.com/swarajreddy10)

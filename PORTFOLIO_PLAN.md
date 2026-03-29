@@ -5,7 +5,27 @@
 
 ---
 
-## Design System
+## Lighthouse Scores (Desktop)
+
+| Metric | Score |
+|---|---|
+| Performance | 92 |
+| Accessibility | 96 |
+| Best Practices | 100 |
+| SEO | 100 |
+| FCP | 1.0s |
+| LCP | 1.7s |
+| TBT | 20ms |
+| CLS | 0 |
+
+## Optimizations Applied
+- Dynamic imports for all below-fold sections (About, Projects, Skills, Certifications, Contact, Footer)
+- WCAG AA contrast — `--muted` bumped from `#78716C` to `#5C5652`
+- `aria-label` added to all bare anchor tags in Footer and Contact
+- 40+ unused legacy assets deleted
+- `IdentityStrip.jsx` dead component removed
+- `tailwind.config.mjs` cleaned of dead font references
+
 
 | Token | Value | Use |
 |---|---|---|

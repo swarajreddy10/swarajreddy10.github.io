@@ -4,16 +4,16 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
-import About from '../components/About';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
-import Certifications from '../components/Certifications';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import SmoothScroll from '../components/SmoothScroll';
 import Preloader from '../components/Preloader';
+import SmoothScroll from '../components/SmoothScroll';
 
-const Cursor = dynamic(() => import('../components/Cursor'), { ssr: false });
+const Cursor       = dynamic(() => import('../components/Cursor'),       { ssr: false });
+const About        = dynamic(() => import('../components/About'),        { ssr: false });
+const Projects     = dynamic(() => import('../components/Projects'),     { ssr: false });
+const Skills       = dynamic(() => import('../components/Skills'),       { ssr: false });
+const Certifications = dynamic(() => import('../components/Certifications'), { ssr: false });
+const Contact      = dynamic(() => import('../components/Contact'),      { ssr: false });
+const Footer       = dynamic(() => import('../components/Footer'),       { ssr: false });
 
 export default function Home() {
     const [ready, setReady] = useState(false);

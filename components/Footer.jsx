@@ -99,7 +99,7 @@ export default function Footer() {
                                     textDecoration: 'none',
                                     transition: 'border-color 0.2s, color 0.2s, background 0.2s',
                                 }}
-                                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
                                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)'; }}
                             >
                                 <Icon size={14} />
@@ -111,9 +111,9 @@ export default function Footer() {
                 {/* Col 2 — Navigation */}
                 <div>
                     <p style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                        letterSpacing: '0.36em', textTransform: 'uppercase',
-                        color: 'var(--muted)', marginBottom: 20,
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        letterSpacing: '0.32em', textTransform: 'uppercase',
+                        color: 'var(--muted)', marginBottom: 20, fontWeight: 600,
                     }}>
                         Navigation
                     </p>
@@ -141,22 +141,23 @@ export default function Footer() {
                 {/* Col 3 — Contact */}
                 <div>
                     <p style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                        letterSpacing: '0.36em', textTransform: 'uppercase',
-                        color: 'var(--muted)', marginBottom: 20,
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        letterSpacing: '0.32em', textTransform: 'uppercase',
+                        color: 'var(--muted)', marginBottom: 20, fontWeight: 600,
                     }}>
                         Get in Touch
                     </p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                         {[
-                            { label: 'swarajchandra22@gmail.com', href: 'mailto:swarajchandra22@gmail.com' },
-                            { label: 'linkedin.com/in/swarajreddy', href: 'https://linkedin.com/in/swarajreddy', ext: true },
-                            { label: 'github.com/swarajreddy10', href: 'https://github.com/swarajreddy10', ext: true },
-                        ].map(({ label, href, ext }) => (
+                            { label: 'Send email to Swaraj',      href: 'mailto:swarajchandra22@gmail.com',    display: 'swarajchandra22@gmail.com' },
+                            { label: 'Visit LinkedIn profile',    href: 'https://linkedin.com/in/swarajreddy', display: 'linkedin.com/in/swarajreddy', ext: true },
+                            { label: 'Visit GitHub profile',      href: 'https://github.com/swarajreddy10',    display: 'github.com/swarajreddy10',   ext: true },
+                        ].map(({ label, href, display, ext }) => (
                             <a
                                 key={label} href={href}
                                 target={ext ? '_blank' : undefined}
                                 rel={ext ? 'noopener noreferrer' : undefined}
+                                aria-label={label}
                                 style={{
                                     fontFamily: 'var(--font-mono)', fontSize: 11,
                                     color: 'var(--muted)', textDecoration: 'none',
@@ -166,7 +167,7 @@ export default function Footer() {
                                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
                             >
-                                {label}
+                                {display}
                             </a>
                         ))}
                     </div>
@@ -184,7 +185,7 @@ export default function Footer() {
             }}>
                 <p style={{
                     fontFamily: 'var(--font-mono)', fontSize: 10,
-                    color: 'rgba(28,25,23,0.35)', letterSpacing: '0.12em',
+                    color: 'rgba(85,0,3,0.35)', letterSpacing: '0.12em',
                 }}>
                     &copy; {new Date().getFullYear()} Swaraj Chandra Reddy M. Built with Next.js and Motion.
                 </p>

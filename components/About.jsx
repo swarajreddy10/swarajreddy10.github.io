@@ -1,26 +1,28 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 
 const TIMELINE = [
     {
         period: 'Sep 2025 – Present',
-        role: 'Full-Stack Software Developer',
+        role: 'Software Engineer',
         company: 'Dexaminds',
         badge: 'Full-time',
         highlights: [
-            'Medical document intelligence pipeline, 90%+ accuracy, multi-LLM routing across Gemini, Azure OpenAI and Bedrock',
-            'Node.js microservices at 99.5% uptime with GitHub Actions CI/CD',
+            'Designed mobile auth microservice for Osulo using AWS Cognito with OAuth2 and JWT; defined service boundaries, API contracts, and token lifecycle flows documented with Mermaid UML diagrams',
+            'Built Node.js/TypeScript microservices in Docker at 99.5% uptime and 85% test coverage; configured GitHub Actions CI/CD pipelines and automated contact workflows using Botpress',
+            'Engineered a Python/FastAPI document-intelligence pipeline for Osulo routing across Vertex AI Gemini, Azure OpenAI, and AWS Bedrock by document complexity, reaching 90%+ accuracy on FHIR R4 output',
         ],
     },
     {
-        period: 'Jun – Sep 2025',
-        role: 'Software Engineering Intern',
+        period: 'Jun 2025 – Sep 2025',
+        role: 'Software Engineer Intern',
         company: 'Dexaminds',
         badge: 'Internship',
         highlights: [
-            'Shipped React + TypeScript components directly to production, resolved 15+ bugs to root cause',
+            'Built reusable React/TypeScript components with lazy loading and code splitting, improving page load time and UI responsiveness; shipped tested code in Agile sprints across the full UI-to-API layer',
+            'Tracked down and fixed 15+ production bugs across frontend and backend using Chrome DevTools and server logs, tracing each to root cause and deploying fixes to production',
         ],
     },
     {
@@ -29,12 +31,23 @@ const TIMELINE = [
         company: 'GITAM University, Hyderabad',
         badge: 'Education',
         highlights: [
-            'CGPA 8.2. Distributed microservices capstone with Spring Boot',
+            'CGPA 8.2. Distributed microservices capstone with Spring Boot and event-driven architecture',
         ],
     },
 ];
 
+function useMonthsSince(year, month) {
+    const [months, setMonths] = useState(0);
+    useEffect(() => {
+        const now = new Date();
+        const diff = (now.getFullYear() - year) * 12 + (now.getMonth() - (month - 1));
+        setMonths(Math.max(0, diff));
+    }, [year, month]);
+    return months;
+}
+
 export default function About() {
+    const months = useMonthsSince(2025, 6);
     const timelineRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start center', 'end center'] });
     const pathLength = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
@@ -52,16 +65,17 @@ export default function About() {
                     style={{ marginBottom: 72 }}
                 >
                     <span style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 9,
-                        letterSpacing: '0.4em', textTransform: 'uppercase',
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        letterSpacing: '0.36em', textTransform: 'uppercase',
                         color: 'var(--accent)', display: 'block', marginBottom: 20,
+                        fontWeight: 600,
                     }}>
                         About
                     </span>
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(28px, 4vw, 52px)',
-                        fontWeight: 400, color: 'var(--fg)',
+                        fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.025em', lineHeight: 1.2, marginBottom: 20,
                     }}>
                         I build systems that earn trust.
@@ -70,8 +84,10 @@ export default function About() {
                         fontFamily: 'var(--font-body)', fontSize: 16,
                         lineHeight: 1.75, color: 'var(--muted)',
                     }}>
-                        Full-stack engineer at Dexaminds building medical AI pipelines, production microservices
-                        and SaaS products. B.Tech CS from GITAM (2025). Every metric here is production-measured.
+                        Full-stack engineer integrating enterprise LLMs, building production microservices,
+                        and shipping SaaS products. B.Tech CS, GITAM (2025). My work has helped
+                        route medical documents across three LLM providers at 90%+ accuracy and kept
+                        microservices running at 99.5% uptime for real users.
                     </p>
                 </motion.div>
 
@@ -81,12 +97,13 @@ export default function About() {
                         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
                         viewport={{ once: true }} transition={{ duration: 0.4 }}
                         style={{
-                            fontFamily: 'var(--font-mono)', fontSize: 9,
-                            letterSpacing: '0.4em', textTransform: 'uppercase',
+                            fontFamily: 'var(--font-mono)', fontSize: 10,
+                            letterSpacing: '0.36em', textTransform: 'uppercase',
                             color: 'var(--accent)', display: 'block', marginBottom: 32,
+                            fontWeight: 600,
                         }}
                     >
-                        Experience
+                        Production experience ({months} month{months !== 1 ? 's' : ''})
                     </motion.span>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '20px 1fr', gap: '0 24px' }}>
@@ -115,8 +132,8 @@ export default function About() {
                                     {/* Node dot */}
                                     <div style={{
                                         position: 'absolute', left: -32, top: 20,
-                                        width: 8, height: 8, borderRadius: '50%',
-                                        border: '2px solid rgba(200,98,42,0.4)',
+                                        width: 10, height: 10, borderRadius: '50%',
+                                        border: '2px solid var(--accent)',
                                         background: 'var(--base)',
                                     }} />
 
@@ -125,7 +142,7 @@ export default function About() {
                                         borderRadius: 12,
                                         background: 'var(--surf)',
                                         padding: 'clamp(18px, 2.5vw, 26px)',
-                                        boxShadow: '0 1px 6px var(--shadow)',
+                                        boxShadow: '0 2px 16px var(--shadow)',
                                     }}>
                                         <div style={{
                                             display: 'flex', flexWrap: 'wrap',
@@ -150,13 +167,14 @@ export default function About() {
                                                 </span>
                                                 <span style={{
                                                     borderRadius: 100,
-                                                    border: '1px solid rgba(200,98,42,0.2)',
-                                                    background: 'rgba(200,98,42,0.07)',
+                                                    border: '1px solid var(--accent-border)',
+                                                    background: 'var(--accent-dim)',
                                                     color: 'var(--accent)',
-                                                    padding: '2px 9px',
+                                                    padding: '3px 10px',
                                                     fontFamily: 'var(--font-mono)',
                                                     fontSize: 9, letterSpacing: '0.2em',
                                                     textTransform: 'uppercase',
+                                                    fontWeight: 600,
                                                 }}>
                                                     {item.badge}
                                                 </span>
