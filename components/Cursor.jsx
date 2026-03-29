@@ -1,24 +1,34 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'motion/react';
+
+const STIFFNESS = 520;
+const DAMPING   = 40;
 
 export default function Cursor() {
-    const x = useMotionValue(-200);
-    const y = useMotionValue(-200);
-    const [visible, setVisible] = useState(false);
-    const [hovered, setHovered] = useState(false);
+    const rawX = useMotionValue(-300);
+    const rawY = useMotionValue(-300);
 
-    const springX = useSpring(x, { stiffness: 480, damping: 38 });
-    const springY = useSpring(y, { stiffness: 480, damping: 38 });
+    const x = useSpring(rawX, { stiffness: STIFFNESS, damping: DAMPING });
+    const y = useSpring(rawY, { stiffness: STIFFNESS, damping: DAMPING });
+
+    // Slower trailing ring
+    const ringX = useSpring(rawX, { stiffness: 140, damping: 22 });
+    const ringY = useSpring(rawY, { stiffness: 140, damping: 22 });
+
+    const [visible,  setVisible]  = useState(false);
+    const [hovered,  setHovered]  = useState(false);
+    const [clicking, setClicking] = useState(false);
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
+        // Only show custom cursor on pointer devices
         if (window.matchMedia('(pointer: coarse)').matches) return;
 
         const onMove = (e) => {
-            x.set(e.clientX);
-            y.set(e.clientY);
+            rawX.set(e.clientX);
+            rawY.set(e.clientY);
             if (!visible) setVisible(true);
         };
 
@@ -27,48 +37,63 @@ export default function Cursor() {
             setHovered(!!el);
         };
 
+        const onDown = () => setClicking(true);
+        const onUp   = () => setClicking(false);
+
         window.addEventListener('mousemove', onMove, { passive: true });
         document.addEventListener('mouseover', onOver);
+        document.addEventListener('mousedown', onDown);
+        document.addEventListener('mouseup', onUp);
 
         return () => {
             window.removeEventListener('mousemove', onMove);
             document.removeEventListener('mouseover', onOver);
+            document.removeEventListener('mousedown', onDown);
+            document.removeEventListener('mouseup', onUp);
         };
-    }, [x, y, visible]);
+    }, [rawX, rawY, visible]);
 
     if (!visible) return null;
 
     return (
         <>
-            {/* Outer ring — expands on hover */}
+            {/* Trailing ring — lags behind on hover */}
             <motion.div
-                className="pointer-events-none fixed z-[9999] rounded-full border"
                 style={{
-                    x: springX, y: springY,
+                    position: 'fixed', zIndex: 9998,
+                    borderRadius: '50%',
+                    border: '1px solid rgba(200,98,42,0.45)',
+                    pointerEvents: 'none',
+                    x: ringX, y: ringY,
                     translateX: '-50%', translateY: '-50%',
-                    borderColor: 'rgba(200,98,42,0.5)',
                 }}
                 animate={{
-                    width:   hovered ? 38 : 0,
-                    height:  hovered ? 38 : 0,
+                    width:   hovered ? 44 : 0,
+                    height:  hovered ? 44 : 0,
                     opacity: hovered ? 1  : 0,
+                    scale:   clicking ? 0.85 : 1,
                 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
             />
-            {/* Inner solid dot */}
+
+            {/* Inner dot */}
             <motion.div
-                className="pointer-events-none fixed z-[9999] rounded-full"
                 style={{
-                    x: springX, y: springY,
+                    position: 'fixed', zIndex: 9999,
+                    borderRadius: '50%',
+                    background: 'var(--fg)',
+                    pointerEvents: 'none',
+                    x, y,
                     translateX: '-50%', translateY: '-50%',
-                    background: '#F2EDE8',
+                    mixBlendMode: 'difference',
                 }}
                 animate={{
-                    width:   hovered ? 4 : 7,
-                    height:  hovered ? 4 : 7,
-                    opacity: hovered ? 0.6 : 0.85,
+                    width:   clicking ? 10 : hovered ? 5 : 8,
+                    height:  clicking ? 10 : hovered ? 5 : 8,
+                    opacity: hovered ? 0.7 : 0.9,
+                    scale:   clicking ? 0.8 : 1,
                 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
             />
         </>
     );

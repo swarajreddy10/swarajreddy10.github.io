@@ -7,6 +7,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
+import Certifications from '../components/Certifications';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import SmoothScroll from '../components/SmoothScroll';
@@ -24,18 +25,18 @@ export default function Home() {
             <SmoothScroll>
                 <Cursor />
                 <Nav />
-                <main
-                    className="min-h-screen bg-[#09080A]"
-                    style={{
-                        opacity: ready ? 1 : 0,
-                        transition: 'opacity 0.4s ease',
-                        pointerEvents: ready ? 'auto' : 'none',
-                    }}
-                >
+                <main style={{
+                    minHeight: '100svh',
+                    background: 'var(--base)',
+                    opacity: ready ? 1 : 0,
+                    transition: 'opacity 0.4s ease',
+                    pointerEvents: ready ? 'auto' : 'none',
+                }}>
                     <Hero />
                     <About />
                     <Projects />
                     <Skills />
+                    <Certifications />
                     <Contact />
                     <Footer />
                 </main>

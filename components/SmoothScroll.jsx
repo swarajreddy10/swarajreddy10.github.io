@@ -5,12 +5,10 @@ import Lenis from 'lenis';
 
 export default function SmoothScroll({ children }) {
     useEffect(() => {
-        // Touch/coarse devices already have great native momentum scroll.
-        // Running Lenis on top of it causes jank — skip it.
         if (window.matchMedia('(pointer: coarse)').matches) return;
 
         const lenis = new Lenis({
-            lerp: 0.1,          // 0 = instant, 1 = never reaches target. 0.1 = buttery
+            lerp: 0.1,
             smoothWheel: true,
             wheelMultiplier: 1.0,
             gestureOrientation: 'vertical',
@@ -29,5 +27,10 @@ export default function SmoothScroll({ children }) {
         };
     }, []);
 
-    return children;
+    // position:relative is required so Lenis can correctly calculate scroll offsets
+    return (
+        <div style={{ position: 'relative' }}>
+            {children}
+        </div>
+    );
 }
