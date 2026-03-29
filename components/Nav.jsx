@@ -4,25 +4,38 @@ import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
-    { label: 'About',    id: 'about'    },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Skills',   id: 'skills'   },
-    { label: 'Contact',  id: 'contact'  },
+    { label: 'About',   id: 'about'    },
+    { label: 'Work',    id: 'projects' },
+    { label: 'Skills',  id: 'skills'   },
+    { label: 'Contact', id: 'contact'  },
 ];
 
-const ACCENT = '#C8622A';
-const FG     = '#F2EDE8';
-const MUTED  = '#6B6560';
-const BORDER = '#252220';
+const SECTION_IDS = ['home', 'about', 'projects', 'skills', 'contact'];
 
 export default function Nav() {
-    const [scrolled, setScrolled] = useState(false);
     const [open,     setOpen]     = useState(false);
+    const [activeId, setActiveId] = useState('home');
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 60);
+        const onScroll = () => setScrolled(window.scrollY > 40);
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    useEffect(() => {
+        const observers = [];
+        SECTION_IDS.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const obs = new IntersectionObserver(
+                ([entry]) => { if (entry.isIntersecting) setActiveId(id); },
+                { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+            );
+            obs.observe(el);
+            observers.push(obs);
+        });
+        return () => observers.forEach((o) => o.disconnect());
     }, []);
 
     const scrollTo = (id) => {
@@ -31,110 +44,146 @@ export default function Nav() {
     };
 
     return (
-        <motion.header
-            initial={{ y: -80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-            className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-                scrolled
-                    ? 'border-b'
-                    : ''
-            }`}
-            style={scrolled ? {
-                background: 'rgba(9,8,10,0.88)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderColor: BORDER,
-            } : {}}
-        >
-            <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-
-                {/* Wordmark */}
-                <button
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="font-mono text-sm font-bold tracking-[0.25em] transition-opacity hover:opacity-70"
-                    style={{ color: ACCENT }}
-                >
-                    Swaraj.
-                </button>
-
-                {/* Desktop nav */}
-                <nav className="hidden items-center gap-8 md:flex">
-                    {NAV_LINKS.map(({ label, id }) => (
-                        <button
-                            key={id}
-                            onClick={() => scrollTo(id)}
-                            className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] transition-colors"
-                            style={{ color: MUTED }}
-                            onMouseEnter={e => (e.currentTarget.style.color = FG)}
-                            onMouseLeave={e => (e.currentTarget.style.color = MUTED)}
-                        >
-                            {label}
-                        </button>
-                    ))}
-                    <a
-                        href="mailto:swarajchandra22@gmail.com"
-                        className="rounded-full px-5 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.22em] transition-all duration-200"
-                        style={{ border: `1px solid ${ACCENT}55`, color: ACCENT }}
-                        onMouseEnter={e => { e.currentTarget.style.background = ACCENT; e.currentTarget.style.color = '#fff'; }}
-                        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = ACCENT; }}
+        <>
+            <motion.header
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
+                style={{
+                    position: 'fixed',
+                    top: 0, left: 0, right: 0,
+                    zIndex: 50,
+                    borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+                    background: scrolled ? 'rgba(250,248,245,0.92)' : 'transparent',
+                    backdropFilter: scrolled ? 'blur(16px)' : 'none',
+                    WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+                    transition: 'background 0.3s ease, border-color 0.3s ease',
+                }}
+            >
+                <div style={{
+                    maxWidth: 1100, margin: '0 auto',
+                    padding: '0 max(24px, 4vw)',
+                    height: 60,
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                }}>
+                    {/* Name */}
+                    <button
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        style={{
+                            fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                            fontSize: 18, fontWeight: 400, color: 'var(--fg)',
+                            background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+                            letterSpacing: '-0.01em', transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'var(--fg)')}
                     >
-                        Hire Me
-                    </a>
-                </nav>
+                        Swaraj Reddy
+                    </button>
 
-                {/* Hamburger */}
-                <button
-                    className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
-                    onClick={() => setOpen(!open)}
-                    aria-label="Toggle menu"
-                >
-                    <span className="h-px w-5 transition-all duration-200"
-                        style={{ background: FG, transform: open ? 'translateY(6px) rotate(45deg)' : 'none' }} />
-                    <span className="h-px w-5 transition-all duration-200"
-                        style={{ background: FG, opacity: open ? 0 : 1 }} />
-                    <span className="h-px w-5 transition-all duration-200"
-                        style={{ background: FG, transform: open ? 'translateY(-6px) rotate(-45deg)' : 'none' }} />
-                </button>
-            </div>
+                    {/* Desktop right */}
+                    <div className="hidden md:flex" style={{ alignItems: 'center', gap: 32 }}>
+                        <nav style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+                            {NAV_LINKS.map(({ label, id }) => {
+                                const isActive = activeId === id;
+                                return (
+                                    <button
+                                        key={id}
+                                        onClick={() => scrollTo(id)}
+                                        style={{
+                                            fontFamily: 'var(--font-body)',
+                                            fontSize: 14, fontWeight: isActive ? 500 : 400,
+                                            color: isActive ? 'var(--fg)' : 'var(--muted)',
+                                            background: 'none', border: 'none',
+                                            cursor: 'pointer', padding: 0,
+                                            transition: 'color 0.2s',
+                                        }}
+                                        onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
+                                        onMouseLeave={e => (e.currentTarget.style.color = isActive ? 'var(--fg)' : 'var(--muted)')}
+                                    >
+                                        {label}
+                                    </button>
+                                );
+                            })}
+                        </nav>
 
+                        {/* Status dot only */}
+                        <span style={{
+                            width: 7, height: 7, borderRadius: '50%',
+                            background: 'var(--signal)', display: 'block',
+                            animation: 'pulse-signal 2s ease-in-out infinite',
+                            flexShrink: 0,
+                        }} />
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        className="md:hidden"
+                        onClick={() => setOpen(!open)}
+                        aria-label="Toggle menu"
+                        style={{
+                            display: 'flex', flexDirection: 'column',
+                            gap: 5, background: 'none', border: 'none',
+                            cursor: 'pointer', padding: 4,
+                        }}
+                    >
+                        {[0, 1, 2].map((i) => (
+                            <span key={i} style={{
+                                display: 'block', width: 20, height: 1.5,
+                                background: 'var(--fg)', borderRadius: 1,
+                                transform: open
+                                    ? i === 0 ? 'translateY(6.5px) rotate(45deg)'
+                                    : i === 2 ? 'translateY(-6.5px) rotate(-45deg)'
+                                    : 'scaleX(0)'
+                                    : 'none',
+                                opacity: open && i === 1 ? 0 : 1,
+                                transition: 'transform 0.22s ease, opacity 0.22s ease',
+                            }} />
+                        ))}
+                    </button>
+                </div>
+            </motion.header>
+
+            {/* Mobile dropdown */}
             <AnimatePresence>
                 {open && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden border-t md:hidden"
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.2, ease: 'easeOut' }}
                         style={{
-                            borderColor: BORDER,
-                            background: 'rgba(9,8,10,0.96)',
-                            backdropFilter: 'blur(20px)',
+                            position: 'fixed', top: 60, left: 0, right: 0,
+                            zIndex: 49,
+                            background: 'rgba(250,248,245,0.97)',
+                            backdropFilter: 'blur(16px)',
+                            borderBottom: '1px solid var(--border)',
+                            padding: '16px max(24px, 4vw) 24px',
+                            display: 'flex', flexDirection: 'column', gap: 0,
                         }}
                     >
-                        <div className="flex flex-col px-6 py-4">
-                            {NAV_LINKS.map(({ label, id }) => (
-                                <button
-                                    key={id}
-                                    onClick={() => scrollTo(id)}
-                                    className="py-3 text-left font-mono text-sm font-semibold uppercase tracking-[0.22em] transition-colors"
-                                    style={{ color: MUTED }}
-                                    onMouseEnter={e => (e.currentTarget.style.color = FG)}
-                                    onMouseLeave={e => (e.currentTarget.style.color = MUTED)}
-                                >
-                                    {label}
-                                </button>
-                            ))}
-                            <a
-                                href="mailto:swarajchandra22@gmail.com"
-                                className="mt-2 inline-flex w-max rounded-full px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.22em]"
-                                style={{ border: `1px solid ${ACCENT}55`, color: ACCENT }}
+                        {NAV_LINKS.map(({ label, id }) => (
+                            <button
+                                key={id}
+                                onClick={() => scrollTo(id)}
+                                style={{
+                                    fontFamily: 'var(--font-body)', fontSize: 15,
+                                    fontWeight: 400, color: 'var(--fg)',
+                                    background: 'none', border: 'none',
+                                    cursor: 'pointer', textAlign: 'left',
+                                    padding: '12px 0',
+                                    borderBottom: '1px solid var(--border)',
+                                    transition: 'color 0.2s',
+                                }}
+                                onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                                onMouseLeave={e => (e.currentTarget.style.color = 'var(--fg)')}
                             >
-                                Hire Me
-                            </a>
-                        </div>
+                                {label}
+                            </button>
+                        ))}
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.header>
+        </>
     );
 }

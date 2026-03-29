@@ -22,7 +22,7 @@
 
 **Full-Stack Software Developer @ Dexaminds** (Sep 2025 – Present)
 
-- Engineered Python/FastAPI document-intelligence pipeline for Medsyntegrate: classifies medical records, applies specialised extraction (handwriting prompting, structured field parsing), routes across 3 LLM providers (Vertex AI Gemini, Azure OpenAI, AWS Bedrock) by complexity, enforces confidence-threshold safety gates before FHIR R4 output — 90%+ accuracy with tiered cost optimisation.
+- Engineered Python/FastAPI document-intelligence pipeline for Medsyntegrate: classifies medical records, applies specialised extraction (handwriting prompting, structured field parsing), routes across 3 LLM providers (Vertex AI Gemini, Azure OpenAI, AWS Bedrock) by complexity, enforces confidence-threshold safety gates — 90%+ accuracy with tiered cost optimisation.
 - Designed mobile auth microservice architecture for Medsyntegrate using AWS Cognito + OAuth2 + JWT; defined service boundaries, API contracts, token lifecycle flows documented with Mermaid UML.
 - Built Node.js/Express/TypeScript microservices for Dexaminds' production website: frontend/backend separation in Docker at 99.5% uptime, 85% test coverage, GitHub Actions CI/CD, Botpress LLM automation.
 
@@ -67,15 +67,12 @@
 - **Key metrics:** 100% API test coverage, 3 permission roles, 12 Flyway migrations, QR code check-ins via ZXing
 - **Features:** 12 RESTful endpoints with Spring Security method-level auth, HikariCP connection pooling, real-time analytics with Recharts, automated waitlist management, Docker multi-stage builds + CI/CD
 
-### Medsyntegrate Document Intelligence Pipeline (Dexaminds — Production)
-- **Stack:** Python, FastAPI, Vertex AI Gemini, Azure OpenAI, AWS Bedrock, Claude, PIL, FHIR R4
-- **Key metrics:** 90%+ classification accuracy, 3 LLM provider routing, FHIR R4 output
-- Classifies medical records by type; applies specialised extraction per type; routes to cheapest/best LLM by complexity; confidence-threshold safety gates before FHIR output.
-
-### Employee Management System
-- **GitHub:** https://github.com/swarajreddy10/Employee-management-app
-- **Stack:** Next.js 14, Fastify, TypeScript, Prisma, SQLite
-- **Key metrics:** <50ms API responses, 99.9% uptime target, type-safe end-to-end
+### Portfolio — swarajreddy10.github.io
+- **Live:** https://swarajreddy10.github.io
+- **GitHub:** https://github.com/swarajreddy10/swarajreddy10.github.io
+- **Stack:** Next.js 16, React 19, Three.js / R3F, Motion v12 (Framer Motion), Tailwind CSS v4, Lenis smooth scroll, Bun
+- **Design:** Cinematic editorial dark theme — Instrument Serif + DM Sans + JetBrains Mono, terracotta `#C8622A` brand color
+- **Features:** WebGL wave mesh hero, 10-language preloader, scroll-driven SVG timeline, stacking project cards, 5-domain skills architecture
 
 ---
 
@@ -85,7 +82,7 @@
 Python, TypeScript, JavaScript, Java, HTML5, CSS3, SQL
 
 ### Frontend
-React.js, Next.js, TanStack Query, Tailwind CSS, Framer Motion, Shadcn/ui, Responsive Design, ARIA/WCAG Accessibility
+React.js, Next.js, TanStack Query, Tailwind CSS, Framer Motion, Three.js / R3F, Shadcn/ui, Responsive Design, ARIA/WCAG Accessibility
 
 ### Backend
 Node.js (Express, Fastify), FastAPI, Spring Boot, RESTful APIs, Microservices, JWT/OAuth2, Zod validation
@@ -94,13 +91,16 @@ Node.js (Express, Fastify), FastAPI, Spring Boot, RESTful APIs, Microservices, J
 PostgreSQL, MongoDB, MySQL, Redis, Prisma ORM, JPA/Hibernate, Flyway, indexing + query optimisation
 
 ### DevOps & Cloud
-Docker, GitHub Actions, CI/CD, AWS (EC2, S3, Lambda, RDS, VPC, Cognito, CloudWatch), Vercel, Render, Railway
+Docker, GitHub Actions, CI/CD, AWS (EC2, S3, Lambda, RDS, VPC, Cognito, CloudWatch, Bedrock), Vercel, Render, Railway
 
-### AI/LLM
-Groq SDK (Llama 3.3 70B), Vertex AI Gemini, Azure OpenAI, AWS Bedrock, Claude API, RAG pipelines, Botpress
+### AI / LLM Integration
+Vertex AI Gemini, Azure OpenAI, AWS Bedrock, Groq AI, Multi-LLM routing, RAG pipelines, Botpress, structured output pipelines
+
+### AI-Assisted Development
+Claude Code (agentic coding, architecture reviews), GitHub Codex (inline completion, refactoring), NotebookLM (research synthesis, RAG workflows), prompt engineering, LLM evaluation
 
 ### Testing
-Vitest, Pytest, JUnit, Playwright E2E, Bun Test — 85–100% coverage on production systems
+Pytest, JUnit, Playwright E2E, Bun Test — 85–100% coverage on production systems
 
 ---
 

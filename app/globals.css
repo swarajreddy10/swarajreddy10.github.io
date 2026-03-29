@@ -1,59 +1,54 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* ── Design tokens ── */
+:root {
+  --base:    #FAF8F5;
+  --surf:    #F2EDE8;
+  --accent:  #C8622A;
+  --signal:  #16A34A;
+  --fg:      #1C1917;
+  --muted:   #78716C;
+  --border:  #E7E2DC;
+  --shadow:  rgba(28,25,23,0.07);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+}
 
 /* ── Scrollbar ── */
-.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #0F0E0F; }
-::-webkit-scrollbar-thumb { background: rgba(200,98,42,0.3); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(200,98,42,0.5); }
-
-/* ── Safe area ── */
-.top-safe    { top:    max(env(safe-area-inset-top),    1rem); }
-.right-safe  { right:  max(env(safe-area-inset-right),  1rem); }
-.bottom-safe { bottom: max(env(safe-area-inset-bottom), 1rem); }
-.left-safe   { left:   max(env(safe-area-inset-left),   1rem); }
-
-/* ── Keyframes ── */
-@keyframes float {
-  0%, 100% { transform: translateY(0px);  }
-  50%       { transform: translateY(-7px); }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--base); }
+::-webkit-scrollbar-thumb { background: rgba(200,98,42,0.22); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(200,98,42,0.42); }
 
 /* ── Base layer ── */
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #09080A;
-    color: #F2EDE8;
+    background-color: var(--base);
+    color: var(--fg);
+    position: relative;
   }
 
   * { box-sizing: border-box; }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-  }
-
-  p { line-height: 1.65; }
-
   body {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background-color: #09080A;
-    color: #F2EDE8;
+    background-color: var(--base);
+    color: var(--fg);
   }
+
+  .font-display { font-family: var(--font-display); }
+  .font-mono    { font-family: var(--font-mono); }
+
+  p { line-height: 1.65; }
+
+  @media (max-width: 640px)  { body { font-size: 14px; } }
+  @media (max-width: 375px)  { body { font-size: 13px; } }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -62,7 +57,30 @@
       transition-duration: 0.01ms !important;
     }
   }
-
-  @media (max-width: 640px)  { body { font-size: 14px; } }
-  @media (max-width: 375px)  { body { font-size: 13px; } }
 }
+
+/* ── Keyframes ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes pulse-signal {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* ── Section rhythm — seamless flow ── */
+section + section {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Utilities ── */
+.clip-reveal {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+
+.top-safe    { top:    max(env(safe-area-inset-top),    1rem); }
+.right-safe  { right:  max(env(safe-area-inset-right),  1rem); }
+.bottom-safe { bottom: max(env(safe-area-inset-bottom), 1rem); }
+.left-safe   { left:   max(env(safe-area-inset-left),   1rem); }

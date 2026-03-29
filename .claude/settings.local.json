@@ -13,7 +13,16 @@
       "WebFetch(domain:artprize-shadows.com)",
       "Bash(sed -n '55,75p' \"c:\\\\Users\\\\swara\\\\OneDrive\\\\Documents\\\\My-git\\\\swarajreddy10.github.io\\\\components\\\\Skills.jsx\")",
       "Bash(sed -n '95,145p' \"c:\\\\Users\\\\swara\\\\OneDrive\\\\Documents\\\\My-git\\\\swarajreddy10.github.io\\\\components\\\\Skills.jsx\")",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "WebFetch(domain:www.awwwards.com)",
+      "WebFetch(domain:motion.dev)",
+      "WebFetch(domain:bruno-simon.com)",
+      "Bash(npx next:*)",
+      "Bash(node -e \"const l = require\\(''./node_modules/lucide-react''\\); const keys = Object.keys\\(l\\).filter\\(k => k.toLowerCase\\(\\).includes\\(''link''\\)\\); console.log\\(keys.join\\(''\\\\n''\\)\\)\")",
+      "Bash(node -e \"const l = require\\(''./node_modules/lucide-react''\\); const keys = Object.keys\\(l\\).filter\\(k => !k.startsWith\\(''Lucide''\\) && !k.endsWith\\(''Icon''\\) && typeof l[k] === ''function''\\).slice\\(0,30\\); console.log\\(keys.join\\(''\\\\n''\\)\\)\")",
+      "Bash(node --input-type=module:*)",
+      "Bash(find c:/Users/swara/OneDrive/Documents/My-git/swarajreddy10.github.io/node_modules/@react-three/fiber/dist -name *.cjs)",
+      "Bash(grep -l \"clock\" \"c:/Users/swara/OneDrive/Documents/My-git/swarajreddy10.github.io/node_modules/@react-three/fiber/dist/\"*)"
     ]
   }
 }
