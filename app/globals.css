@@ -13,7 +13,7 @@
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
-  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+  --font-mono:    'Inter', system-ui, sans-serif;
 }
 
 /* ── Scrollbar ── */

@@ -97,7 +97,7 @@ Docker, GitHub Actions, CI/CD, AWS (EC2, S3, Lambda, RDS, VPC, Cognito, CloudWat
 Vertex AI Gemini, Azure OpenAI, AWS Bedrock, Groq AI, Multi-LLM routing, RAG pipelines, Botpress, structured output pipelines
 
 ### AI-Assisted Development
-Claude Code (agentic coding, architecture reviews), GitHub Codex (inline completion, refactoring), NotebookLM (research synthesis, RAG workflows), prompt engineering, LLM evaluation
+Claude Code (agentic coding, architecture reviews), OpenAI Codex (inline completion, refactoring), NotebookLM (research synthesis, RAG workflows), prompt engineering, LLM evaluation
 
 ### Testing
 Pytest, JUnit, Playwright E2E, Bun Test — 85–100% coverage on production systems
