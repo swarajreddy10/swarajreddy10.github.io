@@ -41,7 +41,14 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
-    const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const scrollTo = (id) => {
+        const el = document.getElementById(id);
+        if (window.__lenis && el) {
+            window.__lenis.scrollTo(el, { offset: -60, duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        } else {
+            el?.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <footer style={{ background: 'var(--surf)', borderTop: '1px solid var(--border)' }}>
@@ -60,7 +67,7 @@ export default function Footer() {
                 {/* Col 1 — Brand */}
                 <div>
                     <button
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        onClick={() => window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.2 }) : window.scrollTo({ top: 0, behavior: 'smooth' })}
                         style={{
                             fontFamily: 'var(--font-display)', fontStyle: 'italic',
                             fontSize: 28, fontWeight: 400, color: 'var(--fg)',
@@ -194,7 +201,7 @@ export default function Footer() {
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    onClick={() => window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.2 }) : window.scrollTo({ top: 0, behavior: 'smooth' })}
                     aria-label="Back to top"
                     style={{
                         display: 'inline-flex', alignItems: 'center', gap: 6,

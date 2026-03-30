@@ -16,9 +16,14 @@ export default function Nav() {
     const [open,     setOpen]     = useState(false);
     const [activeId, setActiveId] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+    const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 40);
+        const onScroll = () => {
+            setScrolled(window.scrollY > 40);
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            setProgress(total > 0 ? window.scrollY / total : 0);
+        };
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
@@ -39,7 +44,12 @@ export default function Nav() {
     }, []);
 
     const scrollTo = (id) => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        const el = document.getElementById(id);
+        if (window.__lenis && el) {
+            window.__lenis.scrollTo(el, { offset: -60, duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        } else {
+            el?.scrollIntoView({ behavior: 'smooth' });
+        }
         setOpen(false);
     };
 
@@ -68,7 +78,7 @@ export default function Nav() {
                 }}>
                     {/* Name */}
                     <button
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        onClick={() => window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.2 }) : window.scrollTo({ top: 0, behavior: 'smooth' })}
                         style={{
                             fontFamily: 'var(--font-display)', fontStyle: 'italic',
                             fontSize: 18, fontWeight: 400, color: 'var(--fg)',
@@ -107,6 +117,17 @@ export default function Nav() {
                             })}
                         </nav>
                     </div>
+
+                    {/* Scroll progress line */}
+                    <div style={{
+                        position: 'absolute', bottom: 0, left: 0,
+                        height: '1.5px',
+                        background: 'var(--accent)',
+                        width: `${progress * 100}%`,
+                        opacity: scrolled ? 1 : 0,
+                        transition: 'opacity 0.4s ease',
+                        pointerEvents: 'none',
+                    }} />
 
                     {/* Mobile hamburger */}
                     <button

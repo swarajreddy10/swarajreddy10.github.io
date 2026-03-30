@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef, useEffect, useState, useCallback } from 'react';
+import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react';
 
 const TIMELINE = [
     {
@@ -111,12 +111,63 @@ function CardContent({ item }) {
     );
 }
 
-function FlipCard({ item, isLeft, index }) {
+function FlipCard({ item, isLeft, index, isMobile }) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.15'] });
-    const rotateY = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [isLeft ? -60 : 60, 0, 0, isLeft ? 60 : -60]);
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-    const scale   = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.88, 1, 1, 0.88]);
+
+    // Z-axis depth: card emerges from behind, fully surfaces in view, sinks back on exit
+    const z       = useTransform(scrollYProgress, [0, 0.22, 0.78, 1], [-140, 0, 0, -140]);
+    // Slight X tilt: tips toward viewer on enter, away on exit
+    const rotateX = useTransform(scrollYProgress, [0, 0.22, 0.78, 1], [12, 0, 0, -12]);
+    const scale   = useTransform(scrollYProgress, [0, 0.22, 0.78, 1], [0.84, 1, 1, 0.84]);
+    const opacity = useTransform(scrollYProgress, [0, 0.18, 0.82, 1], [0, 1, 1, 0]);
+    // Glow pulses to max when card is centred in view
+    const glowSpread = useTransform(scrollYProgress, [0, 0.5, 1], [0, 38, 0]);
+    const boxShadow  = useMotionTemplate`0 0 ${glowSpread}px 0px rgba(184,171,56,0.20), 0 8px 36px 0px rgba(85,0,3,0.10)`;
+
+    const cardStyle = {
+        z, rotateX, scale,
+        transformPerspective: 1200,
+        border: '1px solid var(--border)',
+        borderRadius: 16,
+        background: 'var(--surf)',
+        padding: 'clamp(28px, 4vw, 48px)',
+        boxShadow,
+    };
+
+    if (isMobile) {
+        return (
+            <motion.div
+                ref={ref}
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: '24px 1fr',
+                    alignItems: 'start',
+                    gap: 0,
+                    opacity,
+                }}
+            >
+                {/* Left dot */}
+                <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 20, position: 'relative', zIndex: 1 }}>
+                    <motion.div
+                        style={{
+                            width: 10, height: 10, borderRadius: '50%',
+                            border: '2px solid var(--accent)',
+                            background: 'var(--base)',
+                            scale,
+                        }}
+                    />
+                </div>
+
+                {/* Card */}
+                <div style={{ paddingLeft: 16 }}>
+                    <motion.div style={{ ...cardStyle, borderRadius: 12, padding: 'clamp(18px, 4vw, 28px)' }}>
+                        <CardContent item={item} />
+                    </motion.div>
+                </div>
+            </motion.div>
+        );
+    }
 
     return (
         <motion.div
@@ -132,17 +183,7 @@ function FlipCard({ item, isLeft, index }) {
             {/* Left slot */}
             <div style={{ paddingRight: 28 }}>
                 {isLeft && (
-                    <motion.div
-                        style={{
-                            rotateY, scale,
-                            transformPerspective: 1000,
-                            border: '1px solid var(--border)',
-                            borderRadius: 16,
-                            background: 'var(--surf)',
-                            padding: 'clamp(28px, 4vw, 48px)',
-                            boxShadow: '0 0 24px 6px var(--shadow-lg)',
-                        }}
-                    >
+                    <motion.div style={cardStyle}>
                         <CardContent item={item} />
                     </motion.div>
                 )}
@@ -163,17 +204,7 @@ function FlipCard({ item, isLeft, index }) {
             {/* Right slot */}
             <div style={{ paddingLeft: 28 }}>
                 {!isLeft && (
-                    <motion.div
-                        style={{
-                            rotateY, scale,
-                            transformPerspective: 1000,
-                            border: '1px solid var(--border)',
-                            borderRadius: 16,
-                            background: 'var(--surf)',
-                            padding: 'clamp(28px, 4vw, 48px)',
-                            boxShadow: '0 0 24px 6px var(--shadow-lg)',
-                        }}
-                    >
+                    <motion.div style={cardStyle}>
                         <CardContent item={item} />
                     </motion.div>
                 )}
@@ -187,6 +218,15 @@ export default function About() {
     const timelineRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start center', 'end center'] });
     const pathLength = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 639px)');
+        setIsMobile(mq.matches);
+        const handler = (e) => setIsMobile(e.matches);
+        mq.addEventListener('change', handler);
+        return () => mq.removeEventListener('change', handler);
+    }, []);
 
     return (
         <section id="about" style={{ background: 'var(--base)', padding: '100px 0' }}>
@@ -245,7 +285,7 @@ export default function About() {
                     {/* Center line */}
                     <div style={{ position: 'relative' }}>
                         <svg
-                            style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 2, height: '100%', zIndex: 0 }}
+                            style={{ position: 'absolute', top: 0, left: isMobile ? 11 : '50%', transform: isMobile ? 'none' : 'translateX(-50%)', width: 2, height: '100%', zIndex: 0 }}
                             viewBox="0 0 2 100" preserveAspectRatio="none"
                         >
                             <line x1="1" y1="0" x2="1" y2="100" stroke="var(--border)" strokeWidth="2" />
@@ -257,7 +297,7 @@ export default function About() {
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                             {TIMELINE.map((item, i) => (
-                                <FlipCard key={i} item={item} isLeft={i % 2 === 0} index={i} />
+                                <FlipCard key={i} item={item} isLeft={i % 2 === 0} index={i} isMobile={isMobile} />
                             ))}
                         </div>
                     </div>
