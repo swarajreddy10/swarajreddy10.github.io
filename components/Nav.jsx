@@ -82,8 +82,8 @@ export default function Nav() {
                     <button
                         onClick={() => window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.2 }) : window.scrollTo({ top: 0, behavior: 'smooth' })}
                         style={{
-                            fontFamily: 'var(--font-body)', fontStyle: 'normal',
-                            fontSize: 18, fontWeight: 600, color: 'var(--fg)',
+                            fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                            fontSize: 18, fontWeight: 400, color: 'var(--fg)',
                             background: 'none', border: 'none', cursor: 'pointer', padding: 0,
                             letterSpacing: '0.05em', transition: 'color 0.2s',
                             whiteSpace: 'nowrap', flexShrink: 0,

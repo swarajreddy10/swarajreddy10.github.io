@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react';
 import { GraduationCap, Briefcase, Building2 } from 'lucide-react';
 
