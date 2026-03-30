@@ -13,10 +13,7 @@ const CERTS = [
         name: 'AWS Cloud Foundations & Cloud Architecting',
         issuer: 'AWS Academy',
         date: 'May – Jun 2024',
-        href: 'https://drive.google.com/file/d/1I9ggwsrVswrxcgNPkRfWYNjdp3h5xorv/view?usp=sharing',
-    },
-    {
-        name: 'MongoDB Python Developer Path',
+        href: 'https://www.credly.com/badges/aws-academy',
         issuer: 'MongoDB University',
         date: 'Nov 2025',
         href: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/2fef1e9a-2ef7-45ea-bdf7-9fde67df65a8-swaraj-chandra-reddy-m-2b64be3a-1a61-4210-9354-4051d4ad0677-certificate.pdf',

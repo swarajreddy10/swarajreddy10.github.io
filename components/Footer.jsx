@@ -22,16 +22,11 @@ function GithubIcon({ size = 15 }) {
     );
 }
 
-const NAV_COLS = [
-    {
-        heading: 'Navigation',
-        links: [
-            { label: 'About',   id: 'about'    },
-            { label: 'Work',    id: 'projects' },
-            { label: 'Skills',  id: 'skills'   },
-            { label: 'Contact', id: 'contact'  },
-        ],
-    },
+const NAV_LINKS = [
+    { label: 'About',   id: 'about'    },
+    { label: 'Work',    id: 'projects' },
+    { label: 'Skills',  id: 'skills'   },
+    { label: 'Contact', id: 'contact'  },
 ];
 
 const SOCIAL_LINKS = [
@@ -125,7 +120,7 @@ export default function Footer() {
                         Navigation
                     </p>
                     <nav style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                        {NAV_COLS[0].links.map(({ label, id }) => (
+                        {NAV_LINKS.map(({ label, id }) => (
                             <button
                                 key={id}
                                 onClick={() => scrollTo(id)}

@@ -118,7 +118,7 @@ export default function Hero() {
                     <h1 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(52px, 9vw, 120px)',
-                        fontWeight: 700, color: 'var(--fg)',
+                        fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
                     }}>
                         <SplitName name="Swaraj Reddy" />
