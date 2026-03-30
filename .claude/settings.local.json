@@ -22,7 +22,11 @@
       "Bash(node -e \"const l = require\\(''./node_modules/lucide-react''\\); const keys = Object.keys\\(l\\).filter\\(k => !k.startsWith\\(''Lucide''\\) && !k.endsWith\\(''Icon''\\) && typeof l[k] === ''function''\\).slice\\(0,30\\); console.log\\(keys.join\\(''\\\\n''\\)\\)\")",
       "Bash(node --input-type=module:*)",
       "Bash(find c:/Users/swara/OneDrive/Documents/My-git/swarajreddy10.github.io/node_modules/@react-three/fiber/dist -name *.cjs)",
-      "Bash(grep -l \"clock\" \"c:/Users/swara/OneDrive/Documents/My-git/swarajreddy10.github.io/node_modules/@react-three/fiber/dist/\"*)"
+      "Bash(grep -l \"clock\" \"c:/Users/swara/OneDrive/Documents/My-git/swarajreddy10.github.io/node_modules/@react-three/fiber/dist/\"*)",
+      "Bash(find /c/Users/swara/OneDrive/Documents/My-git/swarajreddy10.github.io -not -path */node_modules/* -not -path */.next/* -not -path */out/* -not -path */.git/* -type f)",
+      "Bash(npm install:*)",
+      "Bash(node -e \"require\\(''gsap''\\)\")",
+      "Bash(npm run:*)"
     ]
   }
 }

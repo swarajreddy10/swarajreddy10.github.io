@@ -1,7 +1,12 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Mail } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function LinkedinIcon({ size = 14 }) {
     return (
@@ -28,35 +33,96 @@ const SOCIALS = [
     { href: 'https://github.com/swarajreddy10',    Icon: GithubIcon,   label: 'GitHub',   ext: true },
 ];
 
+// Split name into character spans for GSAP stagger
+function SplitName({ name }) {
+    return (
+        <>
+            {name.split('').map((char, i) =>
+                char === ' ' ? (
+                    <span key={i} style={{ display: 'inline-block', width: '0.28em' }} />
+                ) : (
+                    <span key={i} style={{ display: 'inline-block', overflow: 'hidden', lineHeight: 'inherit', verticalAlign: 'bottom' }}>
+                        <span className="hero-char" style={{ display: 'inline-block' }}>
+                            {char}
+                        </span>
+                    </span>
+                )
+            )}
+        </>
+    );
+}
+
 export default function Hero() {
-    const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const nameRef     = useRef(null);
+    const contentRef  = useRef(null);
+    const sectionRef  = useRef(null);
+
+    const scrollToSection = (id) => {
+        const el = document.getElementById(id);
+        if (window.__lenis && el) {
+            window.__lenis.scrollTo(el, { offset: -60, duration: 1.4, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        } else {
+            el?.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    useEffect(() => {
+        // ── Character stagger entrance ──────────────────────────────────
+        const ctx = gsap.context(() => {
+            const chars = nameRef.current?.querySelectorAll('.hero-char');
+            if (chars?.length) {
+                gsap.fromTo(chars,
+                    { y: '105%' },
+                    {
+                        y: '0%',
+                        duration: 0.8,
+                        stagger: 0.038,
+                        ease: 'power4.out',
+                        delay: 0.25,
+                    }
+                );
+            }
+
+            // ── Parallax: content drifts up as user scrolls away ─────────
+            if (contentRef.current && sectionRef.current) {
+                gsap.to(contentRef.current, {
+                    y: -70,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 1.2,
+                    },
+                });
+            }
+        });
+
+        return () => ctx.revert();
+    }, []);
 
     return (
-        <section id="home" style={{
+        <section ref={sectionRef} id="home" style={{
             minHeight: '100svh',
             background: 'var(--base)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             padding: '60px max(24px, 5vw) 0',
+            overflow: 'hidden',
         }}>
-            <div style={{ maxWidth: 680, width: '100%', textAlign: 'center' }}>
+            <div ref={contentRef} style={{ maxWidth: 680, width: '100%', textAlign: 'center' }}>
 
-                {/* Name */}
-                <div style={{ overflow: 'hidden', marginBottom: 16, paddingBottom: '0.8em' }}>
-                    <motion.h1
-                        initial={{ y: '100%' }}
-                        animate={{ y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
-                        style={{
-                            fontFamily: 'var(--font-display)', fontStyle: 'italic',
-                            fontSize: 'clamp(52px, 9vw, 120px)',
-                            fontWeight: 500, color: 'var(--fg)',
-                            letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
-                        }}
-                    >
-                        Swaraj Reddy
-                    </motion.h1>
+                {/* Name — GSAP character stagger */}
+                <div ref={nameRef} style={{ marginBottom: 16, paddingBottom: '0.8em' }}>
+                    <h1 style={{
+                        fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                        fontSize: 'clamp(52px, 9vw, 120px)',
+                        fontWeight: 500, color: 'var(--fg)',
+                        letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
+                    }}>
+                        <SplitName name="Swaraj Reddy" />
+                    </h1>
                 </div>
 
                 {/* Role */}
@@ -64,7 +130,7 @@ export default function Hero() {
                     <motion.p
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.42, ease: [0.33, 1, 0.68, 1] }}
+                        transition={{ duration: 0.6, delay: 0.58, ease: [0.33, 1, 0.68, 1] }}
                         style={{
                             fontFamily: 'var(--font-mono)', fontSize: 11,
                             letterSpacing: '0.26em', textTransform: 'uppercase',
@@ -79,28 +145,29 @@ export default function Hero() {
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                    transition={{ duration: 0.5, delay: 0.72 }}
                     style={{
                         fontFamily: 'var(--font-body)', fontSize: 16,
                         lineHeight: 1.75, color: 'var(--muted)',
                         maxWidth: 520, margin: '0 auto 40px',
                     }}
                 >
-                    I own features end-to-end, from understanding the requirement to shipping the fix.
-                    I work closely with stakeholders, keep pace with the field by reading, building, and engaging
-                    with dev communities daily, and treat every problem as something worth solving properly.
-                    Genuinely curious about how things are built and always trying something new.
+                    I take full ownership from requirement to delivery, and bring the same care to the people
+                    involved as to the problem itself. I ask the right questions early, adapt without friction,
+                    and communicate before things become issues. Outside work, I read and build continuously.
+                    Software and AI move fast and I find that genuinely interesting. I hold myself to a high
+                    standard and try to raise the bar wherever I work.
                 </motion.p>
 
                 {/* CTAs */}
                 <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.72 }}
+                    transition={{ duration: 0.4, delay: 0.84 }}
                     style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 36 }}
                 >
                     <button
-                        onClick={() => scrollTo('projects')}
+                        onClick={() => scrollToSection('projects')}
                         style={{
                             borderRadius: 100, padding: '13px 30px',
                             fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 700,
@@ -118,7 +185,7 @@ export default function Hero() {
                         View Work
                     </button>
                     <button
-                        onClick={() => scrollTo('contact')}
+                        onClick={() => scrollToSection('contact')}
                         style={{
                             borderRadius: 100, padding: '13px 30px',
                             fontFamily: 'var(--font-mono)', fontSize: 10, fontWeight: 600,
@@ -140,8 +207,8 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.88, duration: 0.4 }}
-                    style={{ display: 'flex', gap: 10, justifyContent: 'center' }}
+                    transition={{ delay: 1.0, duration: 0.4 }}
+                    style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 52 }}
                 >
                     {SOCIALS.map(({ href, Icon, label, ext }) => (
                         <a
@@ -163,6 +230,29 @@ export default function Hero() {
                             <Icon size={14} />
                         </a>
                     ))}
+                </motion.div>
+
+                {/* Scroll indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.3, duration: 0.6 }}
+                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, cursor: 'default' }}
+                    onClick={() => scrollToSection('about')}
+                >
+                    <span style={{
+                        fontFamily: 'var(--font-mono)', fontSize: 9,
+                        letterSpacing: '0.28em', textTransform: 'uppercase',
+                        color: 'var(--muted)', opacity: 0.5,
+                    }}>
+                        Scroll
+                    </span>
+                    {/* Animated scroll line */}
+                    <div style={{
+                        width: 1, height: 36,
+                        background: 'linear-gradient(to bottom, var(--accent), transparent)',
+                        animation: 'scroll-line 1.8s ease-in-out infinite',
+                    }} />
                 </motion.div>
             </div>
         </section>
