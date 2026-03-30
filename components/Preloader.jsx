@@ -256,7 +256,7 @@ export default function Preloader({ onDone }) {
                                     animation: 'preloader-ring 1.2s ease-out forwards',
                                 }} />
 
-                                <div style={{ overflow: 'hidden', position: 'relative', zIndex: 1 }}>
+                                <div style={{ position: 'relative', zIndex: 1, padding: '0.15em 0' }}>
                                     <motion.h1
                                         initial={{ y: '106%' }}
                                         animate={{ y: 0 }}

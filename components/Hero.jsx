@@ -41,7 +41,7 @@ function SplitName({ name }) {
                 char === ' ' ? (
                     <span key={i} style={{ display: 'inline-block', width: '0.28em' }} />
                 ) : (
-                    <span key={i} style={{ display: 'inline-block', overflow: 'hidden', lineHeight: 'inherit', verticalAlign: 'bottom' }}>
+                    <span key={i} style={{ display: 'inline-block', lineHeight: 'inherit', verticalAlign: 'bottom' }}>
                         <span className="hero-char" style={{ display: 'inline-block' }}>
                             {char}
                         </span>
@@ -118,7 +118,7 @@ export default function Hero() {
                     <h1 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(52px, 9vw, 120px)',
-                        fontWeight: 500, color: 'var(--fg)',
+                        fontWeight: 700, color: 'var(--fg)',
                         letterSpacing: '-0.03em', lineHeight: 1, margin: 0,
                     }}>
                         <SplitName name="Swaraj Reddy" />

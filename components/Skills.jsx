@@ -32,13 +32,13 @@ const DOMAINS = [
         index: '05',
         name: 'Testing',
         tagline: 'Coverage that earns confidence.',
-        skills: ['Unit Testing', 'Integration Testing', 'JUnit', 'Pytest', 'Puppeteer'],
+        skills: ['Unit Testing', 'Integration Testing', 'JUnit', 'Pytest', 'Bun Test'],
     },
     {
         index: '06',
         name: 'AI Integration & Tooling',
         tagline: 'From LLM APIs in production to tools that sharpen the craft.',
-        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Groq AI', 'Claude Code', 'OpenAI Codex', 'NotebookLM', 'Prompt Engineering', 'LLM Evaluation'],
+        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Groq AI', 'Claude Code', 'OpenAI Codex', 'NotebookLM', 'Prompt Engineering'],
     },
 ];
 
