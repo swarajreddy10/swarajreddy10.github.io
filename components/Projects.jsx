@@ -38,10 +38,11 @@ function StackCard({ project, index }) {
                     padding: 'clamp(28px, 4vw, 48px)',
                     display: 'flex', flexDirection: 'column',
                     justifyContent: 'space-between',
+                    overflow: 'hidden',
                 }}>
                     {/* Watermark */}
                     <div style={{
-                        position: 'absolute', right: -10, top: '50%',
+                        position: 'absolute', right: 0, top: '50%',
                         transform: 'translateY(-50%)',
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(80px, 12vw, 180px)',

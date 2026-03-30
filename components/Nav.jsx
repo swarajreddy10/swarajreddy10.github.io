@@ -63,32 +63,36 @@ export default function Nav() {
                     position: 'fixed',
                     top: 0, left: 0, right: 0,
                     zIndex: 50,
-                    borderBottom: '1px solid transparent',
-                    background: 'transparent',
-                    backdropFilter: 'none',
-                    WebkitBackdropFilter: 'none',
-                    transition: 'none',
+                    borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+                    background: scrolled ? 'rgba(250,248,238,0.72)' : 'transparent',
+                    backdropFilter: scrolled ? 'blur(12px)' : 'none',
+                    WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+                    transition: 'background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease',
+                    overflow: 'visible',
                 }}
             >
                 <div style={{
                     maxWidth: 1100, margin: '0 auto',
-                    padding: '0 max(24px, 4vw)',
-                    height: 60,
+                    padding: '8px max(24px, 4vw)',
+                    minHeight: 60,
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    overflow: 'visible',
                 }}>
                     {/* Name */}
                     <button
                         onClick={() => window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.2 }) : window.scrollTo({ top: 0, behavior: 'smooth' })}
                         style={{
-                            fontFamily: 'var(--font-display)', fontStyle: 'italic',
-                            fontSize: 18, fontWeight: 400, color: 'var(--fg)',
+                            fontFamily: 'var(--font-body)', fontStyle: 'normal',
+                            fontSize: 18, fontWeight: 600, color: 'var(--fg)',
                             background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-                            letterSpacing: '-0.01em', transition: 'color 0.2s',
+                            letterSpacing: '0.05em', transition: 'color 0.2s',
+                            whiteSpace: 'nowrap', flexShrink: 0,
+                            lineHeight: 1.4, paddingBottom: 4,
                         }}
                         onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
                         onMouseLeave={e => (e.currentTarget.style.color = 'var(--fg)')}
                     >
-                        Swaraj Reddy
+                        Portfolio
                     </button>
 
                     {/* Desktop right */}

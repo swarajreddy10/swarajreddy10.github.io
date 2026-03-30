@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react';
+import { GraduationCap, Briefcase, Building2 } from 'lucide-react';
 
 const TIMELINE = [
     {
@@ -31,7 +32,7 @@ const TIMELINE = [
         company: 'GITAM University, Hyderabad',
         badge: 'Education',
         highlights: [
-            'CGPA 8.2. Distributed microservices capstone with Spring Boot and event-driven architecture',
+            'CGPA 8.2. Bachelor of Technology in Computer Science.',
         ],
     },
 ];
@@ -102,7 +103,13 @@ function CardContent({ item }) {
                         fontFamily: 'var(--font-body)',
                         fontSize: 13, lineHeight: 1.6, color: 'var(--muted)',
                     }}>
-                        <span style={{ color: 'var(--accent)', marginTop: 3, flexShrink: 0, opacity: 0.6 }}>→</span>
+                        <span style={{ color: 'var(--accent)', marginTop: 2, flexShrink: 0, opacity: 0.7 }}>
+                            {item.badge === 'Education'
+                                ? <GraduationCap size={13} />
+                                : item.badge === 'Full-time'
+                                ? <Briefcase size={13} />
+                                : <Building2 size={13} />}
+                        </span>
                         {h}
                     </li>
                 ))}
