@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { Send, Copy, Check, ArrowUpRight, Mail } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 import { useState } from 'react';
+import IndianFlag from './IndianFlag';
 
 function LinkedinIcon({ size = 16 }) {
     return (
@@ -221,7 +222,7 @@ export default function Contact() {
                             lineHeight: 1.7, color: 'var(--muted)',
                             marginBottom: 8,
                         }}>
-                            Based in Hyderabad. Open to remote and hybrid roles.
+                            <IndianFlag size={18} />{' '}Based in Hyderabad, India. Open to onsite, hybrid, and remote roles. Open to relocation.
                             Typically respond within 24 hours.
                         </p>
 

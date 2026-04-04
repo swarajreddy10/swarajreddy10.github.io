@@ -2,13 +2,14 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react';
-import { GraduationCap, Briefcase, Building2 } from 'lucide-react';
+import { GraduationCap, Briefcase, Building2, MapPin } from 'lucide-react';
 
 const TIMELINE = [
     {
         period: 'Sep 2025 – Present',
         role: 'Software Engineer',
         company: 'Dexaminds',
+        location: 'Hyderabad, IN',
         badge: 'Full-time',
         highlights: [
             'Designed mobile auth microservice for Osulo using AWS Cognito with OAuth2 and JWT; defined service boundaries, API contracts, and token lifecycle flows documented with Mermaid UML diagrams',
@@ -20,6 +21,7 @@ const TIMELINE = [
         period: 'Jun 2025 – Sep 2025',
         role: 'Software Engineer Intern',
         company: 'Dexaminds',
+        location: 'Hyderabad, IN',
         badge: 'Internship',
         highlights: [
             'Built reusable React/TypeScript components with lazy loading and code splitting, improving page load time and UI responsiveness; shipped tested code in Agile sprints across the full UI-to-API layer',
@@ -29,7 +31,8 @@ const TIMELINE = [
     {
         period: '2021 – 2025',
         role: 'B.Tech Computer Science',
-        company: 'GITAM University, Hyderabad',
+        company: 'GITAM University',
+        location: 'Hyderabad, IN',
         badge: 'Education',
         highlights: [
             'CGPA 8.2. Bachelor of Technology in Computer Science.',
@@ -63,6 +66,17 @@ function CardContent({ item }) {
                     <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--accent)' }}>
                         {item.company}
                     </p>
+                    {item.location && (
+                        <p style={{
+                            display: 'inline-flex', alignItems: 'center', gap: 3,
+                            fontFamily: 'var(--font-mono)', fontSize: 9,
+                            color: 'var(--muted)', marginTop: 4,
+                            letterSpacing: '0.12em',
+                        }}>
+                            <MapPin size={9} strokeWidth={1.8} />
+                            {item.location}
+                        </p>
+                    )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 5 }}>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)' }}>
