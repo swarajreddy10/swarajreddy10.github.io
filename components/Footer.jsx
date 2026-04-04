@@ -2,6 +2,7 @@
 
 import { Mail, ArrowUp } from 'lucide-react';
 import { motion } from 'motion/react';
+import IndianFlag from './IndianFlag';
 
 function LinkedinIcon({ size = 15 }) {
     return (
@@ -82,7 +83,7 @@ export default function Footer() {
                         maxWidth: 280, marginBottom: 28,
                     }}>
                         Full-stack engineer building AI pipelines, microservices, and
-                        production-grade SaaS. Based in Hyderabad.
+                        production-grade SaaS. <IndianFlag size={16} /> Based in Hyderabad, India.
                     </p>
 
                     {/* Social icons */}

@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className="antialiased overflow-x-hidden bg-[#F5F2DC] text-[#550003]">
         {children}

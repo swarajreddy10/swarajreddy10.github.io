@@ -72,15 +72,23 @@ export default function Preloader({ onDone }) {
             return T0 + (0.20 + ((i - 1) / (WORDS.length - 2)) * (0.92 - 0.20)) * (T_END - T0);
         });
 
-        /* Position each word element via GSAP */
+        /* Position each word element via GSAP
+           Words are offset perpendicularly off the spiral line so the
+           path never passes through the text. At angle θ the outward
+           perpendicular is (-sinθ, cosθ). */
+        const PERP = 26;
         const wordEls = wordRefs.current.filter(Boolean);
         wordEls.forEach((el, i) => {
-            const { x, y } = pos(thetas[i]);
+            const θ     = thetas[i];
+            const { x, y } = pos(θ);
+            const px    = -Math.sin(θ) * PERP;
+            const py    =  Math.cos(θ) * PERP;
             gsap.set(el, {
                 position: 'absolute',
                 left: cx, top: cy,
                 xPercent: -50, yPercent: -50,
-                x: x - cx, y: y - cy,
+                x: (x - cx) + px,
+                y: (y - cy) + py,
                 opacity: 0, scale: 0.5,
             });
         });
@@ -209,7 +217,7 @@ export default function Preloader({ onDone }) {
                                 userSelect: 'none',
                                 fontFamily: 'var(--font-display)',
                                 fontStyle: 'italic',
-                                fontSize: 'clamp(12px,1.55vw,22px)',
+                                fontSize: i === 0 ? 'clamp(20px,2.8vw,38px)' : 'clamp(12px,1.55vw,22px)',
                                 fontWeight: 400,
                                 color: FG,
                                 letterSpacing: '-0.01em',
