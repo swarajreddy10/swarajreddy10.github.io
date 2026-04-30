@@ -12,9 +12,10 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Full-time',
         highlights: [
-            'Designed mobile auth microservice for Osulo using AWS Cognito with OAuth2 and JWT; defined service boundaries, API contracts, and token lifecycle flows documented with Mermaid UML diagrams',
-            'Built Node.js/TypeScript microservices in Docker at 99.5% uptime and 85% test coverage; configured GitHub Actions CI/CD pipelines and automated contact workflows using Botpress',
-            'Engineered a Python/FastAPI document-intelligence pipeline for Osulo routing across Vertex AI Gemini, Azure OpenAI, and AWS Bedrock by document complexity, reaching 90%+ accuracy on FHIR R4 output',
+            'Owned end-to-end delivery of Osulo\'s patient file ingestion platform in Go 1.26 — from OpenAPI 3.1.0 contract design through ECS Fargate deployment — authoring 7 Terraform modules, 5 Go binaries, 8 DB migrations, and a 5-stage GitHub Actions pipeline with no external ops dependency.',
+            'Designed an event-driven ingestion pipeline on AWS EventBridge + Step Functions (300s timeout, 3-retry exponential backoff) with an SQS DLQ backstop, eliminating 100% of manual file-promotion steps through automated rule evaluation and state-machine transitions.',
+            'Hardened the pipeline for healthtech compliance: KMS encryption across 3 S3 tiers and SQS, least-privilege IAM per ECS task type, zero public IPs on any task, and a Bearer token circuit breaker (5-failure threshold, 30s window) — validated in CI on every pull request.',
+            'Engineered a Python/FastAPI document-intelligence pipeline routing across Vertex AI Gemini, Azure OpenAI, and AWS Bedrock by document complexity, reaching 90%+ accuracy on FHIR R4 structured output.',
         ],
     },
     {
