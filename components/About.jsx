@@ -12,10 +12,9 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Full-time',
         highlights: [
-            'Owned end-to-end delivery of Osulo\'s patient file ingestion platform in Go 1.26 — from OpenAPI 3.1.0 contract design through ECS Fargate deployment — authoring 7 Terraform modules, 5 Go binaries, 8 DB migrations, and a 5-stage GitHub Actions pipeline with no external ops dependency.',
-            'Designed an event-driven ingestion pipeline on AWS EventBridge + Step Functions (300s timeout, 3-retry exponential backoff) with an SQS DLQ backstop, eliminating 100% of manual file-promotion steps through automated rule evaluation and state-machine transitions.',
-            'Hardened the pipeline for healthtech compliance: KMS encryption across 3 S3 tiers and SQS, least-privilege IAM per ECS task type, zero public IPs on any task, and a Bearer token circuit breaker (5-failure threshold, 30s window) — validated in CI on every pull request.',
-            'Engineered a Python/FastAPI document-intelligence pipeline routing across Vertex AI Gemini, Azure OpenAI, and AWS Bedrock by document complexity, reaching 90%+ accuracy on FHIR R4 structured output.',
+            'Built a greenfield Go microservice for Osulo\'s patient care app: 7 Terraform modules, 5 binaries, 5-stage CI/CD on ECS Fargate, cutting infra provisioning time by 90%+ and developer setup time by 90%+.',
+            'Designed event-driven ingestion on AWS EventBridge + Step Functions (3-retry exponential backoff) with SQS DLQ, eliminating 100% of manual file-promotion steps through automated state-machine transitions.',
+            'Engineered a Python/FastAPI multi-LLM routing pipeline across Vertex AI Gemini, Azure OpenAI, and AWS Bedrock by document complexity, reaching 90%+ accuracy on FHIR R4 structured output.',
         ],
     },
     {
@@ -80,9 +79,6 @@ function CardContent({ item }) {
                     )}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 5 }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--muted)' }}>
-                        {item.period}
-                    </span>
                     <span style={{
                         borderRadius: 100,
                         border: '1px solid',
@@ -157,79 +153,61 @@ function FlipCard({ item, isLeft, index, isMobile }) {
         boxShadow,
     };
 
-    if (isMobile) {
-        return (
-            <motion.div
-                ref={ref}
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: '24px 1fr',
-                    alignItems: 'start',
-                    gap: 0,
-                    opacity,
-                }}
-            >
-                {/* Left dot */}
-                <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 20, position: 'relative', zIndex: 1 }}>
-                    <motion.div
-                        style={{
-                            width: 10, height: 10, borderRadius: '50%',
-                            border: '2px solid var(--accent)',
-                            background: 'var(--base)',
-                            scale,
-                        }}
-                    />
-                </div>
-
-                {/* Card */}
-                <div style={{ paddingLeft: 16 }}>
-                    <motion.div style={{ ...cardStyle, borderRadius: 12, padding: 'clamp(18px, 4vw, 28px)' }}>
-                        <CardContent item={item} />
-                    </motion.div>
-                </div>
-            </motion.div>
-        );
-    }
-
     return (
         <motion.div
             ref={ref}
             style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 40px 1fr',
+                gridTemplateColumns: '24px 1fr',
                 alignItems: 'start',
                 gap: 0,
                 opacity,
+                paddingTop: 40,
             }}
         >
-            {/* Left slot */}
-            <div style={{ paddingRight: 28 }}>
-                {isLeft && (
-                    <motion.div style={cardStyle}>
-                        <CardContent item={item} />
-                    </motion.div>
-                )}
-            </div>
-
-            {/* Center dot */}
-            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 20, position: 'relative', zIndex: 1 }}>
+            {/* Dot column — date pill + dot stacked on line */}
+            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 2 }}>
+                {/* Date pill */}
+                <span style={{
+                    position: 'absolute',
+                    top: -36,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    whiteSpace: 'nowrap',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: isMobile ? 8 : 9,
+                    fontWeight: 600,
+                    letterSpacing: '0.1em',
+                    color: item.badge === 'Full-time' ? '#16A34A' : item.badge === 'Internship' ? 'var(--accent)' : 'var(--muted)',
+                    background: 'var(--base)',
+                    border: '1px solid',
+                    borderColor: item.badge === 'Full-time' ? 'rgba(22,163,74,0.3)' : item.badge === 'Internship' ? 'rgba(184,171,56,0.35)' : 'rgba(85,0,3,0.15)',
+                    borderRadius: 100,
+                    padding: '3px 8px',
+                    zIndex: 3,
+                }}>
+                    {item.period}
+                </span>
+                {/* Dot */}
                 <motion.div
                     style={{
-                        width: 12, height: 12, borderRadius: '50%',
+                        width: isMobile ? 10 : 12, height: isMobile ? 10 : 12,
+                        borderRadius: '50%',
                         border: '2px solid var(--accent)',
                         background: 'var(--base)',
+                        flexShrink: 0,
+                        marginTop: 4,
                         scale,
+                        zIndex: 2,
                     }}
                 />
             </div>
 
-            {/* Right slot */}
-            <div style={{ paddingLeft: 28 }}>
-                {!isLeft && (
-                    <motion.div style={cardStyle}>
-                        <CardContent item={item} />
-                    </motion.div>
-                )}
+            {/* Card */}
+            <div style={{ paddingLeft: isMobile ? 16 : 24, paddingBottom: 8 }}>
+                <motion.div style={{ ...cardStyle, padding: isMobile ? 'clamp(18px, 4vw, 28px)' : 'clamp(20px, 3vw, 36px)', borderRadius: isMobile ? 12 : 14 }}>
+                    <CardContent item={item} />
+                </motion.div>
             </div>
         </motion.div>
     );
@@ -307,7 +285,7 @@ export default function About() {
                     {/* Center line */}
                     <div style={{ position: 'relative' }}>
                         <svg
-                            style={{ position: 'absolute', top: 0, left: isMobile ? 11 : '50%', transform: isMobile ? 'none' : 'translateX(-50%)', width: 2, height: '100%', zIndex: 0 }}
+                            style={{ position: 'absolute', top: 0, left: 11, width: 2, height: '100%', zIndex: 0, pointerEvents: 'none' }}
                             viewBox="0 0 2 100" preserveAspectRatio="none"
                         >
                             <line x1="1" y1="0" x2="1" y2="100" stroke="var(--border)" strokeWidth="2" />

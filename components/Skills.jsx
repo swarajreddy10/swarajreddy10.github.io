@@ -8,7 +8,7 @@ const DOMAINS = [
         index: '01',
         name: 'Languages',
         tagline: 'Fluent across the stack, from scripting to systems.',
-        skills: ['Python', 'TypeScript', 'JavaScript', 'Java'],
+        skills: ['Go', 'Python', 'TypeScript', 'JavaScript', 'Java'],
     },
     {
         index: '02',
@@ -26,19 +26,19 @@ const DOMAINS = [
         index: '04',
         name: 'DevOps & Cloud',
         tagline: 'Ship fast, recover faster.',
-        skills: ['Git / GitHub', 'Docker', 'GitHub Actions', 'CI/CD', 'AWS (EC2, S3, IAM, CloudWatch, Cognito, Bedrock)'],
+        skills: ['Git / GitHub', 'Docker', 'GitHub Actions', 'CI/CD', 'Terraform', 'AWS ECS Fargate', 'AWS S3', 'AWS SQS', 'AWS EventBridge', 'AWS Step Functions', 'AWS IAM', 'AWS Bedrock'],
     },
     {
         index: '05',
         name: 'Testing',
         tagline: 'Coverage that earns confidence.',
-        skills: ['Unit Testing', 'Integration Testing', 'JUnit', 'Pytest', 'Bun Test'],
+        skills: ['Unit Testing', 'Integration Testing', 'JUnit', 'Pytest', 'Go Test', 'Bun Test'],
     },
     {
         index: '06',
         name: 'AI Integration & Tooling',
         tagline: 'From LLM APIs in production to tools that sharpen the craft.',
-        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Groq AI', 'Claude Code', 'OpenAI Codex', 'NotebookLM', 'Prompt Engineering'],
+        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Claude Code', 'OpenAI Codex', 'NotebookLM', 'Prompt Engineering'],
     },
 ];
 
