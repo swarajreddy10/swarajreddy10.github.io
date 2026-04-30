@@ -27,7 +27,8 @@
       "Bash(npm install:*)",
       "Bash(node -e \"require\\(''gsap''\\)\")",
       "Bash(npm run:*)",
-      "WebFetch(domain:cdn.simpleicons.org)"
+      "WebFetch(domain:cdn.simpleicons.org)",
+      "WebSearch"
     ]
   }
 }

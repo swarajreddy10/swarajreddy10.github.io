@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local knowledge base (personal, not for repo)
+SWARAJ_KB.md
+
+# npm lockfile — project uses bun (bun.lock is authoritative)
+package-lock.json
+
+# claude code local settings (per-machine)
+.claude/settings.local.json
