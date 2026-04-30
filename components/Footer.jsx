@@ -214,14 +214,6 @@ export default function Footer() {
                 </motion.button>
             </div>
 
-            <style>{`
-                @media (max-width: 700px) {
-                    .footer-grid { grid-template-columns: 1fr 1fr !important; }
-                }
-                @media (max-width: 480px) {
-                    .footer-grid { grid-template-columns: 1fr !important; }
-                }
-            `}</style>
         </footer>
     );
 }

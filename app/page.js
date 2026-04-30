@@ -26,13 +26,7 @@ export default function Home() {
             <SmoothScroll>
                 <Cursor />
                 <Nav />
-                <main style={{
-                    minHeight: '100svh',
-                    background: 'var(--base)',
-                    opacity: ready ? 1 : 0,
-                    transition: 'opacity 0.4s ease',
-                    pointerEvents: ready ? 'auto' : 'none',
-                }}>
+                <main className="main-content" data-hidden={!ready ? 'true' : undefined}>
                     <Hero />
                     <About />
                     <Projects />

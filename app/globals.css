@@ -16,7 +16,7 @@
 
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
-  --font-mono:    'Inter', system-ui, sans-serif;
+  --font-mono:    ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
 }
 
 /* ── Scrollbar ── */
@@ -98,6 +98,42 @@
   0%   { opacity: 0; transform: translateY(-6px); }
   45%  { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(10px); }
+}
+
+@keyframes cert-shimmer {
+  0%   { left: -100%; opacity: 1; }
+  100% { left: 160%;  opacity: 0; }
+}
+.cert-shimmer {
+  animation: cert-shimmer 0.75s ease forwards;
+}
+
+.pill-card:hover {
+  border-color: var(--accent) !important;
+  background: var(--surf) !important;
+  box-shadow: 0 2px 16px rgba(184,171,56,0.18) !important;
+}
+.pill-card:hover span {
+  color: var(--accent) !important;
+}
+
+/* ── Responsive grid breakpoints ── */
+@media (max-width: 860px) { .cert-grid        { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 700px) { .footer-grid      { grid-template-columns: 1fr 1fr !important; } }
+@media (max-width: 680px) { .contact-grid     { grid-template-columns: 1fr !important; } }
+@media (max-width: 600px) { .skill-card-inner { grid-template-columns: 1fr !important; } }
+@media (max-width: 520px) { .cert-grid        { grid-template-columns: 1fr !important; } }
+@media (max-width: 480px) { .footer-grid      { grid-template-columns: 1fr !important; } }
+
+/* ── Preloader fade-in wrapper ── */
+.main-content {
+  min-height: 100svh;
+  background: var(--base);
+  transition: opacity 0.4s ease;
+}
+.main-content[data-hidden='true'] {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ── Section rhythm — seamless flow ── */

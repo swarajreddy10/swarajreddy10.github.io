@@ -329,11 +329,6 @@ export default function Contact() {
                 </div>
             </div>
 
-            <style>{`
-                @media (max-width: 680px) {
-                    .contact-grid { grid-template-columns: 1fr !important; }
-                }
-            `}</style>
         </section>
     );
 }

@@ -243,21 +243,6 @@ export default function Certifications() {
                 </div>
             </div>
 
-            <style>{`
-                @keyframes cert-shimmer {
-                    0%   { left: -100%; opacity: 1; }
-                    100% { left: 160%;  opacity: 0; }
-                }
-                .cert-shimmer {
-                    animation: cert-shimmer 0.75s ease forwards;
-                }
-                @media (max-width: 860px) {
-                    .cert-grid { grid-template-columns: repeat(2, 1fr) !important; }
-                }
-                @media (max-width: 520px) {
-                    .cert-grid { grid-template-columns: 1fr !important; }
-                }
-            `}</style>
         </section>
     );
 }

@@ -109,11 +109,6 @@ function SkillCard({ domain, index }) {
                 </div>
             </motion.div>
 
-            <style>{`
-                @media (max-width: 600px) {
-                    .skill-card-inner { grid-template-columns: 1fr !important; }
-                }
-            `}</style>
         </div>
     );
 }
