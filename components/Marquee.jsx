@@ -104,16 +104,6 @@ export default function Marquee() {
             <MarqueeRow items={TRACK1} reverse={false} speed={44} />
             <MarqueeRow items={TRACK2} reverse={true}  speed={36} />
 
-            <style>{`
-                .pill-card:hover {
-                    border-color: var(--accent) !important;
-                    background: var(--surf) !important;
-                    box-shadow: 0 2px 16px rgba(184,171,56,0.18) !important;
-                }
-                .pill-card:hover span {
-                    color: var(--accent) !important;
-                }
-            `}</style>
         </div>
     );
 }
