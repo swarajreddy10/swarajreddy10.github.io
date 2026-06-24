@@ -12,9 +12,10 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Full-time',
         highlights: [
-            'Built a greenfield Go microservice for Osulo\'s patient care app: 7 Terraform modules, 5 binaries, 5-stage CI/CD on ECS Fargate, cutting infra provisioning time by 90%+ and developer setup time by 90%+.',
-            'Designed event-driven ingestion on AWS EventBridge + Step Functions (3-retry exponential backoff) with SQS DLQ, eliminating 100% of manual file-promotion steps through automated state-machine transitions.',
-            'Engineered a Python/FastAPI multi-LLM routing pipeline across Vertex AI Gemini, Azure OpenAI, and AWS Bedrock by document complexity, reaching 90%+ accuracy on FHIR R4 structured output.',
+            'I built the patient care application platform across ingestion and CDIS, owning the handoff boundary and shipping independently deployable Go services for control-plane and downstream processing.',
+            'I built the AWS delivery path with Go, PostgreSQL, Terraform, Docker, and GitHub Actions, including EventBridge routing, Step Functions orchestration, and SQS DLQ workers.',
+            'I delivered a system that runs end to end in 52.3s for ingestion, 48.1s for CDIS, with a 0.2s handoff gap and 100.6s overall runtime.',
+            'I hardened the control plane with presigned S3 uploads, 24-hour idempotency, tombstone-first delete cleanup, and KMS-backed versioned storage for audit history and replay safety.',
         ],
     },
     {
@@ -24,8 +25,8 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Internship',
         highlights: [
-            'Built reusable React/TypeScript components with lazy loading and code splitting, improving page load time and UI responsiveness; shipped tested code in Agile sprints across the full UI-to-API layer',
-            'Tracked down and fixed 15+ production bugs across frontend and backend using Chrome DevTools and server logs, tracing each to root cause and deploying fixes to production',
+            'I built reusable React/TypeScript components with lazy loading and code splitting, shipping tested UI-to-API features in Agile sprints.',
+            'I tracked down and fixed 15+ production bugs across frontend and backend using Chrome DevTools and server logs, then pushed production fixes.',
         ],
     },
     {
@@ -35,7 +36,7 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Education',
         highlights: [
-            'CGPA 8.2. Bachelor of Technology in Computer Science.',
+            'I completed my Bachelor of Technology in Computer Science with a CGPA of 8.2.',
         ],
     },
 ];
@@ -153,6 +154,46 @@ function FlipCard({ item, isLeft, index, isMobile }) {
         boxShadow,
     };
 
+    if (isMobile) {
+        return (
+            <motion.div
+                ref={ref}
+                style={{
+                    opacity,
+                    paddingTop: 0,
+                    marginBottom: 18,
+                    paddingLeft: 14,
+                }}
+            >
+                <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 10, marginLeft: 4 }}>
+                    <span style={{
+                        whiteSpace: 'nowrap',
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: 8,
+                        fontWeight: 600,
+                        letterSpacing: '0.1em',
+                        color: item.badge === 'Full-time' ? '#16A34A' : item.badge === 'Internship' ? 'var(--accent)' : 'var(--muted)',
+                        background: 'var(--base)',
+                        border: '1px solid',
+                        borderColor: item.badge === 'Full-time' ? 'rgba(22,163,74,0.3)' : item.badge === 'Internship' ? 'rgba(184,171,56,0.35)' : 'rgba(85,0,3,0.15)',
+                        borderRadius: 100,
+                        padding: '3px 8px',
+                    }}>
+                        {item.period}
+                    </span>
+                </div>
+
+                <motion.div style={{
+                    ...cardStyle,
+                    padding: 'clamp(18px, 4vw, 24px)',
+                    borderRadius: 12,
+                }}>
+                    <CardContent item={item} />
+                </motion.div>
+            </motion.div>
+        );
+    }
+
     return (
         <motion.div
             ref={ref}
@@ -215,6 +256,11 @@ function FlipCard({ item, isLeft, index, isMobile }) {
 
 export default function About() {
     const months = useMonthsSince(2025, 6);
+    const years = Math.floor(months / 12);
+    const experienceLabel =
+        months >= 12
+            ? `${years} year${years !== 1 ? 's' : ''}`
+            : `${months} month${months !== 1 ? 's' : ''}`;
     const timelineRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start center', 'end center'] });
     const pathLength = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
@@ -229,7 +275,7 @@ export default function About() {
     }, []);
 
     return (
-        <section id="about" style={{ background: 'var(--base)', padding: '100px 0' }}>
+        <section id="about" className="about-section" style={{ background: 'var(--base)', padding: '100px 0' }}>
             <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 max(28px, 4vw)' }}>
 
                 {/* Bio */}
@@ -260,10 +306,7 @@ export default function About() {
                         fontFamily: 'var(--font-body)', fontSize: 16,
                         lineHeight: 1.75, color: 'var(--muted)',
                     }}>
-                        Full-stack engineer integrating enterprise LLMs, building production microservices,
-                        and shipping SaaS products. B.Tech CS, GITAM (2025). My work has helped
-                        route medical documents across three LLM providers at 90%+ accuracy and kept
-                        microservices running at 99.5% uptime for real users.
+                        Backend systems, cloud delivery, product interfaces. B.Tech CSE, GITAM, 2025.
                     </p>
                 </motion.div>
 
@@ -279,12 +322,13 @@ export default function About() {
                             fontWeight: 600,
                         }}
                     >
-                        Production experience ({months} month{months !== 1 ? 's' : ''})
+                        Production experience ({experienceLabel})
                     </motion.span>
 
                     {/* Center line */}
                     <div style={{ position: 'relative' }}>
                         <svg
+                            className="timeline-line"
                             style={{ position: 'absolute', top: 0, left: 11, width: 2, height: '100%', zIndex: 0, pointerEvents: 'none' }}
                             viewBox="0 0 2 100" preserveAspectRatio="none"
                         >
@@ -295,7 +339,7 @@ export default function About() {
                             />
                         </svg>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+                        <div className="timeline-list" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                             {TIMELINE.map((item, i) => (
                                 <FlipCard key={i} item={item} isLeft={i % 2 === 0} index={i} isMobile={isMobile} />
                             ))}

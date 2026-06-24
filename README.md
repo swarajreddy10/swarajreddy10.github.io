@@ -1,13 +1,18 @@
-# Swaraj Reddy — Personal Portfolio
+# Swaraj Reddy — Engineering Portfolio
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://swarajreddy10.github.io/)
-[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-blue)](https://reactjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-38B2AC)](https://tailwindcss.com/)
-[![Motion](https://img.shields.io/badge/Motion-12-purple)](https://motion.dev/)
-[![Bun](https://img.shields.io/badge/Bun-1.3-FBF0DF)](https://bun.sh/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.1-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.4-blue)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2.2-38B2AC)](https://tailwindcss.com/)
+[![Motion](https://img.shields.io/badge/Motion-12.38.0-purple)](https://motion.dev/)
+[![Bun](https://img.shields.io/badge/Bun-1.3.14-FBF0DF)](https://bun.sh/)
 
-Live at [swarajreddy10.github.io](https://swarajreddy10.github.io/)
+Production site: [swarajreddy10.github.io](https://swarajreddy10.github.io/)
+
+## Summary
+
+I built this portfolio as the public home for my work. It shows the systems I ship across Go, Python, React, AWS, and the patient care application platform at Dexaminds, while keeping the presentation concise, quantified, and easy to scan.
+The site follows the same structure I use when I present my work: direct, selective, and backed by a static-exported Next.js app with a reusable design system.
 
 ## Lighthouse Scores
 
@@ -24,27 +29,24 @@ Live at [swarajreddy10.github.io](https://swarajreddy10.github.io/)
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (static export)
-- **UI**: React 19, Tailwind CSS v4
-- **Animations**: Motion v12 (useScroll, useTransform, AnimatePresence)
+- **Framework**: Next.js 16.2.1 (static export)
+- **UI**: React 19.2.4, Tailwind CSS v4.2.2
+- **Animations**: Motion v12.38.0 (useScroll, useTransform, AnimatePresence)
 - **Smooth scroll**: Lenis
 - **Forms**: @formspree/react
-- **Package manager**: Bun
+- **Package manager**: Bun 1.3.14
 - **Deployment**: GitHub Pages via gh-pages
 
-## Features
+## Highlights
 
-- Scroll-driven stacking cards for Projects, Skills, and About timeline
-- Split-panel preloader with 11-language sequence (EN, HI, TE, BN, MR, TA, FR, ES, DE, IT, PT)
-- SVG pathLength draw timeline in About section with alternating flip cards
-- Color-coded experience badges (Full-time = green, Internship = gold, Education = muted)
-- Creative social link cards in Contact with icon badge, hint text, and hover animations
-- CSS custom property design system — golden olive palette, 8 tokens, zero runtime JS for theming
-- Dynamic imports for all below-fold sections — reduces initial JS payload
-- Accent-colored custom cursor with dual spring trailing ring
-- WCAG AA contrast ratios throughout
-- Fully responsive — mobile, tablet, desktop
-- Static export — no server required, deploys to GitHub Pages
+- I built scroll-driven stacking cards for Projects, Skills, and the About timeline
+- I added a split-panel preloader with an 11-language sequence that sets the tone fast
+- I designed the SVG pathLength timeline with alternating cards and Motion-powered reveal states
+- I created a CSS custom property design system with a golden olive palette and zero runtime theme switching
+- I lazy-loaded below-fold sections to reduce initial JS payload
+- I kept WCAG AA contrast, responsive layouts, and production-friendly accessibility defaults in place
+- I added an accent-colored custom cursor and contact cards for a more distinctive visual system
+- I ship the site as a static export on GitHub Pages
 
 ## Run Locally
 
@@ -65,7 +67,7 @@ Open [http://localhost:3000](http://localhost:3000).
 bun run deploy
 ```
 
-Builds the static export and pushes the `out` directory to the `gh-pages` branch.
+I build the static export and push the `out` directory to the `gh-pages` branch.
 
 ## Contact
 

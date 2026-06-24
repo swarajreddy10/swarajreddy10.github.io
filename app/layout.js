@@ -1,11 +1,11 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Swaraj Reddy | Full-Stack Software Developer',
+  title: 'Swaraj Reddy | Engineering Portfolio',
   description:
-    'Full-Stack Software Developer building production-grade systems with React, Spring Boot, FastAPI, and AWS. Open to new roles in 2026.',
+    'Engineering portfolio for Swaraj Reddy, showing backend systems, product interfaces, and the patient care application platform at Dexaminds.',
   keywords:
-    'Swaraj Reddy, Full Stack Developer, React, Next.js, Spring Boot, Python, FastAPI, AWS, AI, Hyderabad, Portfolio',
+    'Swaraj Reddy, Engineering Portfolio, Full Stack Software Engineer, Go, React, Next.js, AWS, PostgreSQL, Docker, GitHub Actions, patient care application platform, Dexaminds, Hyderabad, India',
   authors: [{ name: 'Swaraj Chandra Reddy M' }],
   creator: 'Swaraj Chandra Reddy M',
   robots: 'index, follow',
@@ -13,16 +13,16 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://swarajreddy10.github.io',
-    title: 'Swaraj Reddy | Full-Stack Software Developer',
+    title: 'Swaraj Reddy | Engineering Portfolio',
     description:
-      'Building production-grade systems at Dexaminds. React · Spring Boot · FastAPI · AWS.',
-    siteName: 'Swaraj Reddy Portfolio',
+      'Engineering portfolio for Swaraj Reddy, showing backend systems, product interfaces, and the patient care application platform at Dexaminds.',
+    siteName: 'Swaraj Reddy | Engineering Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Swaraj Reddy | Full-Stack Software Developer',
+    title: 'Swaraj Reddy | Engineering Portfolio',
     description:
-      'Building production-grade systems at Dexaminds. React · Spring Boot · FastAPI · AWS.',
+      'Engineering portfolio for Swaraj Reddy, showing backend systems, product interfaces, and the patient care application platform at Dexaminds.',
   },
 };
 

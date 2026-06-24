@@ -6,39 +6,39 @@ import { useRef } from 'react';
 const DOMAINS = [
     {
         index: '01',
-        name: 'Languages',
-        tagline: 'Fluent across the stack, from scripting to systems.',
-        skills: ['Go', 'Python', 'TypeScript', 'JavaScript', 'Java'],
+        name: 'Programming Languages',
+        tagline: 'The languages I use most.',
+        skills: ['Python', 'Java', 'Go', 'TypeScript', 'JavaScript'],
     },
     {
         index: '02',
         name: 'Backend',
-        tagline: 'APIs and services built to stay up.',
-        skills: ['FastAPI', 'Node.js / Express', 'Spring Boot', 'REST APIs', 'PostgreSQL', 'MongoDB', 'OAuth2 / JWT'],
+        tagline: 'Reliable APIs and services.',
+        skills: ['FastAPI', 'Spring Boot', 'REST APIs', 'PostgreSQL', 'JWT / OAuth2'],
     },
     {
         index: '03',
         name: 'Frontend',
-        tagline: 'Interfaces that feel as good as they look.',
-        skills: ['React / Next.js', 'Tailwind CSS', 'Motion'],
+        tagline: 'Interfaces with clear hierarchy.',
+        skills: ['React', 'Next.js', 'Tailwind CSS', 'Motion'],
     },
     {
         index: '04',
         name: 'DevOps & Cloud',
-        tagline: 'Ship fast, recover faster.',
-        skills: ['Git / GitHub', 'Docker', 'GitHub Actions', 'CI/CD', 'Terraform', 'AWS ECS Fargate', 'AWS S3', 'AWS SQS', 'AWS EventBridge', 'AWS Step Functions', 'AWS IAM', 'AWS Bedrock'],
+        tagline: 'Delivery paths I keep lean.',
+        skills: ['GitHub Actions', 'Docker', 'Terraform', 'AWS', 'S3 / SQS / EventBridge', 'Step Functions'],
     },
     {
         index: '05',
         name: 'Testing',
-        tagline: 'Coverage that earns confidence.',
-        skills: ['Unit Testing', 'Integration Testing', 'JUnit', 'Pytest', 'Go Test', 'Bun Test'],
+        tagline: 'Coverage that protects releases.',
+        skills: ['Unit Testing', 'Integration Testing', 'Playwright', 'Bun Test'],
     },
     {
         index: '06',
         name: 'AI Integration & Tooling',
-        tagline: 'From LLM APIs in production to tools that sharpen the craft.',
-        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Claude Code', 'OpenAI Codex', 'NotebookLM', 'Prompt Engineering'],
+        tagline: 'LLM tools I use deliberately.',
+        skills: ['Vertex AI Gemini', 'AWS Bedrock', 'Azure OpenAI', 'Claude Code'],
     },
 ];
 
@@ -131,7 +131,7 @@ export default function Skills() {
                         color: 'var(--accent)', display: 'block', marginBottom: 16,
                         fontWeight: 600,
                     }}>
-                        Skills
+                        Core Stack
                     </span>
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
@@ -139,7 +139,7 @@ export default function Skills() {
                         fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.025em', lineHeight: 1.15,
                     }}>
-                        What I bring to the table.
+                        Selected skills, kept lean.
                     </h2>
                 </motion.div>
 
