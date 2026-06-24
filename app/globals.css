@@ -125,6 +125,35 @@
 @media (max-width: 520px) { .cert-grid        { grid-template-columns: 1fr !important; } }
 @media (max-width: 480px) { .footer-grid      { grid-template-columns: 1fr !important; } }
 
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 44px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .hero-content {
+    max-width: 100% !important;
+  }
+
+  .hero-scroll {
+    margin-bottom: 18px !important;
+  }
+
+  .about-section {
+    padding-top: 72px !important;
+  }
+
+  .timeline-line {
+    display: none !important;
+  }
+
+  .timeline-list {
+    gap: 18px !important;
+  }
+}
+
 /* ── Preloader fade-in wrapper ── */
 .main-content {
   min-height: 100svh;

@@ -176,7 +176,7 @@ export default function Contact() {
                             letterSpacing: '0.28em', textTransform: 'uppercase',
                             color: 'var(--signal)',
                         }}>
-                            Open to new opportunities
+                            Open to roles where I can build
                         </span>
                     </div>
                     <span style={{
@@ -222,7 +222,7 @@ export default function Contact() {
                             lineHeight: 1.7, color: 'var(--muted)',
                             marginBottom: 8,
                         }}>
-                            <IndianFlag size={18} />{' '}Based in Hyderabad, India. Open to onsite, hybrid, and remote roles. Open to relocation.
+                            <IndianFlag size={18} />{' '}Based in Hyderabad, India. Open to onsite, hybrid, and remote roles, and open to relocation.
                             Typically respond within 24 hours.
                         </p>
 

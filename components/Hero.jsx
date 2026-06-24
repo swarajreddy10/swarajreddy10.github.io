@@ -102,16 +102,16 @@ export default function Hero() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="home" style={{
+        <section ref={sectionRef} id="home" className="hero-section" style={{
             minHeight: '100svh',
             background: 'var(--base)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '60px max(24px, 5vw) 0',
+            padding: '60px max(20px, 4vw) 0',
             overflow: 'hidden',
         }}>
-            <div ref={contentRef} style={{ maxWidth: 680, width: '100%', textAlign: 'center' }}>
+            <div ref={contentRef} className="hero-content" style={{ maxWidth: 760, width: '100%', textAlign: 'center' }}>
 
                 {/* Name — GSAP character stagger */}
                 <div ref={nameRef} style={{ marginBottom: 16, paddingBottom: '0.8em' }}>
@@ -137,7 +137,7 @@ export default function Hero() {
                             color: 'var(--accent)', margin: 0, fontWeight: 600,
                         }}
                     >
-                        Full-Stack Engineer. I build, I ship.
+                        Early-career software engineer.
                     </motion.p>
                 </div>
 
@@ -149,21 +149,17 @@ export default function Hero() {
                     style={{
                         fontFamily: 'var(--font-body)', fontSize: 16,
                         lineHeight: 1.75, color: 'var(--muted)',
-                        maxWidth: 520, margin: '0 auto 40px',
+                        maxWidth: 620, margin: '0 auto 40px',
                     }}
                 >
-                    I take full ownership from requirement to delivery, and bring the same care to the people
-                    involved as to the problem itself. I ask the right questions early, adapt without friction,
-                    and communicate before things become issues. Outside work, I read and build continuously.
-                    Software and AI move fast and I find that genuinely interesting. I hold myself to a high
-                    standard and try to raise the bar wherever I work.
+                    I like understanding the why before I build the what. I learn fast, ask thoughtful questions, adapt quickly when the path changes, and turn messy ideas into software that feels simple to use and solid to rely on.
                 </motion.p>
 
                 {/* CTAs */}
                 <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.84 }}
+                    transition={{ duration: 0.4, delay: 0.8 }}
                     style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 36 }}
                 >
                     <button
@@ -182,7 +178,7 @@ export default function Hero() {
                         onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.97)')}
                         onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
                     >
-                        View Work
+                        See Projects
                     </button>
                     <button
                         onClick={() => scrollToSection('contact')}
@@ -199,7 +195,7 @@ export default function Hero() {
                         onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.97)')}
                         onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
                     >
-                        Get in Touch
+                        Contact
                     </button>
                 </motion.div>
 
@@ -207,7 +203,7 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.0, duration: 0.4 }}
+                    transition={{ delay: 0.98, duration: 0.4 }}
                     style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 52 }}
                 >
                     {SOCIALS.map(({ href, Icon, label, ext }) => (
@@ -236,7 +232,8 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.3, duration: 0.6 }}
+                    transition={{ delay: 1.08, duration: 0.6 }}
+                    className="hero-scroll"
                     style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, cursor: 'default' }}
                     onClick={() => scrollToSection('about')}
                 >

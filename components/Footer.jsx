@@ -82,8 +82,8 @@ export default function Footer() {
                         lineHeight: 1.65, color: 'var(--muted)',
                         maxWidth: 280, marginBottom: 28,
                     }}>
-                        Full-stack engineer building AI pipelines, microservices, and
-                        production-grade SaaS. <IndianFlag size={16} /> Based in Hyderabad, India.
+                        I work across backend systems, cloud delivery, and product interfaces.
+                        <IndianFlag size={16} /> Based in Hyderabad, India.
                     </p>
 
                     {/* Social icons */}
