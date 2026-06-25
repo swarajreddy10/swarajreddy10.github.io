@@ -41,7 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 # local knowledge base (personal, not for repo)
-SWARAJ_KB.md
+professional-profile.md
 
 # npm lockfile — project uses bun (bun.lock is authoritative)
 package-lock.json
