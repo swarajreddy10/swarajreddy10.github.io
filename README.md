@@ -1,7 +1,7 @@
 # Swaraj Reddy - Engineering Portfolio
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://swarajreddy10.github.io/)
-[![Next.js](https://img.shields.io/badge/Next.js-16.2.1-black)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.3.6-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2.4-blue)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2.2-38B2AC)](https://tailwindcss.com/)
 [![Motion](https://img.shields.io/badge/Motion-12.38.0-purple)](https://motion.dev/)
@@ -30,7 +30,7 @@ Project stories use compressed STAR structure: the system problem or constraint,
 
 ## Tech Stack
 
-- **Framework**: Next.js 16.2.1 (static export)
+- **Framework**: Next.js 16.3.6 (static export)
 - **UI**: React 19.2.4, Tailwind CSS v4.2.2
 - **Animations**: Motion v12.38.0 (useScroll, useTransform, AnimatePresence)
 - **Smooth scroll**: Lenis
