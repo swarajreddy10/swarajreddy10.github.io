@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useSyncExternalStore } from 'react';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react';
 import { GraduationCap, Briefcase, Building2, MapPin } from 'lucide-react';
 
@@ -12,10 +12,10 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Full-time',
         highlights: [
-            'I built the patient care application platform across ingestion and CDIS, owning the handoff boundary and shipping independently deployable Go services for control-plane and downstream processing.',
-            'I built the AWS delivery path with Go, PostgreSQL, Terraform, Docker, and GitHub Actions, including EventBridge routing, Step Functions orchestration, and SQS DLQ workers.',
-            'I delivered a system that runs end to end in 52.3s for ingestion, 48.1s for CDIS, with a 0.2s handoff gap and 100.6s overall runtime.',
-            'I hardened the control plane with presigned S3 uploads, 24-hour idempotency, tombstone-first delete cleanup, and KMS-backed versioned storage for audit history and replay safety.',
+            'SpotMyJob: Architected 3 independently deployable microservices; owned the Go source-governance and canonical-processing backends and led search-engine work that raised transformation throughput by 64% and vector ingestion by 17x.',
+            'SpotMyJob: Integrated Cloudflare Workers AI\'s Qwen3 0.6B model through an OpenAI-compatible gateway, generating 1,024-dimensional vectors and reducing recurring external fetches by 43%.',
+            'Osulo: Built 2 independently deployable Go service planes for healthcare-document ingestion and Clinical Document Intelligence Service, measuring 52.3s ingestion and a 0.2s handoff.',
+            'Osulo: Integrated Vertex AI Gemini and Azure OpenAI GPT models for prescriptions and laboratory reports, delivering 48.1s extraction and 100.6s end-to-end processing with schema validation and review gates.',
         ],
     },
     {
@@ -25,8 +25,8 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Internship',
         highlights: [
-            'I built reusable React/TypeScript components with lazy loading and code splitting, shipping tested UI-to-API features in Agile sprints.',
-            'I tracked down and fixed 15+ production bugs across frontend and backend using Chrome DevTools and server logs, then pushed production fixes.',
+            'Moved from React and TypeScript delivery into backend ownership during a 3-month internship, shipping tested UI-to-API changes with lazy loading and code splitting.',
+            'Diagnosed and fixed 15+ production defects across frontend and backend code using Chrome DevTools and server logs.',
         ],
     },
     {
@@ -36,20 +36,24 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Education',
         highlights: [
-            'I completed my Bachelor of Technology in Computer Science with a CGPA of 8.2.',
+            'Completed a Bachelor of Technology in Computer Science with a CGPA of 8.2.',
         ],
     },
 ];
 
-function useMonthsSince(year, month) {
-    const [months, setMonths] = useState(0);
-    useEffect(() => {
-        const now = new Date();
-        const diff = (now.getFullYear() - year) * 12 + (now.getMonth() - (month - 1));
-        setMonths(Math.max(0, diff));
-    }, [year, month]);
-    return months;
+function getMonthsSince(year, month) {
+    const now = new Date();
+    return Math.max(0, (now.getFullYear() - year) * 12 + (now.getMonth() - (month - 1)));
 }
+
+const subscribeToMobile = (callback) => {
+    const mediaQuery = window.matchMedia('(max-width: 639px)');
+    mediaQuery.addEventListener('change', callback);
+    return () => mediaQuery.removeEventListener('change', callback);
+};
+
+const getMobileSnapshot = () => window.matchMedia('(max-width: 639px)').matches;
+const getServerMobileSnapshot = () => false;
 
 function CardContent({ item }) {
     return (
@@ -255,24 +259,21 @@ function FlipCard({ item, isLeft, index, isMobile }) {
 }
 
 export default function About() {
-    const months = useMonthsSince(2025, 6);
+    const months = getMonthsSince(2025, 6);
     const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
     const experienceLabel =
         months >= 12
-            ? `${years} year${years !== 1 ? 's' : ''}`
+            ? `${years} year${years !== 1 ? 's' : ''}${remainingMonths ? ` ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}` : ''}`
             : `${months} month${months !== 1 ? 's' : ''}`;
     const timelineRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start center', 'end center'] });
     const pathLength = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const mq = window.matchMedia('(max-width: 639px)');
-        setIsMobile(mq.matches);
-        const handler = (e) => setIsMobile(e.matches);
-        mq.addEventListener('change', handler);
-        return () => mq.removeEventListener('change', handler);
-    }, []);
+    const isMobile = useSyncExternalStore(
+        subscribeToMobile,
+        getMobileSnapshot,
+        getServerMobileSnapshot,
+    );
 
     return (
         <section id="about" className="about-section" style={{ background: 'var(--base)', padding: '100px 0' }}>
@@ -300,13 +301,13 @@ export default function About() {
                         fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.025em', lineHeight: 1.2, marginBottom: 20,
                     }}>
-                        I build systems that earn trust.
+                        Systems built from the boundary inward.
                     </h2>
                     <p style={{
                         fontFamily: 'var(--font-body)', fontSize: 16,
                         lineHeight: 1.75, color: 'var(--muted)',
                     }}>
-                        Backend systems, cloud delivery, product interfaces. B.Tech CSE, GITAM, 2025.
+                        Progressed from a 3-month React and TypeScript internship to primary Go, PostgreSQL, and AWS ownership across 2 platforms in {experienceLabel}. B.Tech CSE, GITAM, 2025.
                     </p>
                 </motion.div>
 

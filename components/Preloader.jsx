@@ -33,9 +33,12 @@ export default function Preloader({ onDone }) {
     /* ── Reduced-motion shortcut ──────────────────────────────── */
     useEffect(() => {
         if (!prefersReduced) return;
-        setPhase('name');
-        const t = setTimeout(() => setVisible(false), 900);
-        return () => clearTimeout(t);
+        const phaseTimer = setTimeout(() => setPhase('name'), 0);
+        const exitTimer = setTimeout(() => setVisible(false), 900);
+        return () => {
+            clearTimeout(phaseTimer);
+            clearTimeout(exitTimer);
+        };
     }, [prefersReduced]);
 
     /* ── Main animation ───────────────────────────────────────── */
@@ -172,7 +175,7 @@ export default function Preloader({ onDone }) {
             tl.kill();
             gsap.killTweensOf([...wordEls, canvas]);
         };
-    }, [prefersReduced]); // eslint-disable-line
+    }, [prefersReduced]);
 
     /* Auto-exit after name shown */
     useEffect(() => {

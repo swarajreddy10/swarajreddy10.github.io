@@ -1,6 +1,34 @@
 // Project data — used by Projects.jsx
 export const workData = [
     {
+        title: 'SpotMyJob',
+        tagline: 'Job Intelligence & Matching Platform',
+        description: 'Backend / Data / Search',
+        tech: ['Go', 'PostgreSQL', 'pgvector', 'Cloudflare Workers AI', 'Fastify', 'AWS', 'Terraform'],
+        impact: 'Job discovery needs governed sources, consistent job truth, and responsive seeker search. Designed 3 independently deployable microservices that own separate data models and communicate through versioned contracts.',
+        bullets: [
+            'Raised transformation throughput by 64% within fixed CPU and memory limits through bounded concurrency, connection-pool headroom, and I/O-aware database work',
+            'Improved vector-ingestion throughput by 17x while preserving measured search quality through HNSW benchmarking, half-precision indexing, and write-elision',
+            'Integrated Cloudflare Workers AI\'s Qwen3 0.6B model through an OpenAI-compatible gateway, generating 1,024-dimensional job and seeker vectors in one versioned semantic space',
+            'Reduced recurring external fetches by 43% while preserving replay-safe search updates through evidence-age rotation, durable cursors, idempotent writes, and reconciliation',
+        ],
+        metrics: ['64% More Throughput', '17x Vector Ingestion', '43% Fewer Fetches'],
+    },
+    {
+        title: 'Osulo',
+        tagline: 'Patient-Care Document Intelligence',
+        description: 'Backend / Healthcare AI',
+        tech: ['Go', 'PostgreSQL', 'Vertex AI Gemini', 'Azure OpenAI GPT', 'AWS', 'Step Functions', 'Terraform'],
+        impact: 'Healthcare documents arrive as unstructured files. Built the ingestion backend and Clinical Document Intelligence Service to sanitize each document, extract structured clinical data, and retain provenance for review.',
+        bullets: [
+            'Integrated Vertex AI Gemini and Azure OpenAI GPT models to convert sanitized prescriptions and laboratory reports into schema-validated clinical fields within the 48.1-second Clinical Document Intelligence Service stage',
+            'Separated 2 independently deployable Go service planes through versioned events, keeping the 52.3-second upload lifecycle independent from AI-assisted extraction',
+            'Delivered a 100.6-second end-to-end path with a 0.2-second handoff, idempotent state, provenance, review gates, reconciliation, and DLQ-backed recovery',
+            'Protected retries with 24-hour idempotency, PostgreSQL JSONB event history, versioned contracts, and reconciler-backed recovery across both service planes',
+        ],
+        metrics: ['52.3s Ingestion', '48.1s Extraction', '0.2s Handoff'],
+    },
+    {
         title: 'ResumeCanvas',
         tagline: 'AI Resume Builder',
         description: 'AI / Full Stack',
@@ -25,7 +53,7 @@ export const workData = [
         impact: 'Built a full-stack event platform with OAuth2 JWT across 3 roles, 12 Flyway migrations, QR code check-ins via ZXing, and 100% API test coverage',
         bullets: [
             'Built 12 RESTful endpoints with Spring Security, HikariCP, and JPA/Hibernate, plus Recharts analytics and automated waitlist management',
-            'Shipped Docker multi-stage builds and CI/CD on Vercel and Render with Spring Boot Actuator monitoring and rollback',
+            'Shipped Docker multi-stage builds and CI/CD across 2 hosted environments, using Vercel for the web application and Render with Spring Boot Actuator for the API',
         ],
         metrics: ['100% API Coverage', '3 Roles', 'QR Check-ins'],
     },

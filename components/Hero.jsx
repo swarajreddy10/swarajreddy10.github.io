@@ -137,7 +137,7 @@ export default function Hero() {
                             color: 'var(--accent)', margin: 0, fontWeight: 600,
                         }}
                     >
-                        Early-career software engineer.
+                        Backend software engineer.
                     </motion.p>
                 </div>
 
@@ -152,7 +152,7 @@ export default function Hero() {
                         maxWidth: 620, margin: '0 auto 40px',
                     }}
                 >
-                    I like understanding the why before I build the what. I learn fast, ask thoughtful questions, adapt quickly when the path changes, and turn messy ideas into software that feels simple to use and solid to rely on.
+                    Building Go, PostgreSQL, and AWS systems with measured results: 64% higher batch throughput, 17x faster vector ingestion, and a 100.6-second AI-assisted clinical-document workflow.
                 </motion.p>
 
                 {/* CTAs */}
