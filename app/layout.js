@@ -3,9 +3,9 @@ import './globals.css';
 export const metadata = {
   title: 'Swaraj Reddy | Engineering Portfolio',
   description:
-    'Engineering portfolio for Swaraj Reddy, showing backend systems, product interfaces, and the patient care application platform at Dexaminds.',
+    'Backend engineering portfolio for Swaraj Reddy, featuring distributed data pipelines, hybrid search, cloud systems, and AI-assisted healthcare document processing.',
   keywords:
-    'Swaraj Reddy, Engineering Portfolio, Full Stack Software Engineer, Go, React, Next.js, AWS, PostgreSQL, Docker, GitHub Actions, patient care application platform, Dexaminds, Hyderabad, India',
+    'Swaraj Reddy, Backend Software Engineer, Go, PostgreSQL, AWS, Terraform, pgvector, hybrid search, distributed systems, intelligent document processing, Dexaminds, Hyderabad, India',
   authors: [{ name: 'Swaraj Chandra Reddy M' }],
   creator: 'Swaraj Chandra Reddy M',
   robots: 'index, follow',
@@ -15,14 +15,14 @@ export const metadata = {
     url: 'https://swarajreddy10.github.io',
     title: 'Swaraj Reddy | Engineering Portfolio',
     description:
-      'Engineering portfolio for Swaraj Reddy, showing backend systems, product interfaces, and the patient care application platform at Dexaminds.',
+      'Backend systems, data pipelines, hybrid search, and AI-assisted healthcare document processing built with Go, PostgreSQL, and AWS.',
     siteName: 'Swaraj Reddy | Engineering Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Swaraj Reddy | Engineering Portfolio',
     description:
-      'Engineering portfolio for Swaraj Reddy, showing backend systems, product interfaces, and the patient care application platform at Dexaminds.',
+      'Backend systems, data pipelines, hybrid search, and AI-assisted healthcare document processing built with Go, PostgreSQL, and AWS.',
   },
 };
 

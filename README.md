@@ -1,18 +1,19 @@
-# Swaraj Reddy — Engineering Portfolio
+# Swaraj Reddy - Engineering Portfolio
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://swarajreddy10.github.io/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.1-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2.4-blue)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.2.2-38B2AC)](https://tailwindcss.com/)
 [![Motion](https://img.shields.io/badge/Motion-12.38.0-purple)](https://motion.dev/)
-[![Bun](https://img.shields.io/badge/Bun-1.3.14-FBF0DF)](https://bun.sh/)
+[![npm](https://img.shields.io/badge/npm-10.9.2-CB3837)](https://www.npmjs.com/)
 
 Production site: [swarajreddy10.github.io](https://swarajreddy10.github.io/)
 
 ## Summary
 
-I built this portfolio as the public home for my work. It shows the systems I ship across Go, Python, React, AWS, and the patient care application platform at Dexaminds, while keeping the presentation concise, quantified, and easy to scan.
-The site follows the same structure I use when I present my work: direct, selective, and backed by a static-exported Next.js app with a reusable design system.
+This portfolio is the public home for backend, data-platform, search, healthcare AI, and product engineering work. It leads with SpotMyJob's contract-bound data and search platform, followed by Osulo's healthcare-document ingestion and Clinical Document Intelligence Service.
+
+Project stories use compressed STAR structure: the system problem or constraint, the engineering action, and the measured result. Public content excludes private repositories, confidential platform scale, infrastructure identifiers, and unfinished scope.
 
 ## Lighthouse Scores
 
@@ -34,29 +35,28 @@ The site follows the same structure I use when I present my work: direct, select
 - **Animations**: Motion v12.38.0 (useScroll, useTransform, AnimatePresence)
 - **Smooth scroll**: Lenis
 - **Forms**: @formspree/react
-- **Package manager**: Bun 1.3.14
+- **Package manager**: npm 10.9.2
 - **Deployment**: GitHub Pages via gh-pages
 
 ## Highlights
 
-- I built scroll-driven stacking cards for Projects, Skills, and the About timeline
-- I added a split-panel preloader with an 11-language sequence that sets the tone fast
-- I designed the SVG pathLength timeline with alternating cards and Motion-powered reveal states
-- I created a CSS custom property design system with a golden olive palette and zero runtime theme switching
-- I lazy-loaded below-fold sections to reduce initial JS payload
-- I kept WCAG AA contrast, responsive layouts, and production-friendly accessibility defaults in place
-- I added an accent-colored custom cursor and contact cards for a more distinctive visual system
-- I ship the site as a static export on GitHub Pages
+- Presents SpotMyJob and Osulo as primary-contributor work before personal projects
+- Uses problem, action, and result copy instead of tool-only project descriptions
+- Includes scroll-driven project cards and an SVG timeline with Motion-powered reveal states
+- Uses a CSS custom-property design system with a golden olive palette
+- Lazy-loads below-fold sections to reduce the initial JavaScript payload
+- Maintains WCAG AA contrast and responsive layouts
+- Ships as a static Next.js export on GitHub Pages
 
 ## Run Locally
 
-Requires [Bun](https://bun.sh/) and [Git](https://git-scm.com/).
+Requires Node.js 22, npm, and Git.
 
 ```bash
 git clone https://github.com/swarajreddy10/swarajreddy10.github.io.git
 cd swarajreddy10.github.io
-bun install
-bun run dev
+npm install
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
@@ -64,10 +64,10 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Deploy
 
 ```bash
-bun run deploy
+npm run deploy
 ```
 
-I build the static export and push the `out` directory to the `gh-pages` branch.
+The deploy command builds the static export and pushes the `out` directory to the `gh-pages` branch.
 
 ## Contact
 

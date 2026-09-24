@@ -3,10 +3,10 @@
 const BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
 
 const ROW1 = [
+    { name: 'Go',          icon: 'go/go-original-wordmark.svg'                       },
     { name: 'Python',      icon: 'python/python-original.svg'                            },
     { name: 'TypeScript',  icon: 'typescript/typescript-original.svg'                    },
     { name: 'Java',        icon: 'java/java-original.svg'                                },
-    { name: 'Node.js',     icon: 'nodejs/nodejs-original.svg'                            },
     { name: 'FastAPI',     icon: 'fastapi/fastapi-original.svg'                          },
     { name: 'Spring Boot', icon: 'spring/spring-original.svg'                            },
     { name: 'PostgreSQL',  icon: 'postgresql/postgresql-original.svg'                    },
@@ -18,9 +18,9 @@ const ROW2 = [
     { name: 'Next.js',      icon: 'nextjs/nextjs-original.svg'                           },
     { name: 'Tailwind',     icon: 'tailwindcss/tailwindcss-original.svg'                 },
     { name: 'Docker',       icon: 'docker/docker-original.svg'                           },
+    { name: 'Terraform',    icon: 'terraform/terraform-original.svg'                     },
+    { name: 'Cloudflare',   icon: 'cloudflare/cloudflare-original.svg'                   },
     { name: 'AWS',          icon: 'amazonwebservices/amazonwebservices-plain-wordmark.svg'},
-    { name: 'Azure',        icon: 'azure/azure-original.svg'                             },
-    { name: 'Google Cloud', icon: 'googlecloud/googlecloud-original.svg'                 },
     { name: 'GitHub',       icon: 'github/github-original.svg'                           },
 ];
 

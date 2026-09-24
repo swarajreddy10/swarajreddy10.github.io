@@ -23,6 +23,7 @@ function StackCard({ project, index }) {
     const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
 
     const hasLiveLink = project.link && project.link !== project.github;
+    const hasCodeLink = Boolean(project.github);
     const num         = String(index + 1).padStart(2, '0');
     const stickyTop   = 72 + index * 18;
 
@@ -175,6 +176,7 @@ function StackCard({ project, index }) {
                                     Live <ArrowUpRight size={10} />
                                 </a>
                             )}
+                            {hasCodeLink && (
                             <a href={project.github} target="_blank" rel="noopener noreferrer"
                                 style={{
                                     display: 'inline-flex', alignItems: 'center', gap: 5,
@@ -192,6 +194,7 @@ function StackCard({ project, index }) {
                             >
                                 <GithubIcon size={10} /> Code
                             </a>
+                            )}
                         </div>
                     </div>
                 </div>
