@@ -37,3 +37,6 @@ next-env.d.ts
 
 # codex local settings and generated context
 .codex/
+
+# local career profile - never publish
+professional-profile.md
