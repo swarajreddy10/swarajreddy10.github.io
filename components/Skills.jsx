@@ -1,151 +1,93 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 
-const DOMAINS = [
-    {
-        index: '01',
-        name: 'Programming Languages',
-        tagline: 'The languages I use most.',
-        skills: ['Go', 'TypeScript', 'SQL', 'Python', 'Java'],
-    },
-    {
-        index: '02',
-        name: 'Backend',
-        tagline: 'Services with explicit boundaries.',
-        skills: ['Go net/http', 'Fastify', 'REST APIs', 'PostgreSQL', 'Prisma', 'pgx'],
-    },
-    {
-        index: '03',
-        name: 'Search & Data',
-        tagline: 'Retrieval and processing measured end to end.',
-        skills: ['pgvector', 'Full-text search', 'HNSW / GIN', 'Reciprocal Rank Fusion', 'Keyset pagination'],
-    },
-    {
-        index: '04',
-        name: 'DevOps & Cloud',
-        tagline: 'Delivery paths with visible failure modes.',
-        skills: ['AWS ECS / RDS', 'S3 / SQS / EventBridge', 'Terraform', 'Docker', 'GitHub Actions', 'CloudWatch'],
-    },
-    {
-        index: '05',
-        name: 'Testing',
-        tagline: 'Tests at service and contract boundaries.',
-        skills: ['Unit Testing', 'Integration Testing', 'Contract Testing', 'Database parity', 'Race testing'],
-    },
-    {
-        index: '06',
-        name: 'AI & Product',
-        tagline: 'Models integrated behind validated workflows.',
-        skills: ['Cloudflare AI Gateway', 'Workers AI', 'Embedding APIs', 'Qwen3 Embeddings', 'LLM APIs', 'Structured extraction'],
-    },
+const SKILL_GROUPS = [
+    { name: 'Languages', skills: ['Go', 'TypeScript', 'Python', 'Java', 'SQL'] },
+    { name: 'Backend', skills: ['Go net/http', 'Fastify', 'REST APIs', 'Microservices', 'JWT / OAuth2', 'OpenAPI'] },
+    { name: 'Databases', skills: ['PostgreSQL', 'MongoDB'] },
+    { name: 'Search & Retrieval', skills: ['pgvector', 'Full-text search', 'HNSW', 'GIN', 'Reciprocal Rank Fusion'] },
+    { name: 'Cloud & DevOps', skills: ['AWS ECS / RDS', 'S3 / SQS / EventBridge', 'Step Functions', 'Terraform', 'Docker', 'GitHub Actions', 'CloudWatch'] },
+    { name: 'AI Integration', skills: ['LLM APIs', 'Embedding pipelines', 'Structured extraction', 'Structured outputs', 'Schema validation', 'Multi-model routing'] },
+    { name: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS', 'Motion', 'WCAG / ARIA'] },
+    { name: 'Testing & Quality', skills: ['Unit Testing', 'Integration Testing', 'Contract Testing', 'Database parity', 'Race testing', 'Playwright'] },
 ];
 
-function SkillCard({ domain, index }) {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] });
-    const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
-    const stickyTop = 80 + index * 20;
-
+function SkillGroup({ group, index, reduceMotion }) {
     return (
-        <div ref={ref} style={{ position: 'sticky', top: stickyTop, zIndex: 10 + index, marginBottom: 12 }}>
-            <motion.div style={{ scale }}>
-                <div style={{
-                    border: '1px solid var(--border)',
-                    borderRadius: 16,
-                    background: 'var(--surf)',
-                    boxShadow: '0 0 24px 6px var(--shadow-lg)',
-                    padding: 'clamp(28px, 4vw, 48px)',
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: 'clamp(24px, 4vw, 56px)',
-                    alignItems: 'center',
-                }}
-                className="skill-card-inner"
-                >
-                    {/* Left */}
-                    <div>
-                        <span style={{
-                            fontFamily: 'var(--font-mono)', fontSize: 9,
-                            color: 'rgba(28,25,23,0.22)', letterSpacing: '0.3em',
-                            display: 'block', marginBottom: 12,
-                        }}>
-                            {domain.index}
-                        </span>
-                        <h3 style={{
-                            fontFamily: 'var(--font-display)', fontStyle: 'italic',
-                            fontSize: 'clamp(28px, 3.5vw, 48px)',
-                            fontWeight: 500, color: 'var(--fg)',
-                            letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 10,
-                        }}>
-                            {domain.name}
-                        </h3>
-                        <p style={{
-                            fontFamily: 'var(--font-body)', fontSize: 14,
-                            color: 'var(--muted)', lineHeight: 1.5,
-                        }}>
-                            {domain.tagline}
-                        </p>
-                    </div>
-
-                    {/* Right — skill pills */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignContent: 'flex-start' }}>
-                        {domain.skills.map((s) => (
-                            <span key={s} style={{
-                                fontFamily: 'var(--font-mono)', fontSize: 11,
-                                color: 'var(--fg)', fontWeight: 500,
-                                border: '1px solid var(--border)',
-                                borderRadius: 8,
-                                background: 'var(--base)',
-                                padding: '7px 13px',
-                                lineHeight: 1,
-                                transition: 'border-color 0.2s, color 0.2s',
-                            }}>
-                                {s}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </motion.div>
-
-        </div>
+        <motion.article
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.36, delay: reduceMotion ? 0 : (index % 2) * 0.05 }}
+            style={{ borderTop: '1px solid var(--border)', padding: '22px 0 24px', minWidth: 0 }}
+        >
+            <h3 style={{
+                fontFamily: 'var(--font-display)', fontStyle: 'italic',
+                fontSize: 'clamp(21px, 2.4vw, 29px)', fontWeight: 500,
+                color: 'var(--fg)', letterSpacing: '-0.015em', lineHeight: 1.15,
+                marginBottom: 15,
+            }}>
+                {group.name}
+            </h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                {group.skills.map((skill) => (
+                    <span key={skill} style={{
+                        fontFamily: 'var(--font-mono)', fontSize: 10,
+                        color: 'var(--muted)', fontWeight: 500,
+                        border: '1px solid var(--border)', borderRadius: 8,
+                        background: 'var(--surf)', padding: '7px 11px',
+                    }}>
+                        {skill}
+                    </span>
+                ))}
+            </div>
+        </motion.article>
     );
 }
 
 export default function Skills() {
-    return (
-        <section id="skills" style={{ background: 'var(--base)', padding: '100px 0' }}>
-            <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 max(24px, 4vw)' }}>
+    const reduceMotion = useReducedMotion();
 
+    return (
+        <section id="skills" style={{ background: 'var(--base)', padding: '96px 0 110px' }}>
+            <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 max(24px, 4vw)' }}>
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={reduceMotion ? false : { opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 0.5 }}
-                    style={{ marginBottom: 52 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.42 }}
+                    style={{ marginBottom: 36, maxWidth: 680 }}
                 >
                     <span style={{
                         fontFamily: 'var(--font-mono)', fontSize: 10,
-                        letterSpacing: '0.36em', textTransform: 'uppercase',
-                        color: 'var(--accent)', display: 'block', marginBottom: 16,
+                        letterSpacing: '0.34em', textTransform: 'uppercase',
+                        color: 'var(--accent)', display: 'block', marginBottom: 14,
                         fontWeight: 600,
                     }}>
-                        Core Stack
+                        Technical Skills
                     </span>
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
-                        fontSize: 'clamp(28px, 4vw, 52px)',
-                        fontWeight: 500, color: 'var(--fg)',
-                        letterSpacing: '-0.025em', lineHeight: 1.15,
+                        fontSize: 'clamp(30px, 4vw, 52px)', fontWeight: 500,
+                        color: 'var(--fg)', letterSpacing: '-0.025em', lineHeight: 1.12,
                     }}>
-                        Selected skills, kept lean.
+                        A practical stack, organized by function.
                     </h2>
                 </motion.div>
 
-                {DOMAINS.map((d, i) => (
-                    <SkillCard key={d.index} domain={d} index={i} />
-                ))}
+                <div className="skills-grid" style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                    columnGap: 'clamp(28px, 6vw, 72px)',
+                    rowGap: 0,
+                }}>
+                    {SKILL_GROUPS.map((group, index) => (
+                        <SkillGroup key={group.name} group={group} index={index} reduceMotion={reduceMotion} />
+                    ))}
+                </div>
+
+
             </div>
         </section>
     );

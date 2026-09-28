@@ -152,7 +152,7 @@ export default function Hero() {
                         maxWidth: 620, margin: '0 auto 40px',
                     }}
                 >
-                    Building Go, PostgreSQL, and AWS systems with measured results: 64% higher batch throughput, 17x faster vector ingestion, and a 100.6-second AI-assisted clinical-document workflow.
+                    Curious by default. I like taking complicated systems apart, finding the detail everyone skipped, and leaving the whole thing simpler than I found it.
                 </motion.p>
 
                 {/* CTAs */}
@@ -235,7 +235,7 @@ export default function Hero() {
                     transition={{ delay: 1.08, duration: 0.6 }}
                     className="hero-scroll"
                     style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, cursor: 'default' }}
-                    onClick={() => scrollToSection('about')}
+                    onClick={() => scrollToSection('experience')}
                 >
                     <span style={{
                         fontFamily: 'var(--font-mono)', fontSize: 9,

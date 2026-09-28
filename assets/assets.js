@@ -44,20 +44,6 @@ export const workData = [
         metrics: ['95.2% Coverage', 'Sub-100ms', '7 Indexes'],
     },
     {
-        title: 'StageWay',
-        tagline: 'Event Platform',
-        description: 'Full Stack',
-        link: 'https://stage-way.vercel.app/',
-        github: 'https://github.com/swarajreddy10/StageWay',
-        tech: ['Spring Boot 3.2', 'PostgreSQL', 'Next.js 16', 'Docker', 'OAuth2 / JWT', 'Flyway'],
-        impact: 'Built a full-stack event platform with OAuth2 JWT across 3 roles, 12 Flyway migrations, QR code check-ins via ZXing, and 100% API test coverage',
-        bullets: [
-            'Built 12 RESTful endpoints with Spring Security, HikariCP, and JPA/Hibernate, plus Recharts analytics and automated waitlist management',
-            'Shipped Docker multi-stage builds and CI/CD across 2 hosted environments, using Vercel for the web application and Render with Spring Boot Actuator for the API',
-        ],
-        metrics: ['100% API Coverage', '3 Roles', 'QR Check-ins'],
-    },
-    {
         title: 'Portfolio',
         tagline: 'Engineering Portfolio',
         description: 'Design / Engineering',
@@ -67,7 +53,7 @@ export const workData = [
         impact: 'Built a statically exported Next.js portfolio with a reusable design system, component architecture, and GitHub Pages deployment',
         bullets: [
             'Built an 8-token CSS design system shared across 10 components, keeping theme resolution at build time and visual states consistent',
-            'Shipped stacking card reveals, an SVG pathLength timeline, and an 11-language preloader with Motion useScroll and useTransform, reaching 1.0s FCP, 1.7s LCP, 20ms TBT, and 0 CLS',
+            'Shipped a responsive 2x2 project grid, an SVG pathLength timeline, and an 11-language preloader with Motion, reaching 1.0s FCP, 1.7s LCP, 20ms TBT, and 0 CLS',
             'Lazy-loaded below-fold sections and fixed WCAG AA contrast issues, finishing with 96 Accessibility, 100 Best Practices, and 100 SEO on Lighthouse',
         ],
         metrics: ['1.0s FCP', '96 Accessibility', '100 SEO'],

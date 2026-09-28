@@ -4,13 +4,13 @@ import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
-    { label: 'About',   id: 'about'    },
+    { label: 'Experience', id: 'experience' },
     { label: 'Work',    id: 'projects' },
     { label: 'Skills',  id: 'skills'   },
     { label: 'Contact', id: 'contact'  },
 ];
 
-const SECTION_IDS = ['home', 'about', 'projects', 'skills', 'contact'];
+const SECTION_IDS = ['home', 'experience', 'projects', 'skills', 'contact'];
 
 export default function Nav() {
     const [open,     setOpen]     = useState(false);

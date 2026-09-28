@@ -24,7 +24,7 @@ function GithubIcon({ size = 15 }) {
 }
 
 const NAV_LINKS = [
-    { label: 'About',   id: 'about'    },
+    { label: 'Experience', id: 'experience' },
     { label: 'Work',    id: 'projects' },
     { label: 'Skills',  id: 'skills'   },
     { label: 'Contact', id: 'contact'  },

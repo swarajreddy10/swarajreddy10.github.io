@@ -9,6 +9,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll({ children }) {
     useEffect(() => {
+        const nativeScroll = window.matchMedia('(max-width: 768px), (pointer: coarse), (prefers-reduced-motion: reduce)');
+        if (nativeScroll.matches) {
+            window.__lenis = null;
+            return;
+        }
+
         const lenis = new Lenis({
             lerp: 0.08,
             smoothWheel: true,
@@ -36,5 +42,5 @@ export default function SmoothScroll({ children }) {
         };
     }, []);
 
-    return <div style={{ position: 'relative' }}>{children}</div>;
+    return <div style={{ position: 'relative', width: '100%', minWidth: 0, overflowX: 'clip' }}>{children}</div>;
 }

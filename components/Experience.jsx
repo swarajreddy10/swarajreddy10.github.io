@@ -2,7 +2,7 @@
 
 import { useRef, useSyncExternalStore } from 'react';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'motion/react';
-import { GraduationCap, Briefcase, Building2, MapPin } from 'lucide-react';
+import { GraduationCap, Briefcase, MapPin } from 'lucide-react';
 
 const TIMELINE = [
     {
@@ -12,31 +12,9 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Full-time',
         highlights: [
-            'SpotMyJob: Architected 3 independently deployable microservices; owned the Go source-governance and canonical-processing backends and led search-engine work that raised transformation throughput by 64% and vector ingestion by 17x.',
-            'SpotMyJob: Integrated Cloudflare Workers AI\'s Qwen3 0.6B model through an OpenAI-compatible gateway, generating 1,024-dimensional vectors and reducing recurring external fetches by 43%.',
-            'Osulo: Built 2 independently deployable Go service planes for healthcare-document ingestion and Clinical Document Intelligence Service, measuring 52.3s ingestion and a 0.2s handoff.',
-            'Osulo: Integrated Vertex AI Gemini and Azure OpenAI GPT models for prescriptions and laboratory reports, delivering 48.1s extraction and 100.6s end-to-end processing with schema validation and review gates.',
-        ],
-    },
-    {
-        period: 'Jun 2025 – Sep 2025',
-        role: 'Software Engineer Intern',
-        company: 'Dexaminds',
-        location: 'Hyderabad, IN',
-        badge: 'Internship',
-        highlights: [
-            'Moved from React and TypeScript delivery into backend ownership during a 3-month internship, shipping tested UI-to-API changes with lazy loading and code splitting.',
-            'Diagnosed and fixed 15+ production defects across frontend and backend code using Chrome DevTools and server logs.',
-        ],
-    },
-    {
-        period: '2021 – 2025',
-        role: 'B.Tech Computer Science',
-        company: 'GITAM University',
-        location: 'Hyderabad, IN',
-        badge: 'Education',
-        highlights: [
-            'Completed a Bachelor of Technology in Computer Science with a CGPA of 8.2.',
+            'Primary backend owner for 2 Go microservices in SpotMyJob\'s 3-service architecture, with major contributions to the TypeScript seeker-search service.',
+            'Primary contributor across Osulo\'s 2 service planes, covering architecture, clinical AI integration, AWS delivery, and runtime verification.',
+            'Collaborated across product, backend, and infrastructure work on 2 platforms in a fast-paced startup environment, using ADRs, versioned contracts, code reviews, and runtime evidence to keep engineers and stakeholders aligned.',
         ],
     },
 ];
@@ -87,21 +65,9 @@ function CardContent({ item }) {
                     <span style={{
                         borderRadius: 100,
                         border: '1px solid',
-                        borderColor: item.badge === 'Full-time'
-                            ? 'rgba(22,163,74,0.3)'
-                            : item.badge === 'Internship'
-                            ? 'rgba(138,126,26,0.35)'
-                            : 'rgba(85,0,3,0.2)',
-                        background: item.badge === 'Full-time'
-                            ? 'rgba(22,163,74,0.1)'
-                            : item.badge === 'Internship'
-                            ? 'rgba(184,171,56,0.15)'
-                            : 'rgba(85,0,3,0.07)',
-                        color: item.badge === 'Full-time'
-                            ? '#16A34A'
-                            : item.badge === 'Internship'
-                            ? 'var(--accent)'
-                            : 'var(--muted)',
+                        borderColor: 'rgba(22,163,74,0.3)',
+                        background: 'rgba(22,163,74,0.1)',
+                        color: '#16A34A',
                         padding: '2px 9px',
                         fontFamily: 'var(--font-mono)',
                         fontSize: 9, letterSpacing: '0.2em',
@@ -120,11 +86,7 @@ function CardContent({ item }) {
                         fontSize: 13, lineHeight: 1.6, color: 'var(--muted)',
                     }}>
                         <span style={{ color: 'var(--accent)', marginTop: 2, flexShrink: 0, opacity: 0.7 }}>
-                            {item.badge === 'Education'
-                                ? <GraduationCap size={13} />
-                                : item.badge === 'Full-time'
-                                ? <Briefcase size={13} />
-                                : <Building2 size={13} />}
+                            <Briefcase size={13} />
                         </span>
                         {h}
                     </li>
@@ -176,10 +138,10 @@ function FlipCard({ item, isLeft, index, isMobile }) {
                         fontSize: 8,
                         fontWeight: 600,
                         letterSpacing: '0.1em',
-                        color: item.badge === 'Full-time' ? '#16A34A' : item.badge === 'Internship' ? 'var(--accent)' : 'var(--muted)',
+                        color: '#16A34A',
                         background: 'var(--base)',
                         border: '1px solid',
-                        borderColor: item.badge === 'Full-time' ? 'rgba(22,163,74,0.3)' : item.badge === 'Internship' ? 'rgba(184,171,56,0.35)' : 'rgba(85,0,3,0.15)',
+                        borderColor: 'rgba(22,163,74,0.3)',
                         borderRadius: 100,
                         padding: '3px 8px',
                     }}>
@@ -223,10 +185,10 @@ function FlipCard({ item, isLeft, index, isMobile }) {
                     fontSize: isMobile ? 8 : 9,
                     fontWeight: 600,
                     letterSpacing: '0.1em',
-                    color: item.badge === 'Full-time' ? '#16A34A' : item.badge === 'Internship' ? 'var(--accent)' : 'var(--muted)',
+                    color: '#16A34A',
                     background: 'var(--base)',
                     border: '1px solid',
-                    borderColor: item.badge === 'Full-time' ? 'rgba(22,163,74,0.3)' : item.badge === 'Internship' ? 'rgba(184,171,56,0.35)' : 'rgba(85,0,3,0.15)',
+                    borderColor: 'rgba(22,163,74,0.3)',
                     borderRadius: 100,
                     padding: '3px 8px',
                     zIndex: 3,
@@ -258,14 +220,8 @@ function FlipCard({ item, isLeft, index, isMobile }) {
     );
 }
 
-export default function About() {
-    const months = getMonthsSince(2025, 6);
-    const years = Math.floor(months / 12);
-    const remainingMonths = months % 12;
-    const experienceLabel =
-        months >= 12
-            ? `${years} year${years !== 1 ? 's' : ''}${remainingMonths ? ` ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}` : ''}`
-            : `${months} month${months !== 1 ? 's' : ''}`;
+export default function Experience() {
+    const fullTimeMonths = getMonthsSince(2025, 9);
     const timelineRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start center', 'end center'] });
     const pathLength = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
@@ -276,16 +232,14 @@ export default function About() {
     );
 
     return (
-        <section id="about" className="about-section" style={{ background: 'var(--base)', padding: '100px 0' }}>
+        <section id="experience" className="experience-section" style={{ background: 'var(--base)', padding: '100px 0' }}>
             <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 max(28px, 4vw)' }}>
-
-                {/* Bio */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ duration: 0.55 }}
-                    style={{ marginBottom: 72 }}
+                    style={{ marginBottom: 52, maxWidth: 720 }}
                 >
                     <span style={{
                         fontFamily: 'var(--font-mono)', fontSize: 10,
@@ -293,7 +247,7 @@ export default function About() {
                         color: 'var(--accent)', display: 'block', marginBottom: 20,
                         fontWeight: 600,
                     }}>
-                        About
+                        Experience
                     </span>
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
@@ -301,31 +255,18 @@ export default function About() {
                         fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.025em', lineHeight: 1.2, marginBottom: 20,
                     }}>
-                        Systems built from the boundary inward.
+                        Backend ownership across two platforms.
                     </h2>
                     <p style={{
                         fontFamily: 'var(--font-body)', fontSize: 16,
                         lineHeight: 1.75, color: 'var(--muted)',
                     }}>
-                        Progressed from a 3-month React and TypeScript internship to primary Go, PostgreSQL, and AWS ownership across 2 platforms in {experienceLabel}. B.Tech CSE, GITAM, 2025.
+                        Within {fullTimeMonths} months as a Software Engineer at Dexaminds, took primary backend ownership across SpotMyJob and Osulo, shipping under fixed compute and schedule constraints.
                     </p>
                 </motion.div>
 
                 {/* Timeline */}
                 <div ref={timelineRef}>
-                    <motion.span
-                        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }} transition={{ duration: 0.4 }}
-                        style={{
-                            fontFamily: 'var(--font-mono)', fontSize: 10,
-                            letterSpacing: '0.36em', textTransform: 'uppercase',
-                            color: 'var(--accent)', display: 'block', marginBottom: 48,
-                            fontWeight: 600,
-                        }}
-                    >
-                        Production experience ({experienceLabel})
-                    </motion.span>
-
                     {/* Center line */}
                     <div style={{ position: 'relative' }}>
                         <svg
@@ -347,6 +288,32 @@ export default function About() {
                         </div>
                     </div>
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
+                    style={{
+                        marginTop: 40, paddingTop: 22,
+                        borderTop: '1px solid var(--border)',
+                        display: 'grid', gap: 14,
+                        color: 'var(--muted)',
+                    }}
+                >
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                        <Briefcase size={16} color="var(--accent)" style={{ marginTop: 1, flexShrink: 0 }} />
+                        <span style={{ fontFamily: 'var(--font-body)', fontSize: 12, lineHeight: 1.55 }}>
+                            <strong style={{ color: 'var(--fg)' }}>Earlier at Dexaminds:</strong> Software Engineer Intern, Jun–Sep 2025 · Shipped React and TypeScript UI-to-API changes and resolved 15+ production defects.
+                        </span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <GraduationCap size={16} color="var(--accent)" style={{ flexShrink: 0 }} />
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                            B.Tech Computer Science · GITAM University · 2025 · CGPA 8.2/10
+                        </span>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

@@ -8,7 +8,7 @@ import Preloader from '../components/Preloader';
 import SmoothScroll from '../components/SmoothScroll';
 
 const Cursor         = dynamic(() => import('../components/Cursor'),         { ssr: false });
-const About          = dynamic(() => import('../components/About'),          { ssr: false });
+const Experience     = dynamic(() => import('../components/Experience'),     { ssr: false });
 const Projects       = dynamic(() => import('../components/Projects'),       { ssr: false });
 const Marquee        = dynamic(() => import('../components/Marquee'),        { ssr: false });
 const Skills         = dynamic(() => import('../components/Skills'),         { ssr: false });
@@ -28,7 +28,7 @@ export default function Home() {
                 <Nav />
                 <main className="main-content" data-hidden={!ready ? 'true' : undefined}>
                     <Hero />
-                    <About />
+                    <Experience />
                     <Projects />
                     <Marquee />
                     <Skills />
