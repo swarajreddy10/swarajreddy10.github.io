@@ -60,7 +60,7 @@ export default function Footer() {
             }}
             className="footer-grid"
             >
-                {/* Col 1 — Brand */}
+                {/* Col 1: Brand */}
                 <div>
                     <button
                         onClick={() => window.__lenis ? window.__lenis.scrollTo(0, { duration: 1.2 }) : window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -82,7 +82,7 @@ export default function Footer() {
                         lineHeight: 1.65, color: 'var(--muted)',
                         maxWidth: 280, marginBottom: 28,
                     }}>
-                        I work across backend systems, cloud delivery, and product interfaces.
+                        I build Go services, PostgreSQL search and ingestion systems, AWS infrastructure, and React/Next.js interfaces.
                         <IndianFlag size={16} /> Based in Hyderabad, India.
                     </p>
 
@@ -111,7 +111,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Col 2 — Navigation */}
+                {/* Col 2: Navigation */}
                 <div>
                     <p style={{
                         fontFamily: 'var(--font-mono)', fontSize: 10,
@@ -141,7 +141,7 @@ export default function Footer() {
                     </nav>
                 </div>
 
-                {/* Col 3 — Contact */}
+                {/* Col 3: Contact */}
                 <div>
                     <p style={{
                         fontFamily: 'var(--font-mono)', fontSize: 10,

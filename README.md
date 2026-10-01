@@ -1,13 +1,13 @@
-# Swaraj Reddy — Engineering Portfolio
+# Swaraj Reddy: Engineering Portfolio
 
 [View the live portfolio](https://swarajreddy10.github.io/)
 
-This repository contains the source for my engineering portfolio. It presents selected work across backend systems, data platforms, search, healthcare document processing, and product engineering through concise project case studies.
+This repository contains the source for my engineering portfolio. It presents selected work in Go backend services, PostgreSQL search, AWS deployment, AI-assisted clinical document extraction, and React/Next.js interfaces.
 
 ## Portfolio Contents
 
 - Professional experience and engineering case studies, led by SpotMyJob and Osulo
-- System constraints, architecture decisions, implementation work, and measurable outcomes
+- Project case studies that connect technical constraints, implementation decisions, and measured results
 - Selected projects, certifications, résumé, and direct contact channels
 
 ## Implementation
@@ -20,7 +20,7 @@ This repository contains the source for my engineering portfolio. It presents se
 | Contact | Formspree-backed contact form with client-side validation |
 | Delivery | Static deployment to GitHub Pages |
 
-The site uses section-level dynamic imports to keep the initial page focused, structured metadata for search and social previews, and native scrolling on mobile, coarse-pointer, and reduced-motion environments.
+Below-fold sections are split into separate client bundles. Structured metadata supports search and social previews. Mobile, coarse-pointer, and reduced-motion users receive native scrolling.
 
 ## Run Locally
 

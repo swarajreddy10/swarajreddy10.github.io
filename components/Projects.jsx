@@ -157,20 +157,13 @@ export default function Projects() {
                     transition={{ duration: 0.45 }}
                     style={{ marginBottom: 44, maxWidth: 700 }}
                 >
-                    <span style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 10,
-                        letterSpacing: '0.34em', textTransform: 'uppercase',
-                        color: 'var(--accent)', display: 'block', marginBottom: 12,
-                        fontWeight: 600,
-                    }}>
-                        Selected Work
-                    </span>
+
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(32px, 4.5vw, 60px)', fontWeight: 500,
                         color: 'var(--fg)', letterSpacing: '-0.025em', lineHeight: 1.1,
                     }}>
-                        Systems, decisions, results.
+                        Engineering case studies.
                     </h2>
                 </motion.div>
 

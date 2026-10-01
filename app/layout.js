@@ -3,7 +3,7 @@ import './globals.css';
 export const metadata = {
   title: 'Swaraj Reddy | Engineering Portfolio',
   description:
-    'Backend engineering portfolio for Swaraj Reddy, featuring distributed data pipelines, hybrid search, cloud systems, and AI-assisted healthcare document processing.',
+    'AI-native backend engineering portfolio featuring Go microservices, PostgreSQL hybrid search, AWS deployment, and AI-assisted clinical document extraction.',
   keywords:
     'Swaraj Reddy, Backend Software Engineer, Go, PostgreSQL, AWS, Terraform, pgvector, hybrid search, distributed systems, intelligent document processing, Dexaminds, Hyderabad, India',
   authors: [{ name: 'Swaraj Chandra Reddy M' }],
@@ -15,14 +15,14 @@ export const metadata = {
     url: 'https://swarajreddy10.github.io',
     title: 'Swaraj Reddy | Engineering Portfolio',
     description:
-      'Backend systems, data pipelines, hybrid search, and AI-assisted healthcare document processing built with Go, PostgreSQL, and AWS.',
+      'AI-native backend engineering across Go microservices, PostgreSQL hybrid search, AWS deployment, and AI-assisted clinical document extraction.',
     siteName: 'Swaraj Reddy | Engineering Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Swaraj Reddy | Engineering Portfolio',
     description:
-      'Backend systems, data pipelines, hybrid search, and AI-assisted healthcare document processing built with Go, PostgreSQL, and AWS.',
+      'AI-native backend engineering across Go microservices, PostgreSQL hybrid search, AWS deployment, and AI-assisted clinical document extraction.',
   },
 };
 

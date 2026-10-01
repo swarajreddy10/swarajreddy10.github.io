@@ -1,16 +1,16 @@
-// Project data — used by Projects.jsx
+// Project data: used by Projects.jsx
 export const workData = [
     {
         title: 'SpotMyJob',
         tagline: 'Job Intelligence & Matching Platform',
         description: 'Backend / Data / Search',
         tech: ['Go', 'PostgreSQL', 'pgvector', 'Cloudflare Workers AI', 'Fastify', 'AWS', 'Terraform'],
-        impact: 'Job discovery needs governed sources, consistent job truth, and responsive seeker search. Designed 3 independently deployable microservices that own separate data models and communicate through versioned contracts.',
+        impact: 'Job discovery depends on validated employer sources, one canonical record per job, and responsive seeker search. Designed 3 independently deployable microservices with separate data ownership and versioned API and feed contracts.',
         bullets: [
-            'Raised transformation throughput by 64% within fixed CPU and memory limits through bounded concurrency, connection-pool headroom, and I/O-aware database work',
-            'Improved vector-ingestion throughput by 17x while preserving measured search quality through HNSW benchmarking, half-precision indexing, and write-elision',
-            'Integrated Cloudflare Workers AI\'s Qwen3 0.6B model through an OpenAI-compatible gateway, generating 1,024-dimensional job and seeker vectors in one versioned semantic space',
-            'Reduced recurring external fetches by 43% while preserving replay-safe search updates through evidence-age rotation, durable cursors, idempotent writes, and reconciliation',
+            'Raised transformation throughput by 64% within fixed CPU and memory limits by sizing worker concurrency, preserving PostgreSQL connection headroom, and reducing database I/O',
+            'Improved vector-ingestion throughput by 17x while preserving measured search quality through HNSW benchmarks, half-precision pgvector indexes, and removal of redundant index writes',
+            'Integrated Cloudflare Workers AI\'s Qwen3 0.6B model through an OpenAI-compatible gateway, using the same embedding version for indexed jobs and seeker queries',
+            'Reduced recurring external fetches by 43% by processing changed sources first, refreshing older evidence on a schedule, and retaining a full-scan fallback when change data is incomplete',
         ],
         metrics: ['64% More Throughput', '17x Vector Ingestion', '43% Fewer Fetches'],
     },
@@ -22,9 +22,9 @@ export const workData = [
         impact: 'Healthcare documents arrive as unstructured files. Built the ingestion backend and Clinical Document Intelligence Service to sanitize each document, extract structured clinical data, and retain provenance for review.',
         bullets: [
             'Integrated Vertex AI Gemini and Azure OpenAI GPT models to convert sanitized prescriptions and laboratory reports into schema-validated clinical fields within the 48.1-second Clinical Document Intelligence Service stage',
-            'Separated 2 independently deployable Go service planes through versioned events, keeping the 52.3-second upload lifecycle independent from AI-assisted extraction',
-            'Delivered a 100.6-second end-to-end path with a 0.2-second handoff, idempotent state, provenance, review gates, reconciliation, and DLQ-backed recovery',
-            'Protected retries with 24-hour idempotency, PostgreSQL JSONB event history, versioned contracts, and reconciler-backed recovery across both service planes',
+            'Kept the Go document-ingestion service and Clinical Document Intelligence Service independently deployable through versioned events, separating the measured 52.3-second upload lifecycle from AI-assisted extraction',
+            'Measured 100.6 seconds end to end with a 0.2-second service handoff; tracked document state and source provenance, required review before publication, and routed failed messages to an SQS dead-letter queue',
+            'Prevented duplicate document work during retries with request deduplication, PostgreSQL JSONB event history, versioned event contracts, and reconciliation before reprocessing failures',
         ],
         metrics: ['52.3s Ingestion', '48.1s Extraction', '0.2s Handoff'],
     },
@@ -35,7 +35,7 @@ export const workData = [
         link: 'https://www.resumecanvas.live/',
         github: 'https://github.com/swarajreddy10/Resume_Canvas',
         tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Groq AI', 'Puppeteer', 'Bun'],
-        impact: 'Built a full-stack AI resume builder with JWT, Google OAuth, sub-100ms responses, and 7 targeted indexes that cut query load by 60%',
+        impact: 'Built a full-stack AI resume builder with JWT, Google OAuth, sub-100ms cached responses, and 7 targeted indexes that cut query load by 60%',
         bullets: [
             'Built 8 AI features, including ATS scoring, keyword analysis, cover letters, and job matching, using Groq Llama 3.3 70B',
             'Reached 95.2% test coverage across 129 tests and 220 assertions with Bun Test and Playwright E2E',
@@ -50,7 +50,7 @@ export const workData = [
         link: 'https://swarajreddy10.github.io',
         github: 'https://github.com/swarajreddy10/swarajreddy10.github.io',
         tech: ['Next.js', 'React', 'Motion', 'Tailwind CSS', 'Lenis'],
-        impact: 'Built a statically exported Next.js portfolio with a reusable design system, component architecture, and GitHub Pages deployment',
+        impact: 'Built a statically exported Next.js portfolio with reusable React sections, a CSS token system, and GitHub Pages deployment',
         bullets: [
             'Built an 8-token CSS design system shared across 10 components, keeping theme resolution at build time and visual states consistent',
             'Shipped a responsive 2x2 project grid, an SVG pathLength timeline, and an 11-language preloader with Motion, reaching 1.0s FCP, 1.7s LCP, 20ms TBT, and 0 CLS',

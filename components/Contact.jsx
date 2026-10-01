@@ -210,7 +210,7 @@ export default function Contact() {
                         alignItems: 'start',
                     }}
                 >
-                    {/* Left — direct links */}
+                    {/* Left: direct links */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -233,7 +233,7 @@ export default function Contact() {
                         </div>
                     </motion.div>
 
-                    {/* Right — form */}
+                    {/* Right: form */}
                     {state.succeeded ? (
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}

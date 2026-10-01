@@ -12,17 +12,13 @@ const TIMELINE = [
         location: 'Hyderabad, IN',
         badge: 'Full-time',
         highlights: [
-            'Primary backend owner for 2 Go microservices in SpotMyJob\'s 3-service architecture, with major contributions to the TypeScript seeker-search service.',
-            'Primary contributor across Osulo\'s 2 service planes, covering architecture, clinical AI integration, AWS delivery, and runtime verification.',
-            'Collaborated across product, backend, and infrastructure work on 2 platforms in a fast-paced startup environment, using ADRs, versioned contracts, code reviews, and runtime evidence to keep engineers and stakeholders aligned.',
+            'Primary backend owner for 2 Go microservices in SpotMyJob\'s 3-service architecture; implemented job ingestion, location, skill, and ranking changes in the TypeScript seeker-search service.',
+            'Primary contributor to Osulo\'s document-ingestion service and Clinical Document Intelligence Service, covering architecture, Vertex AI and Azure OpenAI integration, AWS infrastructure, deployment, and verification through CloudWatch metrics and logs.',
+            'In a fast-paced startup, used AI to research unfamiliar problems, compare implementation options, debug failures, and review changes; checked conclusions against primary documentation, peer feedback, automated tests, benchmarks, and CloudWatch metrics and logs.',
         ],
     },
 ];
 
-function getMonthsSince(year, month) {
-    const now = new Date();
-    return Math.max(0, (now.getFullYear() - year) * 12 + (now.getMonth() - (month - 1)));
-}
 
 const subscribeToMobile = (callback) => {
     const mediaQuery = window.matchMedia('(max-width: 639px)');
@@ -172,7 +168,7 @@ function FlipCard({ item, isLeft, index, isMobile }) {
                 paddingTop: 40,
             }}
         >
-            {/* Dot column — date pill + dot stacked on line */}
+            {/* Dot column: date pill + dot stacked on line */}
             <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 2 }}>
                 {/* Date pill */}
                 <span style={{
@@ -221,7 +217,6 @@ function FlipCard({ item, isLeft, index, isMobile }) {
 }
 
 export default function Experience() {
-    const fullTimeMonths = getMonthsSince(2025, 9);
     const timelineRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start center', 'end center'] });
     const pathLength = useTransform(scrollYProgress, [0, 0.85], [0, 1]);
@@ -241,27 +236,20 @@ export default function Experience() {
                     transition={{ duration: 0.55 }}
                     style={{ marginBottom: 52, maxWidth: 720 }}
                 >
-                    <span style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 10,
-                        letterSpacing: '0.36em', textTransform: 'uppercase',
-                        color: 'var(--accent)', display: 'block', marginBottom: 20,
-                        fontWeight: 600,
-                    }}>
-                        Experience
-                    </span>
+
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(28px, 4vw, 52px)',
                         fontWeight: 500, color: 'var(--fg)',
                         letterSpacing: '-0.025em', lineHeight: 1.2, marginBottom: 20,
                     }}>
-                        Backend ownership across two platforms.
+                        Professional experience.
                     </h2>
                     <p style={{
                         fontFamily: 'var(--font-body)', fontSize: 16,
                         lineHeight: 1.75, color: 'var(--muted)',
                     }}>
-                        Within {fullTimeMonths} months as a Software Engineer at Dexaminds, took primary backend ownership across SpotMyJob and Osulo, shipping under fixed compute and schedule constraints.
+                        At Dexaminds, I carry backend work from service design and data modeling through AWS deployment and production monitoring under fixed compute and schedule constraints.
                     </p>
                 </motion.div>
 

@@ -3,14 +3,12 @@
 import { motion, useReducedMotion } from 'motion/react';
 
 const SKILL_GROUPS = [
-    { name: 'Languages', skills: ['Go', 'TypeScript', 'Python', 'Java', 'SQL'] },
-    { name: 'Backend', skills: ['Go net/http', 'Fastify', 'REST APIs', 'Microservices', 'JWT / OAuth2', 'OpenAPI'] },
-    { name: 'Databases', skills: ['PostgreSQL', 'MongoDB'] },
-    { name: 'Search & Retrieval', skills: ['pgvector', 'Full-text search', 'HNSW', 'GIN', 'Reciprocal Rank Fusion'] },
-    { name: 'Cloud & DevOps', skills: ['AWS ECS / RDS', 'S3 / SQS / EventBridge', 'Step Functions', 'Terraform', 'Docker', 'GitHub Actions', 'CloudWatch'] },
-    { name: 'AI Integration', skills: ['LLM APIs', 'Embedding pipelines', 'Structured extraction', 'Structured outputs', 'Schema validation', 'Multi-model routing'] },
-    { name: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS', 'Motion', 'WCAG / ARIA'] },
-    { name: 'Testing & Quality', skills: ['Unit Testing', 'Integration Testing', 'Contract Testing', 'Database parity', 'Race testing', 'Playwright'] },
+    { name: 'Backend & APIs', skills: ['Go', 'TypeScript', 'Python', 'Fastify', 'REST APIs', 'Microservices'] },
+    { name: 'Data & Search', skills: ['PostgreSQL', 'pgvector', 'Hybrid search'] },
+    { name: 'Cloud & Infrastructure', skills: ['AWS', 'Terraform', 'Docker', 'GitHub Actions'] },
+    { name: 'Applied AI', skills: ['LLM API integration', 'Embedding systems'] },
+    { name: 'Testing', skills: ['Unit testing', 'Integration testing', 'Contract testing'] },
+    { name: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS'] },
 ];
 
 function SkillGroup({ group, index, reduceMotion }) {
@@ -20,28 +18,34 @@ function SkillGroup({ group, index, reduceMotion }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.36, delay: reduceMotion ? 0 : (index % 2) * 0.05 }}
-            style={{ borderTop: '1px solid var(--border)', padding: '22px 0 24px', minWidth: 0 }}
+            style={{ borderTop: '1px solid var(--border)', padding: '20px 0 22px', minWidth: 0 }}
         >
             <h3 style={{
                 fontFamily: 'var(--font-display)', fontStyle: 'italic',
                 fontSize: 'clamp(21px, 2.4vw, 29px)', fontWeight: 500,
                 color: 'var(--fg)', letterSpacing: '-0.015em', lineHeight: 1.15,
-                marginBottom: 15,
+                marginBottom: 13,
             }}>
                 {group.name}
             </h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+            <ul style={{
+                display: 'flex', flexWrap: 'wrap', gap: '9px 18px',
+                listStyle: 'none', margin: 0, padding: 0,
+            }}>
                 {group.skills.map((skill) => (
-                    <span key={skill} style={{
+                    <li key={skill} style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 8,
                         fontFamily: 'var(--font-mono)', fontSize: 10,
-                        color: 'var(--muted)', fontWeight: 500,
-                        border: '1px solid var(--border)', borderRadius: 8,
-                        background: 'var(--surf)', padding: '7px 11px',
+                        color: 'var(--muted)', fontWeight: 500, lineHeight: 1.45,
                     }}>
+                        <span aria-hidden="true" style={{
+                            width: 4, height: 4, borderRadius: '50%',
+                            background: 'var(--accent)', opacity: 0.72, flexShrink: 0,
+                        }} />
                         {skill}
-                    </span>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </motion.article>
     );
 }
@@ -59,20 +63,13 @@ export default function Skills() {
                     transition={{ duration: 0.42 }}
                     style={{ marginBottom: 36, maxWidth: 680 }}
                 >
-                    <span style={{
-                        fontFamily: 'var(--font-mono)', fontSize: 10,
-                        letterSpacing: '0.34em', textTransform: 'uppercase',
-                        color: 'var(--accent)', display: 'block', marginBottom: 14,
-                        fontWeight: 600,
-                    }}>
-                        Technical Skills
-                    </span>
+
                     <h2 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
                         fontSize: 'clamp(30px, 4vw, 52px)', fontWeight: 500,
                         color: 'var(--fg)', letterSpacing: '-0.025em', lineHeight: 1.12,
                     }}>
-                        A practical stack, organized by function.
+                        Core technologies.
                     </h2>
                 </motion.div>
 

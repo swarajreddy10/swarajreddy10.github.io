@@ -57,7 +57,7 @@ export default function Cursor() {
 
     return (
         <>
-            {/* Trailing ring — lags behind on hover */}
+            {/* Trailing ring: lags behind on hover */}
             <motion.div
                 style={{
                     position: 'fixed', zIndex: 9998,

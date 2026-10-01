@@ -69,7 +69,7 @@ export default function Preloader({ onDone }) {
         });
 
         /* Word 0 ("Hello") sits at the origin (spiral center).
-           Words 1-10 spread from 20 % onwards — no crowding near center. */
+           Words 1-10 spread from 20 % onwards: no crowding near center. */
         const thetas = WORDS.map((_, i) => {
             if (i === 0) return T0; // origin point: r = 0 → (cx, cy)
             return T0 + (0.20 + ((i - 1) / (WORDS.length - 2)) * (0.92 - 0.20)) * (T_END - T0);
@@ -137,7 +137,7 @@ export default function Preloader({ onDone }) {
 
         const tl = gsap.timeline({ onComplete: () => setPhase('name') });
 
-        /* 1 — Draw spiral + pop words in */
+        /* 1: Draw spiral + pop words in */
         tl.to(prog, {
             t: 1,
             duration: 2.5,
@@ -157,10 +157,10 @@ export default function Preloader({ onDone }) {
             },
         })
 
-        /* 2 — Hold */
+        /* 2: Hold */
         .to({}, { duration: 0.28 })
 
-        /* 3 — Implode words toward center */
+        /* 3: Implode words toward center */
         .to(wordEls, {
             x: 0, y: 0, scale: 0, opacity: 0,
             duration: 0.6,
@@ -168,7 +168,7 @@ export default function Preloader({ onDone }) {
             ease: 'power3.in',
         })
 
-        /* 4 — Fade spiral canvas */
+        /* 4: Fade spiral canvas */
         .to(canvas, { opacity: 0, duration: 0.4, ease: 'power2.in' }, '<+0.08');
 
         return () => {
@@ -196,7 +196,7 @@ export default function Preloader({ onDone }) {
                         clipPath: 'inset(0% 0% 0% 0%)',
                     }}
                 >
-                    {/* Canvas — zIndex 1, always visible */}
+                    {/* Canvas: zIndex 1, always visible */}
                     <canvas
                         ref={canvasRef}
                         style={{
@@ -206,7 +206,7 @@ export default function Preloader({ onDone }) {
                         }}
                     />
 
-                    {/* Greeting words — zIndex 2 */}
+                    {/* Greeting words: zIndex 2 */}
                     {WORDS.map((item, i) => (
                         <div
                             key={i}
@@ -244,7 +244,7 @@ export default function Preloader({ onDone }) {
                         </div>
                     ))}
 
-                    {/* Name reveal — zIndex 3 */}
+                    {/* Name reveal: zIndex 3 */}
                     <AnimatePresence>
                         {phase === 'name' && (
                             <motion.div

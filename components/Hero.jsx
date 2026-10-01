@@ -113,7 +113,7 @@ export default function Hero() {
         }}>
             <div ref={contentRef} className="hero-content" style={{ maxWidth: 760, width: '100%', textAlign: 'center' }}>
 
-                {/* Name — GSAP character stagger */}
+                {/* Name: GSAP character stagger */}
                 <div ref={nameRef} style={{ marginBottom: 16, paddingBottom: '0.8em' }}>
                     <h1 style={{
                         fontFamily: 'var(--font-display)', fontStyle: 'italic',
@@ -137,7 +137,7 @@ export default function Hero() {
                             color: 'var(--accent)', margin: 0, fontWeight: 600,
                         }}
                     >
-                        Backend software engineer.
+                        AI-native backend engineer.
                     </motion.p>
                 </div>
 
@@ -152,7 +152,7 @@ export default function Hero() {
                         maxWidth: 620, margin: '0 auto 40px',
                     }}
                 >
-                    Curious by default. I like taking complicated systems apart, finding the detail everyone skipped, and leaving the whole thing simpler than I found it.
+                    Curious by default, I use AI to research unfamiliar problems, compare options, and test assumptions before choosing a design. I carry that decision through implementation, performance testing, deployment, and production monitoring.
                 </motion.p>
 
                 {/* CTAs */}
