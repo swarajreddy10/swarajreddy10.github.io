@@ -1,6 +1,6 @@
 import { Download, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './BrandIcons';
-import { RESUME_PATH, SOCIAL_LINKS } from '../assets/site';
+import { RESUME_PATH, SOCIAL_LINKS } from '../data/site';
 
 const ICONS = { mail: Mail, linkedin: LinkedinIcon, github: GithubIcon };
 

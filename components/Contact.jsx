@@ -3,7 +3,7 @@
 import { ExternalLink, Mail, Send } from 'lucide-react';
 import { useState } from 'react';
 import { GithubIcon, LinkedinIcon } from './BrandIcons';
-import { SOCIAL_LINKS } from '../assets/site';
+import { SOCIAL_LINKS } from '../data/site';
 import IndianFlag from './IndianFlag';
 
 const ICONS = { mail: Mail, linkedin: LinkedinIcon, github: GithubIcon };

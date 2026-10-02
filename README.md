@@ -58,7 +58,7 @@ This builds the static site and publishes `out/` to the `gh-pages` branch.
 
 ```text
 app/          Page composition, metadata, social images, and global styles
-assets/       Portfolio and shared navigation data
+data/         Portfolio and shared navigation data
 components/   Semantic content sections and interactive controls
 public/       Downloadable résumé and GitHub Pages assets
 ```

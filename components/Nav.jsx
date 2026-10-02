@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { NAV_LINKS } from '../assets/site';
+import { NAV_LINKS } from '../data/site';
 
 const SECTION_IDS = ['home', ...NAV_LINKS.map(link => link.id)];
 

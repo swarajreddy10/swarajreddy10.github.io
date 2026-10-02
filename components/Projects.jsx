@@ -1,6 +1,6 @@
 import { ExternalLink } from 'lucide-react';
 import { GithubIcon } from './BrandIcons';
-import { workData } from '../assets/assets';
+import { workData } from '../data/work';
 
 function ProjectCard({ project }) {
     const hasLiveLink = project.link && project.link !== project.github;

@@ -4,9 +4,8 @@
   "private": true,
   "homepage": "https://swarajreddy10.github.io",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "eslint .",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out --dotfiles"

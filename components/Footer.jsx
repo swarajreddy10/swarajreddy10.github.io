@@ -1,4 +1,4 @@
-import { RESUME_PATH } from '../assets/site';
+import { RESUME_PATH } from '../data/site';
 
 export default function Footer() {
     return (

@@ -859,12 +859,6 @@ section + section {
     opacity: 1;
 }
 
-.form-error {
-    margin-top: 6px;
-    color: #A31212;
-    font-size: 13px;
-}
-
 .button:disabled {
     cursor: wait;
     opacity: 0.7;
