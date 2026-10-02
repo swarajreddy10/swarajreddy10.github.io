@@ -7,20 +7,21 @@ This repository contains the source for my engineering portfolio. It presents se
 ## Portfolio Contents
 
 - Professional experience and engineering case studies, led by SpotMyJob and Osulo
-- Project case studies that connect technical constraints, implementation decisions, and measured results
-- Selected projects, certifications, résumé, and direct contact channels
+- Project stories connecting technical constraints, implementation decisions, and measured results
+- Selected technologies, certifications, résumé, and contact channels
 
 ## Implementation
 
 | Area | Approach |
 |---|---|
-| Application | Next.js and React with a static export |
-| Styling | Tailwind CSS and a custom-property design system |
-| Interaction | Motion, GSAP, and Lenis |
-| Contact | Formspree-backed contact form with client-side validation |
-| Delivery | Static deployment to GitHub Pages |
+| Rendering | Server-rendered HTML with a Next.js static export |
+| Styling | Responsive CSS with accessible color and focus tokens |
+| Navigation | Semantic fragment links, keyboard-accessible mobile menu, and fixed-header offsets |
+| Contact | Native HTML form with progressive Formspree submission |
+| Metadata | Self-hosted fonts, canonical metadata, and generated Open Graph images |
+| Delivery | GitHub Pages through the `gh-pages` branch |
 
-Below-fold sections are split into separate client bundles. Structured metadata supports search and social previews. Mobile, coarse-pointer, and reduced-motion users receive native scrolling.
+The professional content is present in the exported HTML and remains readable without client-side JavaScript. Interactive behavior is limited to the mobile navigation and inline contact-form feedback.
 
 ## Run Locally
 
@@ -40,6 +41,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run lint
 npm run build
+npm audit
 ```
 
 The production build is generated in `out/` as a static export.
@@ -55,11 +57,12 @@ This builds the static site and publishes `out/` to the `gh-pages` branch.
 ## Repository Structure
 
 ```text
-app/          Application entry point, metadata, and global styles
-components/   Portfolio sections and interactive UI
-public/       Static assets, favicon, and résumé
+app/          Page composition, metadata, social images, and global styles
+assets/       Portfolio and shared navigation data
+components/   Semantic content sections and interactive controls
+public/       Downloadable résumé and GitHub Pages assets
 ```
 
 ## Contact
 
-Contact details and the enquiry form are available on the [live portfolio](https://swarajreddy10.github.io/#contact).
+Contact details and the inquiry form are available on the [live portfolio](https://swarajreddy10.github.io/#contact).

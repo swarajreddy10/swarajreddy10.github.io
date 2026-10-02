@@ -1,4 +1,3 @@
-// Project data: used by Projects.jsx
 export const workData = [
     {
         title: 'SpotMyJob',
@@ -6,27 +5,23 @@ export const workData = [
         description: 'Backend / Data / Search',
         tech: ['Go', 'PostgreSQL', 'pgvector', 'Cloudflare Workers AI', 'Fastify', 'AWS', 'Terraform'],
         impact: 'Job discovery depends on validated employer sources, one canonical record per job, and responsive seeker search. Designed 3 independently deployable microservices with separate data ownership and versioned API and feed contracts.',
+        metrics: ['64% Higher Throughput', '17x Vector Ingestion'],
         bullets: [
-            'Raised transformation throughput by 64% within fixed CPU and memory limits by sizing worker concurrency, preserving PostgreSQL connection headroom, and reducing database I/O',
-            'Improved vector-ingestion throughput by 17x while preserving measured search quality through HNSW benchmarks, half-precision pgvector indexes, and removal of redundant index writes',
-            'Integrated Cloudflare Workers AI\'s Qwen3 0.6B model through an OpenAI-compatible gateway, using the same embedding version for indexed jobs and seeker queries',
-            'Reduced recurring external fetches by 43% by processing changed sources first, refreshing older evidence on a schedule, and retaining a full-scan fallback when change data is incomplete',
+            'Sized worker concurrency, PostgreSQL connection headroom, and database I/O to stay within fixed compute limits.',
+            'Benchmarked HNSW and half-precision pgvector indexes, removed redundant writes, and cut recurring external fetches by 43%.',
         ],
-        metrics: ['64% More Throughput', '17x Vector Ingestion', '43% Fewer Fetches'],
     },
     {
         title: 'Osulo',
         tagline: 'Patient-Care Document Intelligence',
         description: 'Backend / Healthcare AI',
         tech: ['Go', 'PostgreSQL', 'Vertex AI Gemini', 'Azure OpenAI GPT', 'AWS', 'Step Functions', 'Terraform'],
-        impact: 'Healthcare documents arrive as unstructured files. Built the ingestion backend and Clinical Document Intelligence Service to sanitize each document, extract structured clinical data, and retain provenance for review.',
+        impact: 'Built the document-ingestion service and Clinical Document Intelligence Service to sanitize healthcare files, extract structured clinical data, preserve source provenance, and support human review.',
+        metrics: ['2 Go Services', '0.2s Service Handoff'],
         bullets: [
-            'Integrated Vertex AI Gemini and Azure OpenAI GPT models to convert sanitized prescriptions and laboratory reports into schema-validated clinical fields within the 48.1-second Clinical Document Intelligence Service stage',
-            'Kept the Go document-ingestion service and Clinical Document Intelligence Service independently deployable through versioned events, separating the measured 52.3-second upload lifecycle from AI-assisted extraction',
-            'Measured 100.6 seconds end to end with a 0.2-second service handoff; tracked document state and source provenance, required review before publication, and routed failed messages to an SQS dead-letter queue',
-            'Prevented duplicate document work during retries with request deduplication, PostgreSQL JSONB event history, versioned event contracts, and reconciliation before reprocessing failures',
+            'Integrated Vertex AI Gemini and Azure OpenAI GPT to convert sanitized prescriptions and laboratory reports into schema-validated clinical fields.',
+            'Kept ingestion and extraction independently deployable through versioned events, duplicate-request protection, and SQS dead-letter recovery.',
         ],
-        metrics: ['52.3s Ingestion', '48.1s Extraction', '0.2s Handoff'],
     },
     {
         title: 'ResumeCanvas',
@@ -34,28 +29,12 @@ export const workData = [
         description: 'AI / Full Stack',
         link: 'https://www.resumecanvas.live/',
         github: 'https://github.com/swarajreddy10/Resume_Canvas',
-        tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Groq AI', 'Puppeteer', 'Bun'],
-        impact: 'Built a full-stack AI resume builder with JWT, Google OAuth, sub-100ms cached responses, and 7 targeted indexes that cut query load by 60%',
+        tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Groq AI', 'Puppeteer'],
+        impact: 'Built a full-stack AI resume builder with JWT, Google OAuth, sub-100ms cached responses, and 7 targeted indexes that cut query load by 60%.',
+        metrics: ['95.2% Test Coverage', 'Sub-100ms Cached Responses'],
         bullets: [
-            'Built 8 AI features, including ATS scoring, keyword analysis, cover letters, and job matching, using Groq Llama 3.3 70B',
-            'Reached 95.2% test coverage across 129 tests and 220 assertions with Bun Test and Playwright E2E',
-            'Shipped 5 resume templates with live preview, PDF export, auto-save, and public sharing via custom slugs',
+            'Built 8 AI features covering ATS scoring, keyword analysis, cover letters, and job matching with Groq Llama 3.3 70B.',
+            'Shipped 5 templates with live preview, PDF export, autosave, and public sharing through custom slugs.',
         ],
-        metrics: ['95.2% Coverage', 'Sub-100ms', '7 Indexes'],
-    },
-    {
-        title: 'Portfolio',
-        tagline: 'Engineering Portfolio',
-        description: 'Design / Engineering',
-        link: 'https://swarajreddy10.github.io',
-        github: 'https://github.com/swarajreddy10/swarajreddy10.github.io',
-        tech: ['Next.js', 'React', 'Motion', 'Tailwind CSS', 'Lenis'],
-        impact: 'Built a statically exported Next.js portfolio with reusable React sections, a CSS token system, and GitHub Pages deployment',
-        bullets: [
-            'Built an 8-token CSS design system shared across 10 components, keeping theme resolution at build time and visual states consistent',
-            'Shipped a responsive 2x2 project grid, an SVG pathLength timeline, and an 11-language preloader with Motion, reaching 1.0s FCP, 1.7s LCP, 20ms TBT, and 0 CLS',
-            'Lazy-loaded below-fold sections and fixed WCAG AA contrast issues, finishing with 96 Accessibility, 100 Best Practices, and 100 SEO on Lighthouse',
-        ],
-        metrics: ['1.0s FCP', '96 Accessibility', '100 SEO'],
     },
 ];

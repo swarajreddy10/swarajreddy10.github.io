@@ -1,42 +1,25 @@
-'use client';
-
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
-import Preloader from '../components/Preloader';
-import SmoothScroll from '../components/SmoothScroll';
-
-const Cursor         = dynamic(() => import('../components/Cursor'),         { ssr: false });
-const Experience     = dynamic(() => import('../components/Experience'),     { ssr: false });
-const Projects       = dynamic(() => import('../components/Projects'),       { ssr: false });
-const Marquee        = dynamic(() => import('../components/Marquee'),        { ssr: false });
-const Skills         = dynamic(() => import('../components/Skills'),         { ssr: false });
-const Certifications = dynamic(() => import('../components/Certifications'), { ssr: false });
-const Contact        = dynamic(() => import('../components/Contact'),        { ssr: false });
-const Footer         = dynamic(() => import('../components/Footer'),         { ssr: false });
+import Experience from '../components/Experience';
+import Projects from '../components/Projects';
+import Skills from '../components/Skills';
+import Certifications from '../components/Certifications';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 export default function Home() {
-    const [ready, setReady] = useState(false);
-
     return (
         <>
-            <Preloader onDone={() => setReady(true)} />
-
-            <SmoothScroll>
-                <Cursor />
-                <Nav />
-                <main className="main-content" data-hidden={!ready ? 'true' : undefined}>
-                    <Hero />
-                    <Experience />
-                    <Projects />
-                    <Marquee />
-                    <Skills />
-                    <Certifications />
-                    <Contact />
-                    <Footer />
-                </main>
-            </SmoothScroll>
+            <Nav />
+            <main id="main-content">
+                <Hero />
+                <Experience />
+                <Projects />
+                <Skills />
+                <Certifications />
+                <Contact />
+            </main>
+            <Footer />
         </>
     );
 }
