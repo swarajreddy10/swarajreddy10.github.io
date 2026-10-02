@@ -10,7 +10,8 @@ export default function Hero() {
             <div className="hero-content">
                 <p className="hero-greeting">Hello, I&apos;m</p>
                 <h1 id="hero-title">Swaraj Reddy</h1>
-                <p className="hero-role">AI-native backend engineer</p>
+                <p className="hero-role">Software Engineer</p>
+                <p className="hero-focus">Backend · Full-Stack · Applied AI</p>
                 <p className="hero-summary">
                     I use AI to investigate unfamiliar problems and test assumptions early, then carry backend work through implementation, performance validation, deployment, and production monitoring.
                 </p>

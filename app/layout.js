@@ -10,11 +10,11 @@ const dmSerifDisplay = DM_Serif_Display({
     variable: '--font-dm-serif',
 });
 
-const description = 'AI-native backend engineering portfolio featuring Go microservices, PostgreSQL hybrid search, AWS deployment, and AI-assisted clinical document extraction.';
+const description = 'Software engineering portfolio focused on Go backend services, PostgreSQL hybrid search, AWS deployment, full-stack delivery, and applied AI.';
 
 export const metadata = {
     metadataBase: new URL('https://swarajreddy10.github.io'),
-    title: 'Swaraj Reddy | Backend Software Engineer',
+    title: 'Swaraj Reddy | Software Engineer',
     description,
     alternates: { canonical: '/' },
     authors: [{ name: 'Swaraj Chandra Reddy M' }],
@@ -24,13 +24,13 @@ export const metadata = {
         type: 'website',
         locale: 'en_US',
         url: '/',
-        title: 'Swaraj Reddy | Backend Software Engineer',
+        title: 'Swaraj Reddy | Software Engineer',
         description,
         siteName: 'Swaraj Reddy | Engineering Portfolio',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Swaraj Reddy | Backend Software Engineer',
+        title: 'Swaraj Reddy | Software Engineer',
         description,
     },
 };

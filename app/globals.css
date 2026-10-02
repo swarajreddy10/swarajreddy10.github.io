@@ -115,6 +115,18 @@ textarea:focus-visible {
     font-size: 19px;
     font-style: italic;
     text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    visibility: hidden;
+    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+}
+
+.brand-link.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    visibility: visible;
 }
 
 .desktop-nav {
@@ -242,9 +254,19 @@ section + section {
     text-transform: uppercase;
 }
 
+.hero-focus {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 .hero-summary {
     max-width: 650px;
-    margin: 28px auto 0;
+    margin: 24px auto 0;
     color: var(--muted);
     font-size: clamp(16px, 1.5vw, 18px);
     line-height: 1.75;
@@ -748,11 +770,11 @@ section + section {
 }
 
 .contact-link {
-    display: flex;
+    display: grid;
     min-height: 72px;
     padding: 14px 16px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
     gap: 14px;
     border-radius: 14px;
     color: inherit;
@@ -768,6 +790,11 @@ section + section {
 .contact-link > span {
     min-width: 0;
     flex: 1;
+}
+
+.contact-link-label,
+.contact-link-value {
+    display: block;
 }
 
 .contact-link-label {

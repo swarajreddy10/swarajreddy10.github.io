@@ -34,14 +34,14 @@ export default function Contact() {
         <section id="contact" className="content-section" aria-labelledby="contact-title">
             <div className="section-shell">
                 <header className="section-header contact-heading">
-                    <p className="contact-status">Open to backend engineering roles</p>
+                    <p className="contact-status">Open to software engineering opportunities</p>
                     <h2 id="contact-title">Got a role, project, or idea? Let&apos;s talk.</h2>
                 </header>
 
                 <div className="contact-grid">
                     <div>
                         <p className="contact-intro">
-                            <IndianFlag size={18} /> Based in Hyderabad, India. Open to onsite, hybrid, or remote backend roles, with relocation considered.
+                            <IndianFlag size={18} /> Based in Hyderabad, India. Open to backend, full-stack, and AI engineering work across onsite, hybrid, and remote teams, with relocation considered.
                         </p>
                         <div className="contact-links">
                             {SOCIAL_LINKS.map(link => {

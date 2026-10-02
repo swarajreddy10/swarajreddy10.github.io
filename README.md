@@ -2,7 +2,7 @@
 
 [View the live portfolio](https://swarajreddy10.github.io/)
 
-This repository contains the source for my engineering portfolio. It presents selected work in Go backend services, PostgreSQL search, AWS deployment, AI-assisted clinical document extraction, and React/Next.js interfaces.
+This repository contains the source for my engineering portfolio. It presents selected work across backend, full-stack, cloud, search, and applied AI engineering.
 
 ## Portfolio Contents
 

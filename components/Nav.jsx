@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { NAV_LINKS } from '../assets/site';
 
+const SECTION_IDS = ['home', ...NAV_LINKS.map(link => link.id)];
+
 export default function Nav() {
     const [open, setOpen] = useState(false);
     const [activeId, setActiveId] = useState('home');
@@ -18,7 +20,7 @@ export default function Nav() {
     }, []);
 
     useEffect(() => {
-        const observers = NAV_LINKS.map(({ id }) => {
+        const observers = SECTION_IDS.map(id => {
             const element = document.getElementById(id);
             if (!element) return null;
             const observer = new IntersectionObserver(
@@ -47,12 +49,20 @@ export default function Nav() {
         return () => document.removeEventListener('keydown', onKeyDown);
     }, [open]);
 
+    const showBrand = activeId !== 'home';
+
     return (
         <>
             <a className="skip-link" href="#main-content">Skip to content</a>
             <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
                 <div className="nav-shell">
-                    <a className="brand-link" href="#home" aria-label="Swaraj Reddy, back to top">
+                    <a
+                        className={`brand-link${showBrand ? ' is-visible' : ''}`}
+                        href="#home"
+                        aria-label="Swaraj Reddy, back to top"
+                        aria-hidden={!showBrand}
+                        tabIndex={showBrand ? 0 : -1}
+                    >
                         Swaraj Reddy
                     </a>
 
