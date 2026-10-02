@@ -31,4 +31,4 @@ export const SOCIAL_LINKS = [
     },
 ];
 
-export const RESUME_PATH = '/SwarajReddy-resume.pdf';
+export const RESUME_PATH = '/Swarajreddy_Software_Engineer.pdf';
