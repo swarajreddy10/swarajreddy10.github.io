@@ -21,7 +21,17 @@ export default function Experience() {
                     <header className="experience-card-header">
                         <div>
                             <h3>Software Engineer</h3>
-                            <p className="experience-company">Dexaminds</p>
+                            <p className="experience-company">
+                                <a
+                                    className="experience-company-link"
+                                    href="https://dexaminds.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Dexaminds company website, opens in a new tab"
+                                >
+                                    Dexaminds
+                                </a>
+                            </p>
                             <p className="experience-meta">
                                 <MapPin size={14} aria-hidden="true" /> Hyderabad, India
                             </p>

@@ -425,6 +425,16 @@ section + section {
     font-weight: 700;
 }
 
+.experience-company-link {
+    text-decoration-color: rgba(107, 96, 16, 0.4);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+.experience-company-link:hover {
+    text-decoration-color: currentColor;
+}
+
 .experience-meta,
 .experience-period {
     color: var(--muted);
