@@ -4,11 +4,11 @@ export const workData = [
         tagline: 'Job Intelligence & Matching Platform',
         description: 'Backend / Data / Search',
         tech: ['Go', 'PostgreSQL', 'pgvector', 'Cloudflare Workers AI', 'Fastify', 'AWS', 'Terraform'],
-        impact: 'Job discovery depends on validated employer sources, one canonical record per job, and responsive seeker search. Designed 3 independently deployable microservices with separate data ownership and versioned API and feed contracts.',
+        impact: 'Designed 3 independently deployable microservices with separate data ownership and versioned contracts, then connected canonical jobs to seeker-facing hybrid search through a versioned embedding pipeline.',
         metrics: ['64% Higher Throughput', '17x Vector Ingestion'],
         bullets: [
-            'Sized worker concurrency, PostgreSQL connection headroom, and database I/O to stay within fixed compute limits.',
-            'Benchmarked HNSW and half-precision pgvector indexes, removed redundant writes, and cut recurring external fetches by 43%.',
+            'Sized worker concurrency, PostgreSQL connection headroom, and database I/O under fixed compute limits, increasing transformation throughput by 64% and reducing recurring external fetches by 43%.',
+            'Built versioned job and seeker embedding pipelines through Cloudflare Workers AI, then benchmarked HNSW and half-precision pgvector indexes to improve vector ingestion by 17x while preserving measured search quality.',
         ],
     },
     {

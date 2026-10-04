@@ -1,9 +1,9 @@
 const SKILL_GROUPS = [
-    { name: 'Languages', skills: ['Go', 'TypeScript', 'Python', 'SQL'] },
-    { name: 'Data & Search', skills: ['PostgreSQL', 'MongoDB', 'pgvector', 'Hybrid search'] },
-    { name: 'Cloud & Infrastructure', skills: ['AWS', 'Terraform', 'Docker'] },
-    { name: 'Applied AI', skills: ['LLM API integration', 'Vector embedding pipelines'] },
-    { name: 'Engineering Practices', skills: ['REST API design', 'CI/CD', 'Unit testing', 'Integration testing', 'Contract testing'] },
+    { name: 'Programming Languages', skills: ['Go', 'TypeScript', 'Python', 'SQL'] },
+    { name: 'Backend & APIs', skills: ['REST API design'] },
+    { name: 'Databases', skills: ['PostgreSQL', 'MongoDB'] },
+    { name: 'Cloud & DevOps', skills: ['AWS', 'Terraform', 'Docker', 'CI/CD'] },
+    { name: 'Testing', skills: ['Unit testing', 'Integration testing', 'Contract testing'] },
     { name: 'Frontend', skills: ['React', 'Next.js'] },
 ];
 
