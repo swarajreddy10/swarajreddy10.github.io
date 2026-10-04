@@ -49,7 +49,7 @@ export default function Experience() {
                 <div className="experience-notes">
                     <div className="experience-note">
                         <Briefcase size={18} aria-hidden="true" />
-                        <span><strong>Earlier at Dexaminds:</strong> Software Engineer Intern, Jun to Sep 2025. Shipped React and TypeScript UI-to-API changes and resolved 15+ production defects.</span>
+                        <span><strong>Earlier at Dexaminds:</strong> Software Engineer Intern, Jun to Sep 2025. Shipped React and TypeScript UI-to-API changes and delivered 15+ frontend and backend production fixes.</span>
                     </div>
                     <div className="experience-note">
                         <GraduationCap size={18} aria-hidden="true" />
