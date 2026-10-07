@@ -2,7 +2,7 @@ import { Briefcase, GraduationCap, MapPin } from 'lucide-react';
 
 const HIGHLIGHTS = [
     'Primary backend owner for 2 Go microservices in SpotMyJob\'s 3-service architecture; implemented job ingestion, location, skill, and ranking changes in the TypeScript seeker-search service.',
-    'Primary contributor to Osulo\'s document-ingestion service and Clinical Document Intelligence Service, covering architecture, Vertex AI and Azure OpenAI integration, AWS infrastructure, deployment, and verification through CloudWatch metrics and logs.',
+    'Served as primary contributor to Osulo\'s document-ingestion service and Clinical Document Intelligence Service, covering architecture, Vertex AI and Azure OpenAI integration, AWS infrastructure, deployment, and verification through CloudWatch metrics and logs.',
     'Used AI to research unfamiliar problems, compare implementation options, debug failures, and review changes; checked conclusions against primary documentation, peer feedback, automated tests, benchmarks, and runtime metrics.',
 ];
 
