@@ -8,7 +8,8 @@ export const workData = [
         metrics: ['64% Higher Throughput', '17x Vector Ingestion'],
         bullets: [
             'Sized worker concurrency, PostgreSQL connection headroom, and database I/O under fixed compute limits, increasing transformation throughput by 64% and reducing recurring external fetches by 43%.',
-            'Built versioned job and seeker embedding pipelines through Cloudflare Workers AI, then benchmarked HNSW and half-precision pgvector indexes to improve vector ingestion by 17x while preserving measured search quality.',
+            'Improved vector-heavy reader-feed ingestion by 17x, from about 238 seconds to 13.7 seconds per fixed benchmark page, through half-precision HNSW tuning while retaining 98.2% recall@10 versus a 98.3% baseline.',
+            'Cut projected postal-reference load time by more than 90%, from 30.2 minutes to 2 minutes 34 seconds, using PostgreSQL COPY, transactional staging, and set-based deduplication.',
         ],
     },
     {
@@ -30,11 +31,11 @@ export const workData = [
         link: 'https://www.resumecanvas.live/',
         github: 'https://github.com/swarajreddy10/Resume_Canvas',
         tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Groq AI', 'Puppeteer'],
-        impact: 'Built a full-stack AI resume builder with JWT, Google OAuth, sub-100ms cached responses, and 7 targeted indexes that cut query load by 60%.',
+        impact: 'Built a full-stack AI resume builder combining resume authoring, real-time preview, Puppeteer PDF export, ATS analysis, job matching, and public sharing.',
         metrics: ['95.2% Test Coverage', 'Sub-100ms Cached Responses'],
         bullets: [
             'Built 8 AI features covering ATS scoring, keyword analysis, cover letters, and job matching with Groq Llama 3.3 70B.',
-            'Shipped 5 templates with live preview, PDF export, autosave, and public sharing through custom slugs.',
+            'Shipped 5 templates with live preview, Puppeteer PDF export, Zod validation, and public sharing through custom slugs.',
         ],
     },
 ];
