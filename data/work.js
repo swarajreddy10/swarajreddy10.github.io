@@ -8,8 +8,8 @@ export const workData = [
         metrics: ['64% Higher Throughput', '17x Vector Ingestion'],
         bullets: [
             'Sized worker concurrency, PostgreSQL connection headroom, and database I/O under fixed compute limits, increasing transformation throughput by 64% and reducing recurring external fetches by 43%.',
-            'Improved vector-heavy reader-feed ingestion by 17x, from about 238 seconds to 13.7 seconds per fixed benchmark page, through half-precision HNSW tuning while retaining 98.2% recall@10 versus a 98.3% baseline.',
-            'Cut projected postal-reference load time by more than 90%, from 30.2 minutes to 2 minutes 34 seconds, using PostgreSQL COPY, transactional staging, and set-based deduplication.',
+            'Improved vector-heavy feed ingestion by 17x, from 238 seconds to 13.7 seconds per fixed benchmark batch, through half-precision HNSW tuning while retaining 98.2% recall@10 versus a 98.3% baseline.',
+            'Loaded postal-reference data in 2 minutes 34 seconds using PostgreSQL COPY with transactional staging and set-based deduplication versus 30.2 minutes projected for the prior row-wise approach.',
         ],
     },
     {
@@ -34,7 +34,7 @@ export const workData = [
         impact: 'Built a full-stack AI resume builder combining resume authoring, real-time preview, Puppeteer PDF export, ATS analysis, job matching, and public sharing.',
         metrics: ['95.2% Test Coverage', 'Sub-100ms Cached Responses'],
         bullets: [
-            'Built 8 AI features covering ATS scoring, keyword analysis, cover letters, and job matching with Groq Llama 3.3 70B.',
+            'Implemented 8 AI-assisted features covering ATS scoring, keyword analysis, cover letters, and job matching with Groq Llama 3.3 70B.',
             'Shipped 5 templates with live preview, Puppeteer PDF export, Zod validation, and public sharing through custom slugs.',
         ],
     },
