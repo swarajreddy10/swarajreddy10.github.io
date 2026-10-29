@@ -10,7 +10,7 @@ const dmSerifDisplay = DM_Serif_Display({
     variable: '--font-dm-serif',
 });
 
-const description = 'Software engineering portfolio focused on Go backend services, PostgreSQL hybrid search, AWS deployment, full-stack delivery, and applied AI.';
+const description = 'Software engineering portfolio focused on Go backend services, React product UI, PostgreSQL search, AWS deployment, and AI-assisted engineering.';
 
 export const metadata = {
     metadataBase: new URL('https://swarajreddy10.github.io'),

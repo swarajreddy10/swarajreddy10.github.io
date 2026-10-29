@@ -1,9 +1,10 @@
 import { Briefcase, GraduationCap, MapPin } from 'lucide-react';
 
 const HIGHLIGHTS = [
-    'Primary backend owner for 2 Go microservices in SpotMyJob\'s 3-service architecture; implemented job ingestion, location, skill, and ranking changes in the TypeScript seeker-search service.',
+    'Primary backend owner for 2 Go microservices in SpotMyJob\'s 3-service architecture, both started from their first commit; merged 880 pull requests and wrote 72 architecture decision records across the platform between July and October 2026.',
+    'Shipped production React features on the seeker web app (React 18, TypeScript, TanStack Query, Tailwind CSS): Discover filters, keyword search with "Did you mean", onboarding, match-score display, and the location picker, with 62 frontend test files.',
     'Served as primary contributor to Osulo\'s document-ingestion service and Clinical Document Intelligence Service, covering architecture, Vertex AI and Azure OpenAI integration, AWS infrastructure, deployment, and verification through CloudWatch metrics and logs.',
-    'Used AI to research unfamiliar problems, compare implementation options, debug failures, and review changes; checked conclusions against primary documentation, peer feedback, automated tests, benchmarks, and runtime metrics.',
+    'Set up Claude Code for both Go repositories, with project rules and hooks that block a commit until its checks pass, and work daily with Claude, Codex, and Cursor; AI output is checked against tests, benchmarks, and blind-labelled evaluation sets.',
 ];
 
 export default function Experience() {
@@ -13,7 +14,7 @@ export default function Experience() {
                 <header className="section-header">
                     <h2 id="experience-title">Professional experience.</h2>
                     <p>
-                        At Dexaminds, I carry backend work from service design and data modeling through AWS deployment and production monitoring under fixed compute and schedule constraints.
+                        At Dexaminds, a 7-engineer startup team, I carry work from service design and data modeling through React UI, AWS deployment, and production monitoring under fixed compute and schedule constraints.
                     </p>
                 </header>
 

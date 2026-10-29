@@ -13,7 +13,7 @@ export default function Hero() {
                 <p className="hero-role">Software Engineer</p>
                 <p className="hero-focus">Backend · Full-Stack · Applied AI</p>
                 <p className="hero-summary">
-                    I use AI to investigate unfamiliar problems and test assumptions early, then carry backend work through implementation, performance validation, deployment, and production monitoring.
+                    I build Go services, React product UI, and PostgreSQL data pipelines on AWS, working daily with Claude, Codex, and Cursor, and ship a change once tests, benchmarks, and production metrics agree.
                 </p>
 
                 <div className="hero-actions" role="group" aria-label="Portfolio actions">

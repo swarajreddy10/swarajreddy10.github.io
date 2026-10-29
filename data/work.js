@@ -2,13 +2,14 @@ export const workData = [
     {
         title: 'SpotMyJob',
         tagline: 'Job Intelligence & Matching Platform',
-        description: 'Backend / Data / Search',
-        tech: ['Go', 'PostgreSQL', 'pgvector', 'Cloudflare Workers AI', 'Fastify', 'AWS', 'Terraform'],
-        impact: 'Designed 3 independently deployable microservices with separate data ownership and versioned contracts, then connected canonical jobs to seeker-facing hybrid search through a versioned embedding pipeline.',
-        metrics: ['64% Higher Throughput', '17x Vector Ingestion'],
+        description: 'Backend / Full Stack / Data',
+        tech: ['Go', 'React', 'PostgreSQL', 'AWS', 'TypeScript', 'pgvector', 'Terraform'],
+        impact: 'Designed 3 independently deployable microservices with separate data ownership and versioned contracts, then connected canonical jobs to a React seeker app through a versioned embedding pipeline and SQL match scoring.',
+        metrics: ['64% Higher Throughput', '17x Vector Ingestion', '880 Merged PRs'],
         bullets: [
             'Sized worker concurrency, PostgreSQL connection headroom, and database I/O under fixed compute limits, increasing transformation throughput by 64% and reducing recurring external fetches by 43%.',
             'Improved vector-heavy feed ingestion by 17x, from 238 seconds to 13.7 seconds per fixed benchmark batch, through half-precision HNSW tuning while retaining 98.2% recall@10 versus a 98.3% baseline.',
+            'Shipped React features on the seeker web app with TypeScript, TanStack Query, and Tailwind CSS: Discover filters, keyword search with "Did you mean", onboarding, and match-score display, in 66 merged PRs.',
             'Loaded postal-reference data in 2 minutes 34 seconds using PostgreSQL COPY with transactional staging and set-based deduplication versus 30.2 minutes projected for the prior row-wise approach.',
         ],
     },
