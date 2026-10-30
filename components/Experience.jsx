@@ -14,7 +14,7 @@ export default function Experience() {
                 <header className="section-header">
                     <h2 id="experience-title">Professional experience.</h2>
                     <p>
-                        At Dexaminds, a 7-engineer startup team, I carry work from service design and data modeling through React UI, AWS deployment, and production monitoring under fixed compute and schedule constraints.
+                        At Dexaminds, I carry work from service design and data modeling through React UI, AWS deployment, and runtime monitoring under fixed compute and schedule constraints.
                     </p>
                 </header>
 
