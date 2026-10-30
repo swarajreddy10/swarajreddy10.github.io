@@ -501,8 +501,121 @@ section + section {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
+}
+
+.project-grid .tech-list {
+    margin-top: auto;
+}
+
+.project-featured {
+    padding: 34px;
+}
+
+.project-featured-body {
+    margin-top: 28px;
+}
+
+.project-featured h3 {
+    font-size: clamp(36px, 4vw, 48px);
+}
+
+.project-featured-intro,
+.project-featured-body {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+}
+
+.project-section-label {
+    margin: 0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.project-featured-body .project-bullets {
+    margin-top: 14px;
+}
+
+.stat-grid {
+    display: grid;
+    margin: 24px 0 0;
+    padding: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    list-style: none;
+}
+
+.stat-tile {
+    display: flex;
+    padding: 16px 14px;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--base);
+}
+
+.stat-value {
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-size: clamp(32px, 3.4vw, 44px);
+    line-height: 1;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.project-details {
+    margin-top: 14px;
+}
+
+.project-details summary {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.project-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.project-details summary svg {
+    transition: transform 160ms ease;
+}
+
+.project-details[open] summary svg {
+    transform: rotate(180deg);
+}
+
+.project-details summary:hover {
+    color: var(--accent-hover);
+}
+
+.project-details .project-bullets {
+    margin-top: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-details summary svg {
+        transition: none;
+    }
 }
 
 .project-card {
@@ -596,8 +709,7 @@ section + section {
 }
 
 .tech-list {
-    margin-top: auto;
-    padding-top: 22px;
+    padding-top: 20px;
 }
 
 .tech-pill {
@@ -936,12 +1048,8 @@ section + section {
 }
 
 @media (max-width: 1024px) {
-    .project-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .project-card:last-child {
-        grid-column: 1 / -1;
+    .project-featured {
+        padding: 28px;
     }
 }
 
@@ -975,8 +1083,8 @@ section + section {
         grid-template-columns: 1fr;
     }
 
-    .project-card:last-child {
-        grid-column: auto;
+    .project-featured {
+        padding: 24px;
     }
 
     .hero-section {
@@ -1005,6 +1113,22 @@ section + section {
 
     .contact-fields {
         grid-template-columns: 1fr;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .stat-tile {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 14px;
+    }
+
+    .stat-value {
+        min-width: 3.2ch;
+        font-size: 32px;
     }
 
     .experience-card-header,
