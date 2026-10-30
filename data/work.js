@@ -4,11 +4,11 @@ export const workData = [
         tagline: 'Job Intelligence & Matching Platform',
         description: 'Backend / Full Stack / Data',
         tech: ['Go', 'React', 'PostgreSQL', 'AWS', 'TypeScript', 'pgvector', 'Terraform'],
-        impact: 'Designed 3 independently deployable microservices with separate data ownership and versioned contracts, then connected canonical jobs to a React seeker app through a versioned embedding pipeline and SQL match scoring.',
+        impact: 'Built and own the two Go microservices of a three-stage job-data pipeline (discovery, processing, search), each with its own database and versioned contracts, and contributed core search, matching, and React features to the job-search service.',
         metrics: ['64% Higher Throughput', '17x Vector Ingestion', '625x Plan Cliff Removed'],
         bullets: [
             'Sized worker concurrency, PostgreSQL connection headroom, and database I/O under fixed compute limits, increasing transformation throughput by 64% and reducing recurring external fetches by 43%.',
-            'Improved vector-heavy feed ingestion by 17x, from 238 seconds to 13.7 seconds per fixed benchmark batch, through half-precision HNSW tuning while retaining 98.2% recall@10 versus a 98.3% baseline.',
+            'Made vector-heavy feed ingestion 17x faster, from about 238 to 13.7 seconds per page on QA, by moving HNSW to a half-precision index that fits in memory and dropping the full-precision index no query read, while keeping 98.2% recall@10 versus 98.3%.',
             'Shipped React features on the seeker web app with TypeScript, TanStack Query, and Tailwind CSS, each with its Fastify API: keyword search whose "Did you mean" suggests but never auto-applies, draft-then-apply Discover filters, and onboarding gated on the answers a match needs.',
             'Loaded postal-reference data in 2 minutes 34 seconds using PostgreSQL COPY with transactional staging and set-based deduplication versus 30.2 minutes projected for the prior row-wise approach.',
         ],

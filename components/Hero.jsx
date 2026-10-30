@@ -13,8 +13,12 @@ export default function Hero() {
                 <p className="hero-role">Software Engineer</p>
                 <p className="hero-focus">Backend · Full-Stack · Applied AI</p>
                 <p className="hero-summary">
-                    I build Go services, React product UI, and PostgreSQL data pipelines on AWS, working daily with Claude, Codex, and Cursor, and ship a change once tests, benchmarks, and production metrics agree.
+                    I build backend systems that stay correct and fast on real data: Go services, PostgreSQL, and scheduled AWS pipelines, with React on top. At Dexaminds I started and own the two Go services behind SpotMyJob&apos;s job-data pipeline, and I measure before I change anything: proving a slow stage was waiting on round trips, not the database, let me raise its throughput 64%.
                 </p>
+                <p className="hero-summary">
+                    I work with Claude, Codex, and Cursor every day; nothing ships until tests, benchmarks, and runtime metrics agree.
+                </p>
+                <p className="hero-focus">Hyderabad, India · Open to remote, hybrid, or on-site roles</p>
 
                 <div className="hero-actions" role="group" aria-label="Portfolio actions">
                     <a className="button button-primary" href="#projects">View projects</a>
