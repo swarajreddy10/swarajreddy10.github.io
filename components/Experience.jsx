@@ -3,7 +3,7 @@ import { Briefcase, GraduationCap, MapPin } from 'lucide-react';
 const HIGHLIGHTS = [
     'Started and own the 2 Go microservices behind SpotMyJob\'s job-data pipeline (source discovery and job processing) that feed its job-search service. Proved a transform stage was bound by round trips rather than the database before scaling it, raising throughput 64% as peak database CPU fell from 99.7% to 65%.',
     'Shipped production React features on the seeker web app (React 18, TypeScript, TanStack Query, Tailwind CSS): Discover filters, keyword search with "Did you mean", onboarding, match-score display, and the location picker, with 62 frontend test files.',
-    'Served as primary contributor to Osulo\'s document-ingestion service and Clinical Document Intelligence Service, covering architecture, Vertex AI and Azure OpenAI integration, AWS infrastructure, deployment, and verification through CloudWatch metrics and logs.',
+    'Built Osulo\'s two Go services for healthcare-document ingestion and clinical extraction on AWS Step Functions, with an LLM validation gate that flagged uncertain results for human review; a 2-page lab report went from upload to stored result in 62 seconds in development.',
     'Set up Claude Code for both Go repositories, with project rules and hooks that block a commit until its checks pass, and work daily with Claude, Codex, and Cursor; AI output is checked against tests, benchmarks, and blind-labelled evaluation sets.',
 ];
 
