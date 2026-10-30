@@ -9,17 +9,17 @@ export const workData = [
         stats: [
             { value: '64%', label: 'higher throughput, no new infrastructure' },
             { value: '17x', label: 'faster vector ingestion, 98.2% recall kept' },
-            { value: '625x', label: 'query-plan cliff removed before it fired' },
+            { value: '43%', label: 'fewer external fetches, with an alarmed fallback' },
         ],
         highlights: [
             'Proved a slow stage was waiting on round trips, not the database, then raised its throughput 64% as peak database CPU fell from 99.7% to 65%.',
             'Found an index no query read but every write still paid for; dropping it made feed ingestion 17x faster, from about 238 to 13.7 seconds per page on QA.',
-            'Rewrote a cleanup delete as a hash anti-join after measuring 175 s against 0.28 s across plan modes; it now takes 0.16 s even in the mode that had taken 175 s.',
+            'Cut recurring external fetches 43% by reading only boards that could have changed, falling back to an alarmed full sweep whenever that signal is missing or stale.',
         ],
         details: [
             'Moved HNSW to a half-precision expression index that fits in memory, keeping 98.2% recall@10 versus 98.3%.',
             'Loaded postal-reference data in 2 min 34 s with PostgreSQL COPY and set-based deduplication, versus 30.2 min projected for row-wise inserts.',
-            'Cut recurring external fetches 43% with change-aware selection that falls back to an alarmed full sweep.',
+            'Rewrote the feed cleanup as a hash anti-join that stays fast in every query-plan mode, so removed jobs disappear on schedule.',
             'Shipped React features with their Fastify APIs: "Did you mean" search that never auto-applies, draft-then-apply filters, and onboarding gated on the answers a match needs.',
             'Hardened outbound fetching against SSRF and DNS rebinding, including NAT64 addresses, and pinned 81 GitHub Actions references to commit SHAs.',
         ],
