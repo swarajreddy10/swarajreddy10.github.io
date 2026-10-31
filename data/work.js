@@ -9,14 +9,16 @@ export const workData = [
         stats: [
             { value: '64%', label: 'higher throughput, no new infrastructure' },
             { value: '17x', label: 'faster vector ingestion, 98.2% recall kept' },
-            { value: '~40%', label: 'fewer Workable board reads per run on QA' },
+            { value: '88%', label: 'fewer requests per Greenhouse sweep' },
         ],
         highlights: [
             'Re-sized a slow stage on measured database load instead of an assumed CPU count, raising its throughput 64% as peak database CPU fell from 99.7% to 65%.',
             'Moved the vector index to half precision, then dropped the full-precision index every write still maintained: feed ingestion became 17x faster on QA, from about 238 to 13.7 seconds per page.',
-            'Cut recurring Workable board reads about 40% (roughly 78 instead of 128 minutes a run) by reading every board that serves a job each run and rotating the empty ones every two days, which also removed a third-party feed dependency.',
+            'Measured that Greenhouse\'s list endpoint returns the pay bands it documents only per job, compared the two field by field, and dropped the per-job calls: 88% fewer requests per sweep, with the detail path kept as an automatic fallback.',
         ],
         details: [
+            'Revalidated every board with its stored ETag, so 83.0% of Greenhouse and 87.7% of Ashby board reads came back 304 Not Modified over two weeks of QA runs.',
+            'Cut recurring Workable board reads about 40% (roughly 78 instead of 128 minutes a run) by reading every board that serves a job each run and rotating the empty ones every two days, which also removed a third-party feed dependency.',
             'The half-precision HNSW expression index fit in memory where the full-precision one did not, at 98.2% recall@10 versus 98.3%.',
             'Loaded postal-reference data in 2 min 34 s with PostgreSQL COPY and set-based deduplication, versus 30.2 min projected for batched ORM inserts.',
             'Rewrote the feed cleanup as a hash anti-join after measuring a latent 175-second generic-plan path; it ran in 162 ms under the same forced plan.',
