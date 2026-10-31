@@ -34,4 +34,4 @@ export const SOCIAL_LINKS = [
 export const RESUME_PATH = '/Swarajreddy_Software_Engineer.pdf';
 
 // GoatCounter site code (the MYCODE in https://MYCODE.goatcounter.com). Null renders no counter.
-export const GOATCOUNTER_CODE = null;
+export const GOATCOUNTER_CODE = 'swarajreddy';
