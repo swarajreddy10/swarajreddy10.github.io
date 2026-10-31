@@ -40,7 +40,6 @@ export default function Certifications() {
                             href={certification.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`${certification.name} credential, opens in a new tab`}
                         >
                             <span className="cert-category">{certification.category}</span>
                             <h3>{certification.name}</h3>
@@ -48,6 +47,7 @@ export default function Certifications() {
                                 <span>{certification.issuer}</span>
                                 <span>{certification.date}</span>
                             </div>
+                            <span className="sr-only"> (credential, opens in a new tab)</span>
                             <ExternalLink className="cert-external-icon" size={16} aria-hidden="true" />
                         </a>
                     ))}
