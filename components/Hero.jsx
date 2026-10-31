@@ -16,7 +16,7 @@ export default function Hero() {
                     I build backend systems that stay correct and fast on real data: Go services, PostgreSQL, and scheduled AWS pipelines, with React on top. At Dexaminds I started and own the two Go services behind SpotMyJob&apos;s job-data pipeline, and I size changes on measurement, not assumption: re-sizing a Go stage&apos;s concurrency on measured database load raised its throughput 64% with no new infrastructure.
                 </p>
                 <p className="hero-summary">
-                    Before I write code, I compare the options against official documentation and the real workload, and I write the decision down. I work with Claude, Codex, and Cursor every day; nothing ships until tests, benchmarks, and runtime metrics agree.
+                    Before I write code, I compare the options against official documentation and the real workload, and I write the decision down. I work with Claude Code, Codex, and Cursor every day; a change merges on passing tests and benchmarks, and I check it against runtime metrics once it is deployed.
                 </p>
                 <p className="hero-focus">Hyderabad, India · Open to remote, hybrid, or on-site roles</p>
 

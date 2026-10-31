@@ -1,11 +1,11 @@
 const SKILL_GROUPS = [
-    { name: 'Programming Languages', skills: ['Go', 'TypeScript', 'Python', 'SQL'] },
-    { name: 'Backend & APIs', skills: ['REST API design'] },
-    { name: 'Databases', skills: ['PostgreSQL', 'MongoDB'] },
-    { name: 'Cloud & DevOps', skills: ['AWS', 'Terraform', 'Docker', 'CI/CD'] },
+    { name: 'Programming Languages', skills: ['Go (Golang)', 'TypeScript', 'Python', 'SQL'] },
+    { name: 'Backend', skills: ['Microservices', 'REST APIs', 'Event-Driven Architecture', 'Node.js'] },
+    { name: 'Databases', skills: ['PostgreSQL', 'pgvector', 'MongoDB'] },
+    { name: 'Cloud & CI/CD', skills: ['AWS', 'Terraform', 'Docker', 'GitHub Actions'] },
+    { name: 'AI Engineering', skills: ['LLM Integration', 'Claude Code', 'Codex', 'Cursor'] },
     { name: 'Testing', skills: ['Unit testing', 'Integration testing', 'Contract testing', 'Vitest'] },
     { name: 'Frontend', skills: ['React', 'Next.js', 'TanStack Query', 'Tailwind CSS'] },
-    { name: 'AI-Assisted Development', skills: ['Claude Code', 'Codex', 'Cursor'] },
 ];
 
 export default function Skills() {

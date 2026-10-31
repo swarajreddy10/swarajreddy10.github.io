@@ -9,7 +9,7 @@ const CERTIFICATIONS = [
         href: 'https://www.credly.com/badges/e83c9a88-fb50-4984-a905-68217cc76d9f/public_url',
     },
     {
-        name: 'AWS Cloud Foundations & Cloud Architecting',
+        name: 'AWS Academy Graduate: Cloud Architecting',
         issuer: 'AWS Academy',
         category: 'Cloud',
         date: 'May to Jun 2024',
