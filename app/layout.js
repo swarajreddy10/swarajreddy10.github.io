@@ -1,5 +1,5 @@
 import { DM_Serif_Display } from 'next/font/google';
-import ClarityAnalytics from '../components/ClarityAnalytics';
+import GoatCounter from '../components/GoatCounter';
 import './globals.css';
 
 
@@ -48,7 +48,7 @@ export default function RootLayout({ children }) {
         <html lang="en" className={dmSerifDisplay.variable}>
             <body>
                 {children}
-                <ClarityAnalytics />
+                <GoatCounter />
             </body>
         </html>
     );

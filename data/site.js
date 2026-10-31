@@ -33,5 +33,5 @@ export const SOCIAL_LINKS = [
 
 export const RESUME_PATH = '/Swarajreddy_Software_Engineer.pdf';
 
-// Microsoft Clarity project for swarajreddy10.github.io (clarity.microsoft.com > Settings > Overview).
-export const CLARITY_PROJECT_ID = 'z6guizoqe5';
+// GoatCounter site code (the MYCODE in https://MYCODE.goatcounter.com). Null renders no counter.
+export const GOATCOUNTER_CODE = null;
