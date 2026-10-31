@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const socialImageAlt = 'Swaraj Reddy, Software Engineer across backend, full-stack, and applied AI';
+export const socialImageAlt = 'Swaraj Reddy, Software Engineer: backend, Go, PostgreSQL, AWS. I research before I build and measure before I change.';
 export const socialImageSize = { width: 1200, height: 630 };
 
 export function createSocialImage() {
@@ -24,7 +24,7 @@ export function createSocialImage() {
                     SOFTWARE ENGINEER
                 </div>
                 <div style={{ marginTop: 34, maxWidth: 920, color: '#7A4A2A', fontSize: 30, lineHeight: 1.4 }}>
-                    Backend, full-stack, cloud, and applied AI engineering.
+                    Backend · Go · PostgreSQL · AWS. I research before I build and measure before I change.
                 </div>
             </div>
         ),

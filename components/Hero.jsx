@@ -11,20 +11,17 @@ export default function Hero() {
                 <p className="hero-greeting">Hello, I&apos;m</p>
                 <h1 id="hero-title">Swaraj Reddy</h1>
                 <p className="hero-role">Software Engineer</p>
-                <p className="hero-focus">Backend · Full-Stack · Applied AI</p>
+                <p className="hero-focus">Backend · Go · PostgreSQL · AWS</p>
                 <p className="hero-summary">
-                    I build backend systems that stay correct and fast on real data: Go services, PostgreSQL, and scheduled AWS pipelines, with React on top. At DexaMinds I started and own the two Go services behind SpotMyJob&apos;s job-data pipeline, and I size changes on measurement, not assumption: re-sizing a Go stage&apos;s concurrency on measured database load raised its throughput 64% with no new infrastructure.
+                    I research before I build and measure before I change. On SpotMyJob&apos;s job pipeline, that raised throughput <strong>64%</strong> with no new infrastructure.
                 </p>
-                <p className="hero-summary">
-                    Before I write code, I compare the options against official documentation and the real workload, and I write the decision down. I work with Claude Code, Codex, and Cursor every day; a change merges on passing tests and benchmarks, and I check it against runtime metrics once it is deployed.
-                </p>
-                <p className="hero-focus">Hyderabad, India · Open to remote, hybrid, or on-site roles</p>
+                <p className="hero-focus">Hyderabad, India · Open to backend, platform, and applied AI roles</p>
 
                 <div className="hero-actions" role="group" aria-label="Portfolio actions">
-                    <a className="button button-primary" href="#projects">View projects</a>
-                    <a className="button button-secondary" href={RESUME_PATH} download>
+                    <a className="button button-primary" href={RESUME_PATH} download>
                         <Download size={16} aria-hidden="true" /> Download résumé
                     </a>
+                    <a className="button button-secondary" href="#projects">View projects</a>
                 </div>
 
                 <div className="social-links" role="group" aria-label="Contact profiles">
