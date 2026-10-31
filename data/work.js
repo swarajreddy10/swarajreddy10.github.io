@@ -30,14 +30,14 @@ export const workData = [
         description: 'Backend / Healthcare AI',
         tech: ['Go', 'Step Functions', 'Vertex AI Gemini', 'Azure OpenAI GPT', 'PostgreSQL', 'EventBridge', 'Terraform'],
         impact: 'Built the document-ingestion service and Clinical Document Intelligence Service that scan and validate healthcare files, extract structured clinical data with recorded model provenance, and flag uncertain results for human review.',
-        metrics: ['62-100s End to End', '0.2s Service Handoff'],
+        metrics: ['62s Upload to Result', '10.6s p50 Extraction', '0.2s Service Handoff'],
         highlights: [
             'Integrated Vertex AI Gemini, Azure OpenAI GPT, and Amazon Bedrock behind one provider-neutral extraction gate that checked structure, schema, and a 0.85 confidence bar before accepting any clinical field.',
             'Traced a silent handoff failure between the two services to a queue encryption mismatch, fixed it, and proved the fix with a replay and a fresh canary upload.',
         ],
         details: [
             'Direct-to-S3 uploads through signed POST policies, then quarantine, GuardDuty malware scanning, and promotion to a trusted bucket.',
-            'Orchestrated extraction as a Step Functions workflow over page chunks; CloudWatch measured about 52 s ingestion, 48 s extraction, and a 0.2 s handoff between services.',
+            'Orchestrated extraction as a Step Functions workflow over page chunks: a multi-page lab report ran from upload to structured result in 62 s, with extraction at a 10.6 s p50 (15.2 s p95) and a 0.2 s handoff between services.',
             'Kept both services independently deployable through versioned events, idempotent requests, an event outbox, and SQS dead-letter recovery.',
         ],
     },
