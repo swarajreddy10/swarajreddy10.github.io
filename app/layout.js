@@ -1,4 +1,5 @@
 import { DM_Serif_Display } from 'next/font/google';
+import ClarityAnalytics from '../components/ClarityAnalytics';
 import './globals.css';
 
 
@@ -45,7 +46,10 @@ export const viewport = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" className={dmSerifDisplay.variable}>
-            <body>{children}</body>
+            <body>
+                {children}
+                <ClarityAnalytics />
+            </body>
         </html>
     );
 }

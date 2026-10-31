@@ -1026,6 +1026,18 @@ section + section {
     font-size: 13px;
 }
 
+.footer-note {
+    max-width: 560px;
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.footer-note a {
+    color: inherit;
+}
+
 .footer-links {
     display: flex;
     flex-wrap: wrap;

@@ -18,10 +18,10 @@ export default function Hero() {
                 <p className="hero-focus">Hyderabad, India · Open to backend, platform, and applied AI roles</p>
 
                 <div className="hero-actions" role="group" aria-label="Portfolio actions">
-                    <a className="button button-primary" href={RESUME_PATH} download>
+                    <a className="button button-primary" href={RESUME_PATH} download data-clarity-event="resume_download">
                         <Download size={16} aria-hidden="true" /> Download résumé
                     </a>
-                    <a className="button button-secondary" href="#projects">View projects</a>
+                    <a className="button button-secondary" href="#projects" data-clarity-event="view_projects">View projects</a>
                 </div>
 
                 <div className="social-links" role="group" aria-label="Contact profiles">
