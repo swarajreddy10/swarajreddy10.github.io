@@ -15,7 +15,7 @@ export default function Experience() {
                 <header className="section-header">
                     <h2 id="experience-title">Professional experience.</h2>
                     <p>
-                        At Dexaminds, I carry work from service design and data modeling through React UI, AWS deployment, and runtime monitoring under fixed compute and schedule constraints.
+                        At DexaMinds, I carry work from service design and data modeling through React UI, AWS deployment, and runtime monitoring under fixed compute and schedule constraints.
                     </p>
                 </header>
 
@@ -29,9 +29,9 @@ export default function Experience() {
                                     href="https://dexaminds.com/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="Dexaminds company website, opens in a new tab"
+                                    aria-label="DexaMinds company website, opens in a new tab"
                                 >
-                                    Dexaminds
+                                    DexaMinds
                                 </a>
                             </p>
                             <p className="experience-meta">
@@ -51,7 +51,7 @@ export default function Experience() {
                 <div className="experience-notes">
                     <div className="experience-note">
                         <Briefcase size={18} aria-hidden="true" />
-                        <span><strong>Earlier at Dexaminds:</strong> Software Engineer Intern, Jun to Sep 2025. Shipped React and TypeScript UI-to-API changes and delivered 15+ frontend and backend production fixes.</span>
+                        <span><strong>Earlier at DexaMinds:</strong> Software Engineer Intern, Jun to Sep 2025. Shipped React and TypeScript UI-to-API changes and delivered 15+ frontend and backend production fixes.</span>
                     </div>
                     <div className="experience-note">
                         <GraduationCap size={18} aria-hidden="true" />

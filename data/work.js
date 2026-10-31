@@ -48,7 +48,7 @@ export const workData = [
         title: 'ResumeCanvas',
         tagline: 'AI Resume Builder',
         description: 'AI / Full Stack',
-        link: 'https://www.resumecanvas.live/',
+        link: 'https://resumecanvas.vercel.app/',
         github: 'https://github.com/swarajreddy10/Resume_Canvas',
         tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Groq AI', 'Puppeteer'],
         impact: 'Built a full-stack AI resume builder combining resume authoring, real-time preview, Puppeteer PDF export, ATS analysis, job matching, and public sharing.',
