@@ -36,7 +36,7 @@ export const workData = [
             'Traced a silent handoff failure between the two services to a queue encryption mismatch, fixed it, and proved the fix with a replay and a fresh canary upload.',
         ],
         details: [
-            'Before the first Go commit, compared six LLM endpoints on the same documents, replaced an OCR-then-LLM design with a single extraction call, and chose the AWS event, workflow, and runtime design against 34 official sources.',
+            'Before the first Go commit, compared six LLM endpoints on the same documents, replaced an OCR-then-LLM design with a single extraction call, and chose the AWS event, workflow, and runtime design against official documentation.',
             'Direct-to-S3 uploads through signed POST policies, then quarantine, GuardDuty malware scanning, and promotion to a trusted bucket.',
             'Orchestrated extraction as a Step Functions workflow over page chunks: a multi-page lab report ran from upload to structured result in 62 s, with extraction at a 10.6 s p50 (15.2 s p95) and a 0.2 s handoff between services.',
             'Kept both services independently deployable through versioned events, idempotent requests, an event outbox, and SQS dead-letter recovery.',
