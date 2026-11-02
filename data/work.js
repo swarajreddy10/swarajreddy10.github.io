@@ -51,15 +51,16 @@ export const workData = [
         link: 'https://resumecanvas.vercel.app/',
         github: 'https://github.com/swarajreddy10/Resume_Canvas',
         tech: ['Next.js 16', 'TypeScript', 'MongoDB', 'Groq AI', 'Puppeteer'],
-        impact: 'Built a full-stack AI resume builder combining resume authoring, real-time preview, Puppeteer PDF export, ATS analysis, job matching, and public sharing.',
-        metrics: ['118 Tests', '81.6% Line Coverage'],
+        impact: 'Built a full-stack AI resume builder on my own: Next.js 16 and TypeScript on MongoDB, NextAuth with Google OAuth and JWT sessions, 36 API route handlers, and Groq Llama 3.3 70B for resume review, keyword analysis, writing, and job matching.',
+        metrics: ['25 of 50,000 Docs Read', '115 Passing Tests', '80.3% Line Coverage'],
         highlights: [
-            'Built AI features on Groq Llama 3.3 70B for resume review, keyword analysis, bullet and cover-letter generation, interview questions, and job matching.',
-            'Shipped 5 templates with live preview, Puppeteer PDF export, Zod validation, and public sharing through custom slugs.',
+            'Indexed the dashboard\'s resume list on owner and last update: in a local benchmark on 50,000 synthetic resumes it read only the user\'s 25 instead of scanning all 50,000, at about 2 ms p50 against 35 ms.',
+            'Cached that list for 60 seconds in a gzip-compressed in-memory cache with LRU eviction; a cache hit took about 45 µs in the same benchmark.',
+            'Protected the paid AI calls: every AI route strips markup and script patterns from its input and is rate-limited to 50 requests an hour per client.',
         ],
         details: [
-            '118 unit and performance tests reach 81.6% line coverage of the modules under test (Bun, measured October 2026).',
-            'Modeled MongoDB with compound indexes on the per-user read paths and added an in-memory cache.',
+            'Shipped 5 templates with live preview, Puppeteer PDF export, Zod-validated forms, and public sharing through custom slugs.',
+            '115 passing unit and performance tests reach 80.3% line coverage of the modules under test (Bun, measured November 2026).',
         ],
     },
 ];
