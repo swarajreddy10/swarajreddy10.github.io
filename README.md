@@ -6,7 +6,7 @@ This repository contains the source for my engineering portfolio. It presents se
 
 ## Portfolio Contents
 
-- Professional experience and engineering case studies, led by SpotMyJob and Osulo
+- Professional experience and engineering case studies, led by SpotMyJob and a client healthcare platform
 - Project stories connecting technical constraints, implementation decisions, and measured results
 - Selected technologies, certifications, résumé, and contact channels
 
