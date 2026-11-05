@@ -3,4 +3,11 @@
 # facts (scripts/check-claims.mjs). Enable with: git config core.hooksPath .githooks
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
+# The check reads the working tree, so it judges the commit only when the files it reads
+# are exactly what is staged.
+checked=(data components app public)
+if ! git diff --quiet -- "${checked[@]}" || [[ -n "$(git ls-files --others --exclude-standard -- "${checked[@]}")" ]]; then
+  echo "pre-commit: ${checked[*]} have unstaged or untracked changes; stage them or set them aside, then commit." >&2
+  exit 1
+fi
 node scripts/check-claims.mjs

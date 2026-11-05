@@ -1,6 +1,9 @@
 import { ChevronDown, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './BrandIcons';
+import { SOCIAL_LINKS } from '../data/site';
 import { workData } from '../data/work';
+
+const GITHUB = SOCIAL_LINKS.find(link => link.icon === 'github');
 
 function ProjectLinks({ project }) {
     const hasLiveLink = project.link && project.link !== project.github;
@@ -114,7 +117,7 @@ export default function Projects() {
                 </div>
 
                 <div className="project-more">
-                    <a className="project-link" href="https://github.com/swarajreddy10" target="_blank" rel="noopener noreferrer">
+                    <a className="project-link" href={GITHUB.href} target="_blank" rel="noopener noreferrer">
                         <GithubIcon size={14} aria-hidden="true" /> More on GitHub <ExternalLink size={14} aria-hidden="true" />
                     </a>
                 </div>

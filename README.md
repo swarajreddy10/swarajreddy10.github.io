@@ -44,7 +44,7 @@ npm run build
 npm audit
 ```
 
-The production build is generated in `out/` as a static export. CI (`.github/workflows/ci.yml`) runs `npm ci`, lint, and the build on every push and pull request.
+The production build is generated in `out/` as a static export. CI (`.github/workflows/ci.yml`) runs `npm ci`, lint, and the build on every push to `main` and every pull request.
 
 Every figure on the site must exist in the career toolkit's master facts. `scripts/check-claims.mjs` runs that check before every commit (`git config core.hooksPath .githooks`) and before every deploy. It needs the toolkit's checkout:
 
@@ -64,8 +64,8 @@ This checks the site's figures, builds the static site, and publishes `out/` to 
 
 ```text
 app/          Page composition, metadata, social images, and global styles
-data/         Every fact and sentence on the site: profile, experience, case studies, skills, certifications
-components/   Semantic sections that render data/, and interactive controls
+data/         Every fact on the site: profile, experience, case studies, skills, certifications, links
+components/   Semantic sections that render data/, their interface labels, and interactive controls
 public/       Downloadable résumé (compiled from the career toolkit's master résumé) and GitHub Pages assets
 scripts/      The claim check run before a commit and a deploy
 ```
