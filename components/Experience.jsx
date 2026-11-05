@@ -1,61 +1,53 @@
 import { Briefcase, GraduationCap, MapPin } from 'lucide-react';
-
-const HIGHLIGHTS = [
-    'Started and own the 2 Go microservices behind SpotMyJob\'s job-data pipeline (source discovery and job processing) that feed its job-search service. Re-sized a transform stage\'s concurrency on measured database load instead of an assumed CPU count, raising throughput 64% as peak database CPU fell from 99.7% to 65%.',
-    'Researched before building, from day one: wrote the sourcing research (feasibility, data rights, operating compliance) that set SpotMyJob\'s job-source path and the decision method both Go services follow; removed 88% of a job-board sweep\'s requests by proving a list endpoint already returned the data per-item calls fetched, with ETag revalidation answering 83% of board reads with a 304.',
-    'Shipped React features on the seeker web app (React 18, TypeScript, TanStack Query, Tailwind CSS): Discover filters, keyword search with "Did you mean", onboarding, match-score display, and the location picker, and created 60+ frontend test files.',
-    'Built two Go services for a client\'s healthcare platform, document ingestion and clinical extraction on AWS Step Functions (April to June 2026), with Gemini, Vertex AI, Azure OpenAI, and Amazon Bedrock adapters behind a validation gate that flagged uncertain documents for human review; in development, a multi-page lab report went from malware-cleared file to structured result in 62 seconds.',
-    'Set up Claude Code for both Go repositories, with project rules and hooks that block a commit until its checks pass, and work daily with Claude Code, Codex, and Cursor; AI output is checked against tests, benchmarks, and labelled evaluation sets with measured rater agreement.',
-];
+import { EDUCATION, EXPERIENCE } from '../data/experience';
 
 export default function Experience() {
+    const { intro, role, highlights, earlier } = EXPERIENCE;
     return (
         <section id="experience" className="content-section" aria-labelledby="experience-title">
             <div className="section-shell">
                 <header className="section-header">
                     <h2 id="experience-title">Professional experience.</h2>
-                    <p>
-                        At DexaMinds, I carry work from service design and data modeling through React UI, AWS deployment, and runtime monitoring under fixed compute and schedule constraints.
-                    </p>
+                    <p>{intro}</p>
                 </header>
 
                 <article className="experience-card">
                     <header className="experience-card-header">
                         <div>
-                            <h3>Software Engineer</h3>
+                            <h3>{role.title}</h3>
                             <p className="experience-company">
                                 <a
                                     className="experience-company-link"
-                                    href="https://dexaminds.com/"
+                                    href={role.companyUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="DexaMinds company website, opens in a new tab"
+                                    aria-label={`${role.company} company website, opens in a new tab`}
                                 >
-                                    DexaMinds
+                                    {role.company}
                                 </a>
                             </p>
                             <p className="experience-meta">
-                                <MapPin size={14} aria-hidden="true" /> Hyderabad, India
+                                <MapPin size={14} aria-hidden="true" /> {role.location}
                             </p>
                         </div>
                         <p className="experience-period">
-                            <time dateTime="2025-09">Sep 2025</time> to Present
+                            <time dateTime={role.start}>{role.startLabel}</time> to {role.endLabel}
                         </p>
                     </header>
 
                     <ul className="experience-highlights">
-                        {HIGHLIGHTS.map(highlight => <li key={highlight}>{highlight}</li>)}
+                        {highlights.map(highlight => <li key={highlight}>{highlight}</li>)}
                     </ul>
                 </article>
 
                 <div className="experience-notes">
                     <div className="experience-note">
                         <Briefcase size={18} aria-hidden="true" />
-                        <span><strong>Earlier at DexaMinds:</strong> Software Engineer Intern, Jun to Sep 2025. Shipped React and TypeScript UI-to-API changes and delivered 15+ frontend and backend production fixes.</span>
+                        <span><strong>Earlier at {role.company}:</strong> {earlier}</span>
                     </div>
                     <div className="experience-note">
                         <GraduationCap size={18} aria-hidden="true" />
-                        <span><strong>Education:</strong> B.Tech in Computer Science, GITAM University, 2025. CGPA 8.2/10.</span>
+                        <span><strong>Education:</strong> {EDUCATION}</span>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,18 @@
+// Every fact on this site lives in data/. The career toolkit's master facts are the source:
+// its scripts/check-public-claims.py fails when a figure here is missing from them.
+export const PROFILE = {
+    name: 'Swaraj Reddy',
+    fullName: 'Swaraj Chandra Reddy M',
+    role: 'Software Engineer',
+    location: 'Hyderabad, India',
+    focus: 'Backend · Go · PostgreSQL · AWS',
+    positioning: 'I research before I build and measure before I change.',
+    // The hero's proof line, with its figure emphasised.
+    proof: { lead: 'On SpotMyJob\'s job pipeline, that raised throughput ', figure: '64%', tail: ' with no new infrastructure.' },
+    availability: 'Open to backend, full-stack, platform, and AI engineering roles: remote, hybrid, or on-site.',
+    description: 'Swaraj Reddy, Software Engineer for backend systems in Go, PostgreSQL, and AWS. He researches before he builds and measures before he changes: 64% more throughput on SpotMyJob\'s job pipeline with no new infrastructure.',
+};
+
 export const NAV_LINKS = [
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Projects', href: '#projects', id: 'projects' },

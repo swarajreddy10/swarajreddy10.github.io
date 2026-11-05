@@ -1,6 +1,6 @@
 import { Download, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './BrandIcons';
-import { RESUME_PATH, SOCIAL_LINKS } from '../data/site';
+import { PROFILE, RESUME_PATH, SOCIAL_LINKS } from '../data/site';
 
 const ICONS = { mail: Mail, linkedin: LinkedinIcon, github: GithubIcon };
 
@@ -9,13 +9,13 @@ export default function Hero() {
         <section id="home" className="hero-section" aria-labelledby="hero-title">
             <div className="hero-content">
                 <p className="hero-greeting">Hello, I&apos;m</p>
-                <h1 id="hero-title">Swaraj Reddy</h1>
-                <p className="hero-role">Software Engineer</p>
-                <p className="hero-focus">Backend · Go · PostgreSQL · AWS</p>
+                <h1 id="hero-title">{PROFILE.name}</h1>
+                <p className="hero-role">{PROFILE.role}</p>
+                <p className="hero-focus">{PROFILE.focus}</p>
                 <p className="hero-summary">
-                    I research before I build and measure before I change. On SpotMyJob&apos;s job pipeline, that raised throughput <strong>64%</strong> with no new infrastructure.
+                    {PROFILE.positioning} {PROFILE.proof.lead}<strong>{PROFILE.proof.figure}</strong>{PROFILE.proof.tail}
                 </p>
-                <p className="hero-focus">Hyderabad, India · Open to backend, platform, and applied AI roles</p>
+                <p className="hero-focus">{PROFILE.location} · {PROFILE.availability}</p>
 
                 <div className="hero-actions" role="group" aria-label="Portfolio actions">
                     <a className="button button-primary" href={RESUME_PATH} download data-goatcounter-click="resume-download">

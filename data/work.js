@@ -1,3 +1,4 @@
+// The case studies' copy. Facts come from the career toolkit's master profile and STAR bank.
 export const workData = [
     {
         title: 'SpotMyJob',
@@ -12,13 +13,13 @@ export const workData = [
             { value: '88%', label: 'fewer requests per job-board sweep' },
         ],
         highlights: [
-            'Re-sized a slow stage on measured database load instead of an assumed CPU count, raising its throughput 64% as peak database CPU fell from 99.7% to 65%.',
+            'Resized a slow stage on measured database load instead of an assumed CPU count, raising its throughput 64% as peak database CPU fell from 99.7% to 65%.',
             'Moved the vector index to half precision, then dropped the full-precision index every write still maintained: feed ingestion became 17x faster on QA, from about 238 to 13.7 seconds per page.',
             'Measured that a job-board API\'s list endpoint returns data its vendor documents only per item, compared the two field by field, and dropped the per-item calls: 88% fewer requests per sweep, with the per-item path kept as an automatic fallback.',
         ],
         details: [
             'Revalidated every board with its stored ETag, so 83% to 88% of board reads, depending on the job-board family, came back 304 Not Modified over two weeks of QA runs.',
-            'Cut reads about 40% on a job-board family that issues no ETags (roughly 78 instead of 128 minutes a run) by reading every board that serves a job each run and rotating the empty ones every two days, which also removed a third-party feed dependency.',
+            'Cut reads about 40% on a job-board family that issues no ETags by reading every board that serves a job each run and rotating the empty ones every two days, which also removed a third-party feed dependency.',
             'The half-precision HNSW expression index fit in memory where the full-precision one did not, at 98.2% recall@10 versus 98.3%.',
             'Loaded postal-reference data in 2 min 34 s with PostgreSQL COPY and set-based deduplication, versus 30.2 min projected for batched ORM inserts.',
             'Rewrote the feed cleanup as a hash anti-join after measuring a latent 175-second generic-plan path; it ran in 162 ms under the same forced plan.',
@@ -40,7 +41,7 @@ export const workData = [
         details: [
             'Before the first Go commit, compared LLM providers on the same documents, replaced an OCR-then-LLM design with a single extraction call, and chose the AWS event, workflow, and runtime design against official documentation.',
             'Direct-to-S3 uploads, malware-scanned in quarantine and promoted only when clean.',
-            'Orchestrated extraction as a Step Functions workflow over page chunks: a multi-page lab report went from malware-cleared file to structured result in 62 s with a 0.2 s handoff between services, and the extraction workflow\'s p50 was 10.6 s over nine development runs.',
+            'Orchestrated extraction as a Step Functions workflow over page chunks: a multipage lab report went from a malware-cleared file to a structured result in 62 s with a 0.2 s handoff between services, and the extraction workflow\'s p50 was 10.6 s over nine development runs.',
             'Kept both services independently deployable through versioned events, idempotent requests, an event outbox in the extraction service, SQS dead-letter queues, and stale-job reconcilers.',
         ],
     },

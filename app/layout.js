@@ -1,5 +1,6 @@
 import { DM_Serif_Display } from 'next/font/google';
 import GoatCounter from '../components/GoatCounter';
+import { PROFILE } from '../data/site';
 import './globals.css';
 
 
@@ -11,27 +12,28 @@ const dmSerifDisplay = DM_Serif_Display({
     variable: '--font-dm-serif',
 });
 
-const description = 'Swaraj Reddy, Software Engineer for backend systems in Go, PostgreSQL, and AWS. He researches before he builds and measures before he changes: 64% more throughput on SpotMyJob\'s job pipeline with no new infrastructure.';
+const { description } = PROFILE;
+const title = `${PROFILE.name} | ${PROFILE.role}`;
 
 export const metadata = {
     metadataBase: new URL('https://swarajreddy10.github.io'),
-    title: 'Swaraj Reddy | Software Engineer',
+    title,
     description,
     alternates: { canonical: '/' },
-    authors: [{ name: 'Swaraj Chandra Reddy M' }],
-    creator: 'Swaraj Chandra Reddy M',
+    authors: [{ name: PROFILE.fullName }],
+    creator: PROFILE.fullName,
     robots: { index: true, follow: true },
     openGraph: {
         type: 'website',
         locale: 'en_US',
         url: '/',
-        title: 'Swaraj Reddy | Software Engineer',
+        title,
         description,
-        siteName: 'Swaraj Reddy | Engineering Portfolio',
+        siteName: `${PROFILE.name} | Engineering Portfolio`,
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Swaraj Reddy | Software Engineer',
+        title,
         description,
     },
 };

@@ -3,7 +3,7 @@
 import { ExternalLink, Mail, Send } from 'lucide-react';
 import { useState } from 'react';
 import { GithubIcon, LinkedinIcon } from './BrandIcons';
-import { SOCIAL_LINKS } from '../data/site';
+import { PROFILE, SOCIAL_LINKS } from '../data/site';
 import IndianFlag from './IndianFlag';
 
 const ICONS = { mail: Mail, linkedin: LinkedinIcon, github: GithubIcon };
@@ -41,7 +41,7 @@ export default function Contact() {
                 <div className="contact-grid">
                     <div>
                         <p className="contact-intro">
-                            <IndianFlag size={18} /> Based in Hyderabad, India. Open to backend, full-stack, and AI engineering work across onsite, hybrid, and remote teams, with relocation considered.
+                            <IndianFlag size={18} /> Based in {PROFILE.location}. {PROFILE.availability}
                         </p>
                         <div className="contact-links">
                             {SOCIAL_LINKS.map(link => {

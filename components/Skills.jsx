@@ -1,12 +1,4 @@
-const SKILL_GROUPS = [
-    { name: 'Programming Languages', skills: ['Go (Golang)', 'TypeScript', 'Python', 'SQL'] },
-    { name: 'Backend', skills: ['Microservices', 'REST APIs', 'Event-Driven Architecture', 'Node.js'] },
-    { name: 'Databases', skills: ['PostgreSQL', 'pgvector', 'MongoDB'] },
-    { name: 'Cloud & CI/CD', skills: ['AWS', 'Terraform', 'Docker', 'GitHub Actions'] },
-    { name: 'AI Engineering', skills: ['LLM Integration', 'Claude Code', 'Codex', 'Cursor'] },
-    { name: 'Testing', skills: ['Unit testing', 'Integration testing', 'Contract testing', 'Vitest'] },
-    { name: 'Frontend', skills: ['React', 'Next.js', 'TanStack Query', 'Tailwind CSS'] },
-];
+import { SKILL_GROUPS } from '../data/credentials';
 
 export default function Skills() {
     return (
