@@ -44,7 +44,13 @@ npm run build
 npm audit
 ```
 
-The production build is generated in `out/` as a static export.
+The production build is generated in `out/` as a static export. CI (`.github/workflows/ci.yml`) runs `npm ci`, lint, and the build on every push and pull request.
+
+Every figure on the site must exist in the career toolkit's master facts. `scripts/check-claims.mjs` runs that check before every commit (`git config core.hooksPath .githooks`) and before every deploy. It needs the toolkit's checkout:
+
+```bash
+git config career.toolkit <path to the career-toolkit checkout>
+```
 
 ## Deployment
 
@@ -52,15 +58,16 @@ The production build is generated in `out/` as a static export.
 npm run deploy
 ```
 
-This builds the static site and publishes `out/` to the `gh-pages` branch.
+This checks the site's figures, builds the static site, and publishes `out/` to the `gh-pages` branch.
 
 ## Repository Structure
 
 ```text
 app/          Page composition, metadata, social images, and global styles
-data/         Portfolio and shared navigation data
-components/   Semantic content sections and interactive controls
-public/       Downloadable résumé and GitHub Pages assets
+data/         Every fact and sentence on the site: profile, experience, case studies, skills, certifications
+components/   Semantic sections that render data/, and interactive controls
+public/       Downloadable résumé (compiled from the career toolkit's master résumé) and GitHub Pages assets
+scripts/      The claim check run before a commit and a deploy
 ```
 
 ## Contact

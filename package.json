@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint .",
-    "predeploy": "npm run build",
+    "predeploy": "node scripts/check-claims.mjs && npm run build",
     "deploy": "gh-pages -d out --dotfiles"
   },
   "dependencies": {

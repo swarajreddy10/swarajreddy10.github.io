@@ -1,0 +1,28 @@
+# Lint and build on every push and pull request. The claim check needs the private career
+# toolkit, so it runs there (daily, on a checkout of this repository) and in this
+# repository's pre-commit hook and predeploy step. Actions are pinned to full commit SHAs.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          # A sub-minute install; no cache, so no cache-poisoning surface (setup-node v7 notes).
+          package-manager-cache: false
+      - run: npm ci --no-audit --no-fund
+      - run: npm run lint
+      - run: npm run build
