@@ -46,7 +46,7 @@ npm audit
 
 The production build is generated in `out/` as a static export. CI (`.github/workflows/ci.yml`) runs `npm ci`, lint, and the build on every push to `main` and every pull request.
 
-Every figure on the site must exist in the career toolkit's master facts. `scripts/check-claims.mjs` runs that check before every commit (`git config core.hooksPath .githooks`) and before every deploy. It needs the toolkit's checkout:
+Every figure on the site must exist in the career toolkit's master facts. The pre-commit hook (`git config core.hooksPath .githooks`) runs that check on the staged files, and `scripts/check-claims.mjs` runs it on the working tree before every deploy. Both need the toolkit's checkout:
 
 ```bash
 git config career.toolkit <path to the career-toolkit checkout>

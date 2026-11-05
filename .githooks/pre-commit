@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# Refuses a commit when a figure on the site is missing from the career toolkit's master
-# facts (scripts/check-claims.mjs). Enable with: git config core.hooksPath .githooks
+# Refuses a commit when a staged figure on the site is missing from the career toolkit's
+# master facts. The toolkit's scripts/check-staged.sh runs the check on the staged files, so
+# an unstaged edit cannot change the verdict. Enable with: git config core.hooksPath .githooks
 set -euo pipefail
-cd "$(git rev-parse --show-toplevel)"
-# The check reads the working tree, so it judges the commit only when the files it reads
-# are exactly what is staged.
-checked=(data components app public)
-if ! git diff --quiet -- "${checked[@]}" || [[ -n "$(git ls-files --others --exclude-standard -- "${checked[@]}")" ]]; then
-  echo "pre-commit: ${checked[*]} have unstaged or untracked changes; stage them or set them aside, then commit." >&2
+toolkit=$(git config --get --type=path career.toolkit || true)
+if [[ -z "$toolkit" ]]; then
+  echo "pre-commit: set \`git config career.toolkit <path to the career-toolkit checkout>\`." >&2
   exit 1
 fi
-node scripts/check-claims.mjs
+if [[ ! -f "$toolkit/scripts/check-staged.sh" ]]; then
+  echo "pre-commit: $toolkit has no scripts/check-staged.sh; point career.toolkit at an up-to-date toolkit checkout." >&2
+  exit 1
+fi
+bash "$toolkit/scripts/check-staged.sh" portfolio

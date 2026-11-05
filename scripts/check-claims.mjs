@@ -1,7 +1,8 @@
-// Runs the career toolkit's claim check against this checkout: every figure in data/,
-// components/, app/ and the résumé PDF must exist in the toolkit's master facts.
-// The pre-commit hook and `npm run deploy` both run it. The toolkit checkout is named by
-// `git config career.toolkit`; without it the check fails rather than being skipped.
+// Runs the career toolkit's claim check against this checkout's working tree, which is what
+// `npm run deploy` builds and publishes: every figure in data/, components/, app/ and the
+// résumé PDF must exist in the toolkit's master facts. (The pre-commit hook checks the
+// staged files instead, through the toolkit's scripts/check-staged.sh.) The toolkit checkout
+// is named by `git config career.toolkit`; without it the check fails rather than being skipped.
 import { execFileSync, spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
